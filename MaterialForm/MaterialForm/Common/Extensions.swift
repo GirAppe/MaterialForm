@@ -33,8 +33,30 @@ internal extension UIView {
 
 internal extension Optional where Wrapped: Collection {
 
-    public var isEmptyOrNil: Bool {
+    var isEmptyOrNil: Bool {
         return self?.isEmpty ?? true
     }
 }
 
+internal extension UIView.AnimationCurve {
+
+    init?(name: String?) {
+        switch name {
+        case "linar"?:      self = .linear
+        case "easeInOut"?:  self = .easeInOut
+        case "easeIn"?:     self = .easeIn
+        case "easeOut"?:    self = .easeOut
+        default:            return nil
+        }
+    }
+
+    var asOptions: UIView.AnimationOptions  {
+        switch self {
+        case .linear:       return .curveLinear
+        case .easeInOut:    return .curveEaseInOut
+        case .easeIn:       return .curveEaseIn
+        case .easeOut:      return .curveEaseOut
+        @unknown default:   return .curveEaseInOut
+        }
+    }
+}

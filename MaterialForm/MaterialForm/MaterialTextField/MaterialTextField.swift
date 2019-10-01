@@ -1,8 +1,10 @@
 import UIKit
 
+internal var isDebuggingViewHierarchy = false
+
 // MARK: - Main Implementation
 
-open class MaterialTextField: UITextField {
+open class MaterialTextField: UITextField, MaterialField {
 
     // MARK: - Configuration
 
@@ -12,24 +14,26 @@ open class MaterialTextField: UITextField {
     @IBInspectable open var errorExtendsFieldHeight: Bool = false { didSet { update() } }
     /// Makes intrinsic content size being at least X in height.
     /// Defaults to 50 (recommended 44 + some buffer for the placeholder)
-    @IBInspectable open var minimumHeight: CGFloat = 50 {
-        didSet { field.minimumHeight = minimumHeight; update() }
-    }
+    @IBInspectable open var minimumHeight: CGFloat = 50 { didSet { update() } }
 
     @IBInspectable open var placeholderScaleMultiplier: CGFloat = 12.0 / 17.0
     @IBInspectable open var placeholderAdjustment: CGFloat = 0.8
 
-    // MARK: - Animations
-
-    private let animationDuration: TimeInterval = 0.3
-
-    // MARK: - Underline Configuration
-
     @IBInspectable open var extendLineUnderAccessory: Bool = true { didSet { update() } }
+
+    @IBInspectable open var animationDuration: Float = 0.36
+    @IBInspectable open var animationCurve: String? {
+        didSet { curve = AnimationCurve(name: animationCurve) ?? curve }
+    }
+    @IBInspectable open var animationDamping: Float = 1
+
+    private var duration: TimeInterval { return TimeInterval(animationDuration) }
+    private var curve: AnimationCurve = .easeInOut
+    private var damping: CGFloat { return CGFloat(animationDamping) }
 
     // MARK: - Error handling
 
-    var isShowingError: Bool { return false }
+    public var isShowingError: Bool { return false }
 
     // MARK: - Style
 
@@ -38,8 +42,8 @@ open class MaterialTextField: UITextField {
 
     // MARK: - Observable properties
 
-    @objc dynamic var event: FieldTriggerEvent = .none
-    @objc dynamic var fieldState: FieldControlState = .empty
+    @objc dynamic private(set) public var event: FieldTriggerEvent = .none
+    @objc dynamic private(set) public var fieldState: FieldControlState = .empty
 
     // MARK: - Overrides
 
@@ -52,36 +56,26 @@ open class MaterialTextField: UITextField {
         get { return floatingLabel.text }
         set { floatingLabel.text = newValue }
     }
-    open override var text: String? {
-        get { return field.text }
-        set { field.text = newValue }
-    }
-
-    open override var textColor: UIColor? {
-        get { return field.textColor }
-        set { field.textColor = newValue }
-    }
     open override var font: UIFont? {
-        get { return field.font }
-        set { field.font = newValue }
-    }
-    open override var textAlignment: NSTextAlignment {
-        get { return field.textAlignment }
-        set { field.textAlignment = newValue }
-    }
-    open override var clearsOnBeginEditing: Bool {
-        get { return field.clearsOnBeginEditing }
-        set { field.clearsOnBeginEditing = newValue }
-    }
-    open override var clearButtonMode: UITextField.ViewMode {
-        get { return field.clearButtonMode }
-        set { field.clearButtonMode = newValue }
+        didSet { field.font = font }
     }
 
     open override var inputAccessoryView: UIView? {
         get { return inputAccessory }
         set { inputAccessory = newValue; build() }
     }
+
+    @available(*, unavailable, message: "Not supported")
+    open override var leftView: UIView? {
+        get { return nil }
+        set { /* empty on purpose */ }
+    }
+
+    @available(*, unavailable, message: "Not supported")
+    open override var rightView: UIView?  {
+       get { return nil }
+       set { /* empty on purpose */ }
+   }
 
     open override var delegate: UITextFieldDelegate? {
         get { return proxyDelegate }
@@ -143,7 +137,7 @@ open class MaterialTextField: UITextField {
     // MARK: - Lifecycle
 
     private lazy var buildOnce: () -> Void = {
-        setupInnerField()
+        setup()
         build()
         setupObservers()
         return {}
@@ -153,27 +147,51 @@ open class MaterialTextField: UITextField {
         buildOnce(); super.layoutSubviews()
     }
 
+    // MARK: - Area
+
+    open override func textRect(forBounds bounds: CGRect) -> CGRect {
+        let base = super.textRect(forBounds: bounds)
+        print("t = \(bounds) -> \(base)")
+        let insets = UIEdgeInsets(
+            top: placeholderUpHeight,
+            left: 0,
+            bottom: 0,
+            right: 0
+        )
+        return base.inset(by: insets)
+    }
+
+    open override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let base = super.editingRect(forBounds: bounds)
+        print("e = \(bounds) -> \(base)")
+        let insets = UIEdgeInsets(
+            top: placeholderUpHeight,
+            left: 0,
+            bottom: 0,
+            right: 0
+        )
+        return base.inset(by: insets)
+//        return textRect(forBounds: bounds)
+    }
+
     // MARK: - Setup
 
-    private func setupInnerField() {
+    private func setup() {
         placeholder = super.placeholder
         super.placeholder = nil
+        super.borderStyle = .none
 
-        if let color = super.textColor {
-            textColor = color
+        if let color = textColor {
             defaultStyle?.defaultColor = color
             defaultStyle?.defaultPlaceholderColor = color
         }
-        super.textColor = .clear
-
-        font = super.font
-        floatingLabel.font = super.font
-
-        textAlignment = super.textAlignment
-        clearsOnBeginEditing = super.clearsOnBeginEditing
-        clearButtonMode = super.clearButtonMode
 
         // TODO: Rest of text field properties
+        field.font = font
+        field.textColor = .clear
+        field.text = placeholder ?? "-"
+        field.backgroundColor = .clear
+        field.isUserInteractionEnabled = false
     }
 
     private func setupObservers() {
@@ -188,19 +206,14 @@ open class MaterialTextField: UITextField {
 private extension MaterialTextField {
 
     func update(animated: Bool = true) {
-
         super.placeholder = nil
-        super.textColor = .clear
-        super.text = nil
         super.borderStyle = .none
-        super.clipsToBounds = false
-
-        field.borderStyle = .none
 
         setNeedsDisplay()
         setNeedsLayout()
 
         animateFloatingLabel(animated: animated)
+        animateColors(animated: animated)
     }
 
     func updateLineViewHeight() {
@@ -214,7 +227,7 @@ private extension MaterialTextField {
             return floatingLabel.isHidden = up
         }
 
-        floatingLabel.textColor = style.textColor(for: fieldState, error: isShowingError)
+        floatingLabel.textColor = style.textColor(for: self)
 
         let finalTranform: CGAffineTransform = {
             guard up else { return CGAffineTransform.identity }
@@ -234,9 +247,32 @@ private extension MaterialTextField {
             return floatingLabel.transform = finalTranform
         }
 
-        UIView.animate(withDuration: animationDuration) {
-            self.floatingLabel.transform = finalTranform
+        UIView.animate(
+            withDuration: duration,
+            delay: 0,
+            usingSpringWithDamping: damping,
+            initialSpringVelocity: 0,
+            options: curve.asOptions,
+            animations: {
+                self.floatingLabel.transform = finalTranform
+            })
+    }
+
+    func animateColors(animated: Bool) {
+        let lineWidth = style.lineWidth(for: self)
+        let lineColor = style.lineColor(for: self)
+
+        line.animateStateChange { it in
+            it.width = lineWidth
+            it.color = lineColor
         }
+
+        // TODO: Implement text field and placeholder colors
+    }
+
+    @objc func updateText() {
+//        let text = self.text
+//        self.text = text
     }
 }
 
@@ -254,11 +290,15 @@ private extension MaterialTextField {
         buildInnerField()
         buildLine()
         buildFloatingLabel()
+        buildErrorView()
         setupDebug()
 
-        // Setup delegates
-        field.delegate = self
+        // Setup
         super.delegate = self
+        mainContainer.isUserInteractionEnabled = false
+        fieldContainer.isUserInteractionEnabled = false
+        lineContainer.isUserInteractionEnabled = false
+        placeholderLabel.isUserInteractionEnabled = false
 
         update(animated: false)
     }
@@ -336,12 +376,17 @@ private extension MaterialTextField {
         line.buildAsUnderline(for: field)
 
         // Set initial values
-        line.color = style.lineColor(for: fieldState, error: isShowingError)
-        line.height = style.lineWidth(for: fieldState, error: isShowingError)
+        line.color = style.lineColor(for: self)
+        line.width = style.lineWidth(for: self)
         line.underAccessory = extendLineUnderAccessory
     }
 
+    func buildErrorView() {
+
+    }
+
     func setupDebug() {
+        guard isDebuggingViewHierarchy else { return }
         #if DEBUG
         layer.borderWidth = 1
         layer.borderColor = UIColor.red.cgColor
@@ -350,10 +395,6 @@ private extension MaterialTextField {
         floatingLabel.layer.borderWidth = 1
         floatingLabel.layer.borderColor = UIColor.blue.cgColor
         #endif
-    }
-
-    func configureInnerField() {
-        field.layoutMargins = UIEdgeInsets(top: 12, left: 0, bottom: 2, right: 0)
     }
 }
 
@@ -365,13 +406,7 @@ extension MaterialTextField: UITextFieldDelegate {
         guard proxyDelegate?.textFieldShouldBeginEditing?(self) != false else {
             return false
         }
-        if textField === self {
-            print("passing control to inner field")
-            field.becomeFirstResponder()
-            return false
-        } else {
-            return true
-        }
+        return true
     }
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
@@ -385,6 +420,8 @@ extension MaterialTextField: UITextFieldDelegate {
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
         defer { fieldState = text.isEmptyOrNil ? .empty : .filled }
+        resignFirstResponder()
+        self.layoutSubviews()
         proxyDelegate?.textFieldDidEndEditing?(self)
     }
 
@@ -395,9 +432,12 @@ extension MaterialTextField: UITextFieldDelegate {
     public func textField(_ textField: UITextField,
                           shouldChangeCharactersIn range: NSRange,
                           replacementString string: String) -> Bool {
-        print(textField.text ?? "")
-        print(string)
         return true
+    }
+
+    @available(iOS 13.0, *)
+    public func textFieldDidChangeSelection(_ textField: UITextField) {
+        proxyDelegate?.textFieldDidChangeSelection?(self)
     }
 
 }
@@ -412,11 +452,5 @@ final internal class UnderlyingField: UITextField {
     override var intrinsicContentSize: CGSize {
         guard updateIntrinsicContentSize else { return super.intrinsicContentSize }
         return super.intrinsicContentSize.constrainedTo(minHeight: minimumHeight)
-    }
-}
-
-func set<T>(_ lhs: inout T, if rhs: T?) {
-    if let value = rhs {
-        lhs = value
     }
 }

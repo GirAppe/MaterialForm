@@ -10,64 +10,66 @@ import UIKit
 
 // MARK: - Interface
 
-public protocol MaterialTextFieldStyle {
-
-    // Getters
-
-    func lineWidth(for state: FieldControlState, error: Bool) -> CGFloat
-    func lineColor(for state: FieldControlState, error: Bool) -> UIColor
-    func placeholderColor(for state: FieldControlState, error: Bool) -> UIColor
-    func textColor(for state: FieldControlState, error: Bool) -> UIColor
-
-    // Setters
-
-    // TODO: Implemtn
+public protocol MaterialField {
+    var fieldState: FieldControlState { get }
+    var isShowingError: Bool { get }
+    var isEnabled: Bool { get }
+    var isDisabled: Bool { get }
 }
 
-internal extension MaterialTextFieldStyle {
+public extension MaterialField {
+    var isDisabled: Bool { return !isEnabled }
+}
 
-    var maxLineWidth: CGFloat {
-        return FieldControlState.allCases.reduce(0) { result, state -> CGFloat in
-            let currentWithError = lineWidth(for: state, error: true)
-            let currentWithoutError = lineWidth(for: state, error: false)
-            let current = max(currentWithError, currentWithoutError)
-            return max(result, current)
-        }
-    }
+public protocol MaterialTextFieldStyle {
+    var maxLineWidth: CGFloat { get }
+
+    func lineWidth(for field: MaterialField) -> CGFloat
+    func lineColor(for field: MaterialField) -> UIColor
+    func placeholderColor(for field: MaterialField) -> UIColor
+    func textColor(for field: MaterialField) -> UIColor
 }
 
 // MARK: - Default implementation
 
-class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
+class DefaultMaterialTextFieldStyle {
 
     var errorLineWidth: CGFloat = 2
     var errorColor: UIColor = .red
-    var lineWidths: [FieldControlState: CGFloat] = [.focused: 2]
+    var lineWidths: [FieldControlState: CGFloat] = [.focused: 2, .filled: 1]
     var lineColors: [FieldControlState: UIColor] = [:]
     var colors: [FieldControlState: UIColor] = [:]
     var placeholderColors: [FieldControlState: UIColor] = [:]
 
-    var defaultWidth: CGFloat = 1
+    var defaultWidth: CGFloat = 0
     var defaultColor: UIColor = .darkText
     var defaultPlaceholderColor: UIColor = .darkText
+}
 
-    func lineWidth(for state: FieldControlState, error: Bool) -> CGFloat {
-        guard !error else { return errorLineWidth }
-        return lineWidths[state] ?? defaultWidth
+extension DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
+
+    func lineWidth(for field: MaterialField) -> CGFloat {
+        guard !field.isShowingError else { return errorLineWidth }
+        return lineWidths[field.fieldState] ?? defaultWidth
     }
 
-    func lineColor(for state: FieldControlState, error: Bool) -> UIColor {
-        guard !error else { return errorColor }
-        return lineColors[state] ?? defaultColor
+    func lineColor(for field: MaterialField) -> UIColor {
+        guard !field.isShowingError else { return errorColor }
+        return lineColors[field.fieldState] ?? defaultColor
     }
 
-    func placeholderColor(for state: FieldControlState, error: Bool) -> UIColor {
-        guard !error else { return errorColor }
-        return placeholderColors[state] ?? defaultPlaceholderColor
+    func placeholderColor(for field: MaterialField) -> UIColor {
+        guard !field.isShowingError else { return errorColor }
+        return placeholderColors[field.fieldState] ?? defaultPlaceholderColor
     }
 
-    func textColor(for state: FieldControlState, error: Bool) -> UIColor {
-        guard !error else { return errorColor }
-        return colors[state] ?? defaultColor
+    func textColor(for field: MaterialField) -> UIColor {
+        guard !field.isShowingError else { return errorColor }
+        return colors[field.fieldState] ?? defaultColor
+    }
+
+    var maxLineWidth: CGFloat {
+        return lineWidths.values.reduce(into: 0) { $0 = max($0, $1) }
     }
 }
+
