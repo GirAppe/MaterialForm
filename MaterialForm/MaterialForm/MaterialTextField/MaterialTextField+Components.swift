@@ -25,6 +25,9 @@ extension MaterialTextField {
 
         func build() {
             minHeight = heightAnchor.constraint(greaterThanOrEqualToConstant: font.lineHeight)
+            let c = heightAnchor.constraint(equalToConstant: font.lineHeight)
+            c.priority = .defaultLow
+            c.isActive = true
             minHeight.isActive = true
         }
 
@@ -53,14 +56,30 @@ extension MaterialTextField {
             }
         }
 
-        func maskByRoundingCorners(_ masks: UIRectCorner, withRadii radii:CGSize = CGSize(width: 10, height: 10)) {
-            let rounded = UIBezierPath(roundedRect: self.bounds, byRoundingCorners: masks, cornerRadii: radii)
+        func maskByRoundingCorners(_ masks: UIRectCorner) {
+            let rounded = UIBezierPath(
+                roundedRect: bounds,
+                byRoundingCorners: masks,
+                cornerRadii: CGSize(width: layer.cornerRadius, height: layer.cornerRadius)
+            )
 
             let shape = CAShapeLayer()
             shape.path = rounded.cgPath
 
+            self.layer.masksToBounds = true
             self.layer.mask = shape
         }
+
+        func animateStateChange(animate: Bool, _ change: @escaping (BackgroundView) -> Void)  {
+            let animation = {
+                change(self)
+            }
+
+            guard animate else { return animation() }
+
+            UIView.animate(withDuration: 0.36, animations: animation)
+        }
+
     }
 }
 

@@ -29,6 +29,7 @@ public protocol MaterialTextFieldStyle {
     func placeholderColor(for field: MaterialField) -> UIColor
     func textColor(for field: MaterialField) -> UIColor
     func infoColor(for field: MaterialField) -> UIColor
+    func backgroundColor(for field: MaterialField) -> UIColor
 }
 
 // MARK: - Default implementation
@@ -37,8 +38,9 @@ class DefaultMaterialTextFieldStyle {
 
     var errorLineWidth: CGFloat = 2
     var errorColor: UIColor = .red
-
     var infoColor: UIColor = .gray
+    var focusedColor: UIColor = .blue
+    var backgroundColor: UIColor = UIColor.lightGray.withAlphaComponent(0.4)
 
     var lineWidths: [FieldControlState: CGFloat] = [.focused: 2, .filled: 1]
     var lineColors: [FieldControlState: UIColor] = [:]
@@ -52,6 +54,10 @@ class DefaultMaterialTextFieldStyle {
 
 extension DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
 
+    var maxLineWidth: CGFloat {
+        return lineWidths.values.reduce(into: 0) { $0 = max($0, $1) }
+    }
+
     func lineWidth(for field: MaterialField) -> CGFloat {
         guard !field.isShowingError else { return errorLineWidth }
         return lineWidths[field.fieldState] ?? defaultWidth
@@ -59,11 +65,17 @@ extension DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
 
     func lineColor(for field: MaterialField) -> UIColor {
         guard !field.isShowingError else { return errorColor }
+        if field.fieldState == .focused {
+            return focusedColor
+        }
         return lineColors[field.fieldState] ?? defaultColor
     }
 
     func placeholderColor(for field: MaterialField) -> UIColor {
         guard !field.isShowingError else { return errorColor }
+        if field.fieldState == .focused {
+            return focusedColor
+        }
         return placeholderColors[field.fieldState] ?? defaultPlaceholderColor
     }
 
@@ -77,8 +89,7 @@ extension DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
         return infoColor
     }
 
-    var maxLineWidth: CGFloat {
-        return lineWidths.values.reduce(into: 0) { $0 = max($0, $1) }
+    func backgroundColor(for field: MaterialField) -> UIColor {
+        return backgroundColor
     }
 }
-

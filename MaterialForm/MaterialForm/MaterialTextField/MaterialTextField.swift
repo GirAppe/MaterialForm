@@ -1,6 +1,6 @@
 import UIKit
 
-internal var isDebuggingViewHierarchy = true
+internal var isDebuggingViewHierarchy = false
 
 // MARK: - Main Implementation
 
@@ -9,8 +9,9 @@ open class MaterialTextField: UITextField, MaterialField {
     // MARK: - Configuration
 
     /// Makes intrinsic content size being at least X in height.
-    /// Defaults to 50 (recommended 44 + some buffer for the placeholder)
-    @IBInspectable open var minimumHeight: CGFloat = 50 { didSet { update() } }
+    /// Defaults to 64 (recommended 44 + some buffer for the placeholder),
+    /// since it is nice number because of being power of 2
+    @IBInspectable open var minimumHeight: CGFloat = 64 { didSet { update() } }
 
     @IBInspectable open var placeholderPointSize: CGFloat = 11 { didSet { update() } }
 
@@ -22,8 +23,8 @@ open class MaterialTextField: UITextField, MaterialField {
     }
     @IBInspectable open var animationDamping: Float = 1
 
-    @IBInspectable open var radius: CGFloat = 8 { didSet { update(animated: false) } }
-    open var insets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 6, bottom: 0, right: 6) {
+    @IBInspectable open var radius: CGFloat = 4 { didSet { backgroundView.setup(radius: radius) } }
+    open var insets: UIEdgeInsets = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 12) {
         didSet { update(animated: false) }
     }
 
@@ -57,8 +58,11 @@ open class MaterialTextField: UITextField, MaterialField {
         get { return floatingLabel.text }
         set { floatingLabel.text = newValue }
     }
-    open override var font: UIFont? {
-        didSet { field.font = font }
+    open override var font: UIFont? { didSet { field.font = font } }
+    open override var tintColor: UIColor! { didSet { update() } }
+    open override var backgroundColor: UIColor? {
+        get { return backgroundView.backgroundColor }
+        set { backgroundView.backgroundColor = newValue }
     }
 
     open override var inputAccessoryView: UIView? {
@@ -91,7 +95,7 @@ open class MaterialTextField: UITextField, MaterialField {
         container.translatesAutoresizingMaskIntoConstraints = false
         container.axis = .vertical
         container.alignment = .fill
-        container.spacing = 0
+        container.spacing = 4
         container.isUserInteractionEnabled = true
         return container
     }()
@@ -135,6 +139,10 @@ open class MaterialTextField: UITextField, MaterialField {
     private var lineViewHeight: NSLayoutConstraint?
     private var line = UnderlyingLineView()
 
+    // MARK: - Background View
+
+    private let backgroundView = BackgroundView()
+
     // MARK: - Info view
 
     public let infoLabel = InfoLabel()
@@ -154,7 +162,10 @@ open class MaterialTextField: UITextField, MaterialField {
     var observations: [Any] = []
     private var isBuilt: Bool = false
 
-    var placeholderScaleMultiplier: CGFloat { return placeholderPointSize / fontSize }
+    public var placeholderAdjustment: CGFloat = 0.9
+    var placeholderScaleMultiplier: CGFloat {
+        return placeholderPointSize / fontSize * placeholderAdjustment
+    }
     var fontSize: CGFloat { return font?.pointSize ?? 17 }
 
     // MARK: - Lifecycle
@@ -162,6 +173,7 @@ open class MaterialTextField: UITextField, MaterialField {
     private lazy var buildOnce: () -> Void = {
         setup()
         build()
+        setup(with: style)
         setupObservers()
         return {}
     }()
@@ -201,6 +213,9 @@ open class MaterialTextField: UITextField, MaterialField {
         super.placeholder = nil
         super.borderStyle = .none
 
+        defaultStyle?.backgroundColor = super.backgroundColor ?? defaultStyle?.backgroundColor ?? .clear
+        super.backgroundColor = .clear
+
         placeholderLabel.font = font ?? placeholderLabel.font
 
         if let color = textColor {
@@ -218,6 +233,20 @@ open class MaterialTextField: UITextField, MaterialField {
         infoLabel.font = (font ?? infoLabel.font)?.withSize(11)
         infoLabel.lineBreakMode = .byTruncatingTail
         infoLabel.numberOfLines = 1
+
+        defaultStyle?.focusedColor = tintColor
+    }
+
+    private func setup(with style: MaterialTextFieldStyle) {
+        switch style {
+        case let style as DefaultMaterialTextFieldStyle:
+            backgroundColor = style.backgroundColor
+            backgroundView.isHidden = false
+        // TODO: Plain
+        // TODO: Rounded
+        default:
+            return
+        }
     }
 
     private func setupObservers() {
@@ -238,6 +267,7 @@ private extension MaterialTextField {
         super.placeholder = nil
         super.borderStyle = .none
 
+        defaultStyle?.focusedColor = tintColor
         placeholderLabel.font = placeholderLabel.font.withSize(fontSize)
 
         infoLabel.errorValue = errorMessage
@@ -245,7 +275,6 @@ private extension MaterialTextField {
 
         mainContainerLeft.constant = insets.left
         mainContainerRight.constant = -insets.right
-
         mainContainerTop.constant = topPadding + insets.top
         mainContainerBottom.constant = -insets.bottom
 
@@ -271,19 +300,15 @@ private extension MaterialTextField {
         floatingLabel.textColor = style.textColor(for: self)
 
         let finalTranform: CGAffineTransform = {
-            guard up else {
-                return CGAffineTransform.identity
-            }
+            guard up else { return CGAffineTransform.identity }
 
             let left = -floatingLabel.bounds.width / 2
             let top = -floatingLabel.bounds.height / 2
-            let bottom = floatingLabel.bounds.height / 2
-            let diff = (floatingLabel.bounds.height - floatingLabel.font.pointSize) / 2
-            let adjustment = bottom - (topPadding / placeholderScaleMultiplier) - diff
+            let bottom = (insets.top + topPadding) / 2 / placeholderScaleMultiplier
 
             let moveToZero = CGAffineTransform(translationX: left, y: top)
             let scale = moveToZero.scaledBy(x: placeholderScaleMultiplier, y: placeholderScaleMultiplier)
-            return scale.translatedBy(x: -left, y: adjustment)
+            return scale.translatedBy(x: -left, y: bottom)
         }()
 
         guard animated else {
@@ -305,9 +330,14 @@ private extension MaterialTextField {
         let lineWidth = style.lineWidth(for: self)
         let lineColor = style.lineColor(for: self)
 
-        line.animateStateChange { it in
+        line.animateStateChange(animate: animated) { it in
             it.width = lineWidth
             it.color = lineColor
+        }
+
+        backgroundView.animateStateChange(animate: animated) { it in
+            it.backgroundColor = self.style.backgroundColor(for: self)
+            it.setup(radius: self.radius)
         }
 
         // TODO: Implement text field and placeholder colors
@@ -317,6 +347,10 @@ private extension MaterialTextField {
         // Makes text edited observable
         let text = self.text
         self.text = text
+        field.text = text ?? placeholder ?? "-"
+        field.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
+        field.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
+        layoutSubviews()
     }
 }
 
@@ -334,6 +368,7 @@ private extension MaterialTextField {
         buildContainer()
         buildInnerField()
         buildLine()
+        buildBackground()
         buildFloatingLabel()
         buildInfoLabel()
         setupDebug()
@@ -376,8 +411,11 @@ private extension MaterialTextField {
         }
 
         accessoryView.addSubview(accessory.clear())
+        let fieldHeight = field.heightAnchor.constraint(equalToConstant: fontSize)
+        fieldHeight.priority = .defaultLow
 
         NSLayoutConstraint.activate([
+            fieldHeight,
             accessory.topAnchor.constraint(equalTo: accessoryView.topAnchor),
             accessory.leftAnchor.constraint(equalTo: accessoryView.leftAnchor),
             accessory.rightAnchor.constraint(equalTo: accessoryView.rightAnchor),
@@ -391,10 +429,10 @@ private extension MaterialTextField {
         floatingLabel.isUserInteractionEnabled = false
 
         NSLayoutConstraint.activate([
-            floatingLabel.topAnchor.constraint(equalTo: field.topAnchor),
+            floatingLabel.topAnchor.constraint(equalTo: topAnchor),
             floatingLabel.leftAnchor.constraint(equalTo: field.leftAnchor),
             floatingLabel.rightAnchor.constraint(equalTo: field.rightAnchor),
-            floatingLabel.bottomAnchor.constraint(equalTo: field.bottomAnchor)
+            floatingLabel.bottomAnchor.constraint(equalTo: lineContainer.topAnchor)
         ])
     }
 
@@ -428,6 +466,23 @@ private extension MaterialTextField {
         line.color = style.lineColor(for: self)
         line.width = style.lineWidth(for: self)
         line.underAccessory = extendLineUnderAccessory
+    }
+
+    func buildBackground() {
+//        guard isBuilt else { return }
+//        guard superview != nil else { return }
+
+        backgroundView.isUserInteractionEnabled = false
+        backgroundView.clipsToBounds = true
+        addSubview(backgroundView.clear())
+        sendSubviewToBack(backgroundView)
+
+        NSLayoutConstraint.activate([
+            backgroundView.topAnchor.constraint(equalTo: topAnchor),
+            backgroundView.leftAnchor.constraint(equalTo: leftAnchor),
+            backgroundView.rightAnchor.constraint(equalTo: rightAnchor),
+            backgroundView.bottomAnchor.constraint(equalTo: lineContainer.topAnchor)
+        ])
     }
 
     func buildInfoLabel() {

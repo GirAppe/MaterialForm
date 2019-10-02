@@ -85,7 +85,7 @@ final internal class UnderlyingLineView: UIStackView {
 
     // MARK: - Actions
 
-    func animateStateChange(_ change: (UnderlyingLineView.State) -> Void)  {
+    func animateStateChange(animate: Bool, _ change: (UnderlyingLineView.State) -> Void)  {
         animateChange = true
         change(self.state)
         animateChange = false
@@ -107,9 +107,9 @@ final internal class UnderlyingLineView: UIStackView {
 
         switch (from, to) {
         case (0, _):
-            animateLineHorizontally(to: to)
+            animateLineHorizontally(from: from, to: to)
         case (_, 0):
-            animateLineHorizontally(to: to)
+            animateLineHorizontally(from: from, to: to)
         default:
             animateLineVertical(to: to)
         }
@@ -119,20 +119,44 @@ final internal class UnderlyingLineView: UIStackView {
         animate { self.heightContraint.constant = to }
     }
 
-    private func animateLineHorizontally(to: CGFloat) {
-        let initialTransform = to == 0 ? CGAffineTransform.identity : CGAffineTransform(scaleX: 0, y: 1)
-        let finalTransform = to != 0 ? CGAffineTransform.identity : CGAffineTransform(scaleX: 0, y: 1)
+    private func animateLineHorizontally(from: CGFloat, to: CGFloat) {
+        func show() {
+            let initialTransform = CGAffineTransform(scaleX: 0, y: 1)
+            let finalTransform = CGAffineTransform.identity
 
-        heightContraint.constant = to
-        transform = initialTransform
-        layoutSubviews()
+            heightContraint.constant = to
+            transform = initialTransform
+            layoutSubviews()
 
-        animate(change: {
-            self.transform = finalTransform
-        }, completion: {
-            self.heightContraint.constant = to
-            self.transform = .identity
-        })
+            animate(change: {
+                self.transform = finalTransform
+            }, completion: {
+                self.heightContraint.constant = to
+                self.transform = .identity
+            })
+        }
+
+        func hide() {
+            let initialTransform = CGAffineTransform.identity
+            let finalTransform = CGAffineTransform(scaleX: 0, y: 1)
+
+            heightContraint.constant = from
+            transform = initialTransform
+            layoutSubviews()
+
+            animate(change: {
+                self.transform = finalTransform
+            }, completion: {
+                self.heightContraint.constant = to
+                self.transform = .identity
+            })
+        }
+
+        if to != 0 {
+            show()
+        } else {
+            hide()
+        }
     }
 
     // MARK: - General animation blocks
@@ -154,3 +178,4 @@ final internal class UnderlyingLineView: UIStackView {
         }
     }
 }
+s
