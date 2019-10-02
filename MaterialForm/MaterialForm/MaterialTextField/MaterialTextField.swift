@@ -12,8 +12,7 @@ open class MaterialTextField: UITextField, MaterialField {
     /// Defaults to 50 (recommended 44 + some buffer for the placeholder)
     @IBInspectable open var minimumHeight: CGFloat = 50 { didSet { update() } }
 
-    @IBInspectable open var placeholderScaleMultiplier: CGFloat = 11.0 / 17.0
-    @IBInspectable open var placeholderAdjustment: CGFloat = 0.8
+    @IBInspectable open var placeholderPointSize: CGFloat = 11 { didSet { update() } }
 
     @IBInspectable open var extendLineUnderAccessory: Bool = true { didSet { update() } }
 
@@ -155,6 +154,9 @@ open class MaterialTextField: UITextField, MaterialField {
     var observations: [Any] = []
     private var isBuilt: Bool = false
 
+    var placeholderScaleMultiplier: CGFloat { return placeholderPointSize / fontSize }
+    var fontSize: CGFloat { return font?.pointSize ?? 17 }
+
     // MARK: - Lifecycle
 
     private lazy var buildOnce: () -> Void = {
@@ -199,6 +201,8 @@ open class MaterialTextField: UITextField, MaterialField {
         super.placeholder = nil
         super.borderStyle = .none
 
+        placeholderLabel.font = font ?? placeholderLabel.font
+
         if let color = textColor {
             defaultStyle?.defaultColor = color
             defaultStyle?.defaultPlaceholderColor = color
@@ -211,7 +215,7 @@ open class MaterialTextField: UITextField, MaterialField {
         field.backgroundColor = .clear
         field.isUserInteractionEnabled = false
 
-        infoLabel.font = .systemFont(ofSize: 11)
+        infoLabel.font = (font ?? infoLabel.font)?.withSize(11)
         infoLabel.lineBreakMode = .byTruncatingTail
         infoLabel.numberOfLines = 1
     }
@@ -233,6 +237,8 @@ private extension MaterialTextField {
 
         super.placeholder = nil
         super.borderStyle = .none
+
+        placeholderLabel.font = placeholderLabel.font.withSize(fontSize)
 
         infoLabel.errorValue = errorMessage
         infoLabel.infoValue = infoMessage
