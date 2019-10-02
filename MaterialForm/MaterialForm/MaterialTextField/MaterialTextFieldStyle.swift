@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Interface
 
-public protocol MaterialField {
+public protocol MaterialField: class {
     var fieldState: FieldControlState { get }
     var isShowingError: Bool { get }
     var isEnabled: Bool { get }
@@ -28,6 +28,7 @@ public protocol MaterialTextFieldStyle {
     func lineColor(for field: MaterialField) -> UIColor
     func placeholderColor(for field: MaterialField) -> UIColor
     func textColor(for field: MaterialField) -> UIColor
+    func infoColor(for field: MaterialField) -> UIColor
 }
 
 // MARK: - Default implementation
@@ -36,6 +37,9 @@ class DefaultMaterialTextFieldStyle {
 
     var errorLineWidth: CGFloat = 2
     var errorColor: UIColor = .red
+
+    var infoColor: UIColor = .gray
+
     var lineWidths: [FieldControlState: CGFloat] = [.focused: 2, .filled: 1]
     var lineColors: [FieldControlState: UIColor] = [:]
     var colors: [FieldControlState: UIColor] = [:]
@@ -66,6 +70,11 @@ extension DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
     func textColor(for field: MaterialField) -> UIColor {
         guard !field.isShowingError else { return errorColor }
         return colors[field.fieldState] ?? defaultColor
+    }
+
+    func infoColor(for field: MaterialField) -> UIColor {
+        guard !field.isShowingError else { return errorColor }
+        return infoColor
     }
 
     var maxLineWidth: CGFloat {

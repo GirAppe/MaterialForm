@@ -1,6 +1,6 @@
 import UIKit
 
-internal var isDebuggingViewHierarchy = false
+internal var isDebuggingViewHierarchy = true
 
 // MARK: - Main Implementation
 
@@ -8,15 +8,11 @@ open class MaterialTextField: UITextField, MaterialField {
 
     // MARK: - Configuration
 
-    /// If set to true, this will extend this control intrinsic content size to contain
-    /// info label within its bounds. Be careful when setting this and adding height
-    /// constraint with required (1000) priority.
-    @IBInspectable open var errorExtendsFieldHeight: Bool = false { didSet { update() } }
     /// Makes intrinsic content size being at least X in height.
     /// Defaults to 50 (recommended 44 + some buffer for the placeholder)
     @IBInspectable open var minimumHeight: CGFloat = 50 { didSet { update() } }
 
-    @IBInspectable open var placeholderScaleMultiplier: CGFloat = 12.0 / 17.0
+    @IBInspectable open var placeholderScaleMultiplier: CGFloat = 11.0 / 17.0
     @IBInspectable open var placeholderAdjustment: CGFloat = 0.8
 
     @IBInspectable open var extendLineUnderAccessory: Bool = true { didSet { update() } }
@@ -27,13 +23,21 @@ open class MaterialTextField: UITextField, MaterialField {
     }
     @IBInspectable open var animationDamping: Float = 1
 
+    @IBInspectable open var radius: CGFloat = 8 { didSet { update(animated: false) } }
+    open var insets: UIEdgeInsets = UIEdgeInsets(top: 8, left: 6, bottom: 0, right: 6) {
+        didSet { update(animated: false) }
+    }
+
     private var duration: TimeInterval { return TimeInterval(animationDuration) }
     private var curve: AnimationCurve = .easeInOut
     private var damping: CGFloat { return CGFloat(animationDamping) }
 
     // MARK: - Error handling
 
-    public var isShowingError: Bool { return false }
+    public var isShowingError: Bool { return infoLabel.errorValue != nil }
+
+    public var errorMessage: String? { didSet { update() } }
+    @IBInspectable public var infoMessage: String? { didSet { update() } }
 
     // MARK: - Style
 
@@ -42,15 +46,13 @@ open class MaterialTextField: UITextField, MaterialField {
 
     // MARK: - Observable properties
 
-    @objc dynamic private(set) public var event: FieldTriggerEvent = .none
-    @objc dynamic private(set) public var fieldState: FieldControlState = .empty
+    @objc dynamic internal(set) public var event: FieldTriggerEvent = .none
+    @objc dynamic internal(set) public var fieldState: FieldControlState = .empty
 
     // MARK: - Overrides
 
     open override var intrinsicContentSize: CGSize {
-        let size = super.intrinsicContentSize.constrainedTo(minHeight: minimumHeight)
-        guard errorExtendsFieldHeight else { return size }
-        return size
+        return super.intrinsicContentSize.constrainedTo(minHeight: minimumHeight)
     }
     open override var placeholder: String? {
         get { return floatingLabel.text }
@@ -81,9 +83,9 @@ open class MaterialTextField: UITextField, MaterialField {
         get { return proxyDelegate }
         set { proxyDelegate = newValue }
     }
-    private weak var proxyDelegate: UITextFieldDelegate? = nil
+    internal weak var proxyDelegate: UITextFieldDelegate? = nil
 
-    // MARK: - Container
+    // MARK: - Inner structure
 
     private let mainContainer: UIStackView = {
         let container = UIStackView()
@@ -103,9 +105,11 @@ open class MaterialTextField: UITextField, MaterialField {
         container.isUserInteractionEnabled = true
         return container
     }()
-    private var mainContainerTop: NSLayoutConstraint!
 
-    // MARK: - Inner TextField
+    private var mainContainerTop: NSLayoutConstraint!
+    private var mainContainerLeft: NSLayoutConstraint!
+    private var mainContainerRight: NSLayoutConstraint!
+    private var mainContainerBottom: NSLayoutConstraint!
 
     private let field: UnderlyingField = UnderlyingField()
 
@@ -114,14 +118,16 @@ open class MaterialTextField: UITextField, MaterialField {
     private let accessoryView = UIView()
     private var inputAccessory: UIView?
 
-    // TODO: Rest of the stuff
-
     // MARK: - Placeholder label
 
     public var placeholderLabel: UILabel { return floatingLabel }
     private let floatingLabel = UILabel()
-    private var placeholderUpHeight: CGFloat {
-        return floatingLabel.font.pointSize * placeholderScaleMultiplier * placeholderAdjustment
+
+    private var topPadding: CGFloat {
+        return floatingLabel.font.pointSize * placeholderScaleMultiplier + 4
+    }
+    private var bottomPadding: CGFloat {
+        return infoLabel.bounds.height + lineContainer.bounds.height + mainContainer.spacing * 2
     }
 
     // MARK: - Underline container
@@ -130,9 +136,24 @@ open class MaterialTextField: UITextField, MaterialField {
     private var lineViewHeight: NSLayoutConstraint?
     private var line = UnderlyingLineView()
 
+    // MARK: - Info view
+
+    public let infoLabel = InfoLabel()
+    private let infoContainer: UIStackView = {
+        let container = UIStackView()
+        container.translatesAutoresizingMaskIntoConstraints = false
+        container.axis = .horizontal
+        container.alignment = .fill
+        container.spacing = 4
+        container.isUserInteractionEnabled = true
+        return container
+    }()
+    private let infoAccessory = InfoLabel()
+
     // MARK: - Properties
 
     var observations: [Any] = []
+    private var isBuilt: Bool = false
 
     // MARK: - Lifecycle
 
@@ -151,27 +172,24 @@ open class MaterialTextField: UITextField, MaterialField {
 
     open override func textRect(forBounds bounds: CGRect) -> CGRect {
         let base = super.textRect(forBounds: bounds)
-        print("t = \(bounds) -> \(base)")
-        let insets = UIEdgeInsets(
-            top: placeholderUpHeight,
-            left: 0,
-            bottom: 0,
-            right: 0
+        let textInsets = UIEdgeInsets(
+            top: topPadding + insets.top,
+            left: insets.left,
+            bottom: bottomPadding + insets.bottom,
+            right: insets.right
         )
-        return base.inset(by: insets)
+        return base.inset(by: textInsets)
     }
 
     open override func editingRect(forBounds bounds: CGRect) -> CGRect {
         let base = super.editingRect(forBounds: bounds)
-        print("e = \(bounds) -> \(base)")
-        let insets = UIEdgeInsets(
-            top: placeholderUpHeight,
-            left: 0,
-            bottom: 0,
-            right: 0
+        let textInsets = UIEdgeInsets(
+            top: topPadding + insets.top,
+            left: insets.left,
+            bottom: bottomPadding + insets.bottom,
+            right: insets.right
         )
-        return base.inset(by: insets)
-//        return textRect(forBounds: bounds)
+        return base.inset(by: textInsets)
     }
 
     // MARK: - Setup
@@ -192,12 +210,17 @@ open class MaterialTextField: UITextField, MaterialField {
         field.text = placeholder ?? "-"
         field.backgroundColor = .clear
         field.isUserInteractionEnabled = false
+
+        infoLabel.font = .systemFont(ofSize: 11)
+        infoLabel.lineBreakMode = .byTruncatingTail
+        infoLabel.numberOfLines = 1
     }
 
     private func setupObservers() {
         observations = [
             observe(\.fieldState) { it, _ in it.update(animated: true) }
         ]
+        addTarget(self, action: #selector(updateText), for: .editingChanged)
     }
 }
 
@@ -206,14 +229,26 @@ open class MaterialTextField: UITextField, MaterialField {
 private extension MaterialTextField {
 
     func update(animated: Bool = true) {
+        guard isBuilt else { return }
+
         super.placeholder = nil
         super.borderStyle = .none
+
+        infoLabel.errorValue = errorMessage
+        infoLabel.infoValue = infoMessage
+
+        mainContainerLeft.constant = insets.left
+        mainContainerRight.constant = -insets.right
+
+        mainContainerTop.constant = topPadding + insets.top
+        mainContainerBottom.constant = -insets.bottom
 
         setNeedsDisplay()
         setNeedsLayout()
 
         animateFloatingLabel(animated: animated)
         animateColors(animated: animated)
+        infoLabel.update(style: style, animated: animated)
     }
 
     func updateLineViewHeight() {
@@ -230,13 +265,15 @@ private extension MaterialTextField {
         floatingLabel.textColor = style.textColor(for: self)
 
         let finalTranform: CGAffineTransform = {
-            guard up else { return CGAffineTransform.identity }
+            guard up else {
+                return CGAffineTransform.identity
+            }
 
             let left = -floatingLabel.bounds.width / 2
             let top = -floatingLabel.bounds.height / 2
             let bottom = floatingLabel.bounds.height / 2
             let diff = (floatingLabel.bounds.height - floatingLabel.font.pointSize) / 2
-            let adjustment = bottom - (placeholderUpHeight / placeholderScaleMultiplier) - diff
+            let adjustment = bottom - (topPadding / placeholderScaleMultiplier) - diff
 
             let moveToZero = CGAffineTransform(translationX: left, y: top)
             let scale = moveToZero.scaledBy(x: placeholderScaleMultiplier, y: placeholderScaleMultiplier)
@@ -271,8 +308,9 @@ private extension MaterialTextField {
     }
 
     @objc func updateText() {
-//        let text = self.text
-//        self.text = text
+        // Makes text edited observable
+        let text = self.text
+        self.text = text
     }
 }
 
@@ -286,11 +324,12 @@ private extension MaterialTextField {
 
     func build() {
         guard isInViewHierarchy else { return }
+
         buildContainer()
         buildInnerField()
         buildLine()
         buildFloatingLabel()
-        buildErrorView()
+        buildInfoLabel()
         setupDebug()
 
         // Setup
@@ -300,6 +339,7 @@ private extension MaterialTextField {
         lineContainer.isUserInteractionEnabled = false
         placeholderLabel.isUserInteractionEnabled = false
 
+        isBuilt = true
         update(animated: false)
     }
 
@@ -307,18 +347,21 @@ private extension MaterialTextField {
         addSubview(mainContainer.clear())
 
         mainContainerTop = mainContainer.topAnchor.constraint(equalTo: topAnchor)
-        mainContainerTop.constant = placeholderUpHeight
+        mainContainerLeft = mainContainer.leftAnchor.constraint(equalTo: leftAnchor)
+        mainContainerRight = mainContainer.rightAnchor.constraint(equalTo: rightAnchor)
+        mainContainerBottom = mainContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
 
         NSLayoutConstraint.activate([
             mainContainerTop,
-            mainContainer.leftAnchor.constraint(equalTo: leftAnchor),
-            mainContainer.rightAnchor.constraint(equalTo: rightAnchor),
-            mainContainer.bottomAnchor.constraint(equalTo: bottomAnchor)
+            mainContainerLeft,
+            mainContainerRight,
+            mainContainerBottom
         ])
     }
 
     func buildInnerField() {
         mainContainer.addArrangedSubview(fieldContainer.clear())
+
         fieldContainer.addArrangedSubview(field.clear())
         fieldContainer.addArrangedSubview(accessoryView.clear())
 
@@ -369,8 +412,8 @@ private extension MaterialTextField {
 
         NSLayoutConstraint.activate([
             line.topAnchor.constraint(equalTo: lineContainer.topAnchor),
-            line.leftAnchor.constraint(equalTo: lineContainer.leftAnchor),
-            line.rightAnchor.constraint(equalTo: lineContainer.rightAnchor)
+            line.leftAnchor.constraint(equalTo: leftAnchor),
+            line.rightAnchor.constraint(equalTo: rightAnchor)
         ])
 
         line.buildAsUnderline(for: field)
@@ -381,8 +424,15 @@ private extension MaterialTextField {
         line.underAccessory = extendLineUnderAccessory
     }
 
-    func buildErrorView() {
+    func buildInfoLabel() {
+        mainContainer.addArrangedSubview(infoContainer.clear())
+        infoContainer.addArrangedSubview(infoLabel)
+        infoContainer.addArrangedSubview(infoAccessory)
 
+        infoAccessory.setContentHuggingPriority(.defaultHigh + 1, for: .horizontal)
+
+        infoLabel.field = self
+        infoLabel.build()
     }
 
     func setupDebug() {
@@ -395,62 +445,5 @@ private extension MaterialTextField {
         floatingLabel.layer.borderWidth = 1
         floatingLabel.layer.borderColor = UIColor.blue.cgColor
         #endif
-    }
-}
-
-// MARK: - UITextFieldDelegate
-
-extension MaterialTextField: UITextFieldDelegate {
-
-    public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        guard proxyDelegate?.textFieldShouldBeginEditing?(self) != false else {
-            return false
-        }
-        return true
-    }
-
-    public func textFieldDidBeginEditing(_ textField: UITextField) {
-        defer { fieldState = .focused }
-        proxyDelegate?.textFieldDidBeginEditing?(self)
-    }
-
-    public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return true
-    }
-
-    public func textFieldDidEndEditing(_ textField: UITextField) {
-        defer { fieldState = text.isEmptyOrNil ? .empty : .filled }
-        resignFirstResponder()
-        self.layoutSubviews()
-        proxyDelegate?.textFieldDidEndEditing?(self)
-    }
-
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return true
-    }
-
-    public func textField(_ textField: UITextField,
-                          shouldChangeCharactersIn range: NSRange,
-                          replacementString string: String) -> Bool {
-        return true
-    }
-
-    @available(iOS 13.0, *)
-    public func textFieldDidChangeSelection(_ textField: UITextField) {
-        proxyDelegate?.textFieldDidChangeSelection?(self)
-    }
-
-}
-
-// MARK: - UnderlyingField
-
-final internal class UnderlyingField: UITextField {
-
-    var updateIntrinsicContentSize: Bool = false
-    var minimumHeight: CGFloat = 50
-
-    override var intrinsicContentSize: CGSize {
-        guard updateIntrinsicContentSize else { return super.intrinsicContentSize }
-        return super.intrinsicContentSize.constrainedTo(minHeight: minimumHeight)
     }
 }

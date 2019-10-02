@@ -8,7 +8,11 @@
 
 import UIKit
 
+// MARK: - Underlying View
+
 final internal class UnderlyingLineView: UIStackView {
+
+    // MARK: - State
 
     class State {
         var width: CGFloat {
@@ -26,8 +30,10 @@ final internal class UnderlyingLineView: UIStackView {
             self.underlyingView = underlyingView
         }
     }
-    private var state: State { return State(self) }
 
+    // MARK: - Properties
+
+    private var state: State { return State(self) }
     private var mainLine = UIView()
     private var accessoryLine = UIView()
     private var heightContraint: NSLayoutConstraint!
@@ -61,7 +67,7 @@ final internal class UnderlyingLineView: UIStackView {
         addArrangedSubview(mainLine)
         addArrangedSubview(accessoryLine)
 
-        mainLine.widthAnchor.constraint(equalTo: field.widthAnchor).isActive = true
+        mainLine.rightAnchor.constraint(equalTo: field.rightAnchor).isActive = true
         update()
     }
 

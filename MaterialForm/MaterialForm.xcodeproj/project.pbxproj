@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188C9E234395FC0097FB9E /* KeyboardView.swift */; };
+		C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
+		C823E9BD2344C57A00AD214B /* MaterialTextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */; };
+		C823E9BF2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */; };
 		C88688D2234200A000C8ED7D /* MaterialForm.h in Headers */ = {isa = PBXBuildFile; fileRef = C88688D0234200A000C8ED7D /* MaterialForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C88688DF234200DA00C8ED7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688DE234200DA00C8ED7D /* AppDelegate.swift */; };
 		C88688E5234200DB00C8ED7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C88688E4234200DB00C8ED7D /* Assets.xcassets */; };
@@ -50,6 +53,9 @@
 
 /* Begin PBXFileReference section */
 		C8188C9E234395FC0097FB9E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
+		C8188CA0234495150097FB9E /* UnderlyingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingField.swift; sourceTree = "<group>"; };
+		C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+Components.swift"; sourceTree = "<group>"; };
+		C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+UIITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		C88688CD234200A000C8ED7D /* MaterialForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C88688D0234200A000C8ED7D /* MaterialForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialForm.h; sourceTree = "<group>"; };
 		C88688D1234200A000C8ED7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -159,6 +165,8 @@
 			isa = PBXGroup;
 			children = (
 				C88688F02342010E00C8ED7D /* MaterialTextField.swift */,
+				C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */,
+				C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */,
 				C88688FA23424CEE00C8ED7D /* MaterialTextFieldStyle.swift */,
 			);
 			path = MaterialTextField;
@@ -168,6 +176,7 @@
 			isa = PBXGroup;
 			children = (
 				C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */,
+				C8188CA0234495150097FB9E /* UnderlyingField.swift */,
 				C886890223424DB700C8ED7D /* Extensions.swift */,
 			);
 			path = Common;
@@ -300,9 +309,12 @@
 				C886890323424DB700C8ED7D /* Extensions.swift in Sources */,
 				C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */,
 				C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */,
+				C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */,
 				C88688FB23424CEE00C8ED7D /* MaterialTextFieldStyle.swift in Sources */,
+				C823E9BF2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift in Sources */,
 				C886890123424D3D00C8ED7D /* FieldTriggerEvent.swift in Sources */,
 				C88688F12342010E00C8ED7D /* MaterialTextField.swift in Sources */,
+				C823E9BD2344C57A00AD214B /* MaterialTextField+Components.swift in Sources */,
 				C88688FF23424D2900C8ED7D /* FieldControlState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
