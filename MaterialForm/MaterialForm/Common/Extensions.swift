@@ -15,6 +15,10 @@ internal extension CGSize {
         return CGSize(width: width, height: max(height, minHeight))
     }
 
+    func constrainedTo(maxHeight: CGFloat) -> CGSize {
+        return CGSize(width: width, height: min(height, maxHeight))
+    }
+
     func constrainedTo(minWidth: CGFloat) -> CGSize {
         return CGSize(width: max(width, minWidth), height: height)
     }

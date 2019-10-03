@@ -11,6 +11,9 @@ import Foundation
 @objc public enum FieldTriggerEvent: Int {
     case none
     case tap
-    case accessoryTap
+    case rightAccessoryTap // rightTap
+    case leftAccessoryTap
     case returnTap
+    case beginEditing
+    case finishedEditing
 }

@@ -1,6 +1,7 @@
 import UIKit
 
 internal var isDebuggingViewHierarchy = false
+private let buttonTag = 321823
 
 // MARK: - Main Implementation
 
@@ -52,7 +53,14 @@ open class MaterialTextField: UITextField, MaterialField {
     // MARK: - Overrides
 
     open override var intrinsicContentSize: CGSize {
-        return super.intrinsicContentSize.constrainedTo(minHeight: minimumHeight)
+        var maxHeight = textRect(forBounds: bounds).height
+        maxHeight += insets.top
+        maxHeight += topPadding
+        maxHeight += bottomPadding
+        maxHeight += insets.bottom
+        return super.intrinsicContentSize
+            .constrainedTo(maxHeight: maxHeight)
+            .constrainedTo(minHeight: minimumHeight)
     }
     open override var placeholder: String? {
         get { return floatingLabel.text }
@@ -65,21 +73,19 @@ open class MaterialTextField: UITextField, MaterialField {
         set { backgroundView.backgroundColor = newValue }
     }
 
-    open override var inputAccessoryView: UIView? {
-        get { return inputAccessory }
-        set { inputAccessory = newValue; build() }
+    @available(*, unavailable, message: "Not supported yet")
+    open override var adjustsFontSizeToFitWidth: Bool {
+        get { return false }
+        set { }
     }
 
-    @available(*, unavailable, message: "Not supported")
     open override var leftView: UIView? {
-        get { return nil }
-        set { /* empty on purpose */ }
+        get { return rightInputAccessory }
+        set { rightInputAccessory = newValue }
     }
-
-    @available(*, unavailable, message: "Not supported")
     open override var rightView: UIView?  {
-       get { return nil }
-       set { /* empty on purpose */ }
+       get { return rightInputAccessory }
+       set { rightInputAccessory = newValue }
    }
 
     open override var delegate: UITextFieldDelegate? {
@@ -116,10 +122,34 @@ open class MaterialTextField: UITextField, MaterialField {
 
     private let field: UnderlyingField = UnderlyingField()
 
-    // MARK: - Accessory
+    // MARK: - Right Accessory
 
-    private let accessoryView = UIView()
-    private var inputAccessory: UIView?
+    @available(*, unavailable, message: "Only for IB. Use `set(rightIcon:for:)` instead")
+    @IBInspectable public var rightIcon: UIImage? { willSet { rightIconFromIB = newValue } }
+    public func set(rightIcon icon: UIImage?, for state: UIControl.State) {
+        let rightButton = rightInputAccessory?.asAccessoryButton ?? buildRightAccessoryButton()
+        rightButton.setImage(icon, for: state)
+    }
+
+    private var rightIconFromIB: UIImage?
+    private let rightAccessoryView = UIView()
+    private var rightInputAccessory: UIView? {
+        didSet { oldValue?.clear(); buildRightAccessory(); update() }
+    }
+
+    // MARK: - Left Accessory
+
+    @available(*, unavailable, message: "Only for IB. Use `set(leftIcon:for:)` instead")
+    @IBInspectable public var leftIcon: UIImage? { willSet { leftIconFromIB = newValue } }
+    public func set(leftIcon icon: UIImage?, for state: UIControl.State) {
+        let button = leftInputAccessory?.asAccessoryButton ?? buildLeftAccessoryButton()
+        button.setImage(icon, for: state)
+    }
+    private var leftIconFromIB: UIImage?
+    private let leftAccessoryView = UIView()
+    private var leftInputAccessory: UIView? {
+        didSet { oldValue?.clear(); buildLeftAccessory(); update() }
+    }
 
     // MARK: - Placeholder label
 
@@ -174,6 +204,7 @@ open class MaterialTextField: UITextField, MaterialField {
         setup()
         build()
         setup(with: style)
+        setupPostBuild()
         setupObservers()
         return {}
     }()
@@ -184,13 +215,23 @@ open class MaterialTextField: UITextField, MaterialField {
 
     // MARK: - Area
 
+    private var rectLeftPadding: CGFloat {
+        guard let width = leftInputAccessory?.bounds.width else { return 0 }
+        return width + fieldContainer.spacing
+    }
+
+    private var rectRightPadding: CGFloat {
+        guard let width = rightInputAccessory?.bounds.width else { return 0 }
+        return width + fieldContainer.spacing
+    }
+
     open override func textRect(forBounds bounds: CGRect) -> CGRect {
         let base = super.textRect(forBounds: bounds)
         let textInsets = UIEdgeInsets(
             top: topPadding + insets.top,
-            left: insets.left,
+            left: rectLeftPadding + insets.left,
             bottom: bottomPadding + insets.bottom,
-            right: insets.right
+            right: rectRightPadding + insets.right
         )
         return base.inset(by: textInsets)
     }
@@ -199,11 +240,18 @@ open class MaterialTextField: UITextField, MaterialField {
         let base = super.editingRect(forBounds: bounds)
         let textInsets = UIEdgeInsets(
             top: topPadding + insets.top,
-            left: insets.left,
+            left: rectLeftPadding + insets.left,
             bottom: bottomPadding + insets.bottom,
-            right: insets.right
+            right: rectRightPadding + insets.right
         )
         return base.inset(by: textInsets)
+    }
+
+    open override func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
+        var base = super.clearButtonRect(forBounds: bounds)
+        base = base.offsetBy(dx: -rectRightPadding - insets.right, dy: -base.minY - base.height / 2)
+        base = base.offsetBy(dx: 0, dy: backgroundView.bounds.height / 2 )
+        return base
     }
 
     // MARK: - Setup
@@ -212,6 +260,13 @@ open class MaterialTextField: UITextField, MaterialField {
         placeholder = super.placeholder
         super.placeholder = nil
         super.borderStyle = .none
+        super.adjustsFontSizeToFitWidth = false
+        field.adjustsFontSizeToFitWidth = false
+
+        super.rightView = nil
+        super.leftView = nil
+        rightAccessoryView.backgroundColor = .clear
+        leftAccessoryView.backgroundColor = .clear
 
         defaultStyle?.backgroundColor = super.backgroundColor ?? defaultStyle?.backgroundColor ?? .clear
         super.backgroundColor = .clear
@@ -246,6 +301,15 @@ open class MaterialTextField: UITextField, MaterialField {
         // TODO: Rounded
         default:
             return
+        }
+    }
+
+    private func setupPostBuild() {
+        if let rightIcon = rightIconFromIB {
+            set(rightIcon: rightIcon, for: .normal)
+        }
+        if let leftIcon = leftIconFromIB {
+            set(leftIcon: leftIcon, for: .normal)
         }
     }
 
@@ -348,7 +412,6 @@ private extension MaterialTextField {
         let text = self.text
         self.text = text
         field.text = text ?? placeholder ?? "-"
-        field.adjustsFontSizeToFitWidth = adjustsFontSizeToFitWidth
         field.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
         layoutSubviews()
     }
@@ -367,6 +430,8 @@ private extension MaterialTextField {
 
         buildContainer()
         buildInnerField()
+        buildRightAccessory()
+        buildLeftAccessory()
         buildLine()
         buildBackground()
         buildFloatingLabel()
@@ -403,24 +468,16 @@ private extension MaterialTextField {
     func buildInnerField() {
         mainContainer.addArrangedSubview(fieldContainer.clear())
 
+        fieldContainer.addArrangedSubview(leftAccessoryView.clear())
         fieldContainer.addArrangedSubview(field.clear())
-        fieldContainer.addArrangedSubview(accessoryView.clear())
+        fieldContainer.addArrangedSubview(rightAccessoryView.clear())
 
-        guard let accessory = inputAccessoryView else {
-            return accessoryView.isHidden = true
-        }
+        leftAccessoryView.setContentHuggingPriority(.required, for: .horizontal)
+        rightAccessoryView.setContentHuggingPriority(.required, for: .horizontal)
 
-        accessoryView.addSubview(accessory.clear())
         let fieldHeight = field.heightAnchor.constraint(equalToConstant: fontSize)
         fieldHeight.priority = .defaultLow
-
-        NSLayoutConstraint.activate([
-            fieldHeight,
-            accessory.topAnchor.constraint(equalTo: accessoryView.topAnchor),
-            accessory.leftAnchor.constraint(equalTo: accessoryView.leftAnchor),
-            accessory.rightAnchor.constraint(equalTo: accessoryView.rightAnchor),
-            accessory.bottomAnchor.constraint(equalTo: accessoryView.bottomAnchor)
-        ])
+        fieldHeight.isActive = true
     }
 
     func buildFloatingLabel() {
@@ -506,5 +563,110 @@ private extension MaterialTextField {
         floatingLabel.layer.borderWidth = 1
         floatingLabel.layer.borderColor = UIColor.blue.cgColor
         #endif
+    }
+}
+
+// MARK: - Accessories build & Action
+
+extension MaterialTextField {
+
+    func buildRightAccessory() {
+        rightInputAccessory?.clear()
+        rightAccessoryView.subviews.forEach { $0.removeFromSuperview() }
+
+        guard let accessory = rightInputAccessory else {
+            return rightAccessoryView.isHidden = true
+        }
+
+        addSubview(accessory.clear())
+        accessory.setContentCompressionResistancePriority(.required, for: .horizontal)
+        let compress = accessory.widthAnchor.constraint(equalToConstant: 0)
+        compress.priority = .required - 1
+        compress.isActive = true
+
+        NSLayoutConstraint.activate([
+            accessory.leftAnchor.constraint(equalTo: rightAccessoryView.leftAnchor),
+            accessory.rightAnchor.constraint(equalTo: rightAccessoryView.rightAnchor),
+            accessory.heightAnchor.constraint(equalTo: rightAccessoryView.heightAnchor),
+            accessory.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
+        ])
+
+        rightAccessoryView.isHidden = false
+    }
+
+    func buildRightAccessoryButton() -> UIButton {
+        rightInputAccessory = nil
+        rightAccessoryView.isHidden = false
+        let button = buildAccessoryButton(in: rightAccessoryView)
+        button.addTarget(self, action: #selector(didTapRightAccessory), for: .touchUpInside)
+        rightInputAccessory = button
+        return button
+    }
+
+    func buildLeftAccessory() {
+        leftInputAccessory?.clear()
+        leftAccessoryView.subviews.forEach { $0.removeFromSuperview() }
+
+        guard let accessory = leftInputAccessory else {
+            return leftAccessoryView.isHidden = true
+        }
+
+        addSubview(accessory.clear())
+        accessory.setContentCompressionResistancePriority(.required, for: .horizontal)
+        let compress = accessory.widthAnchor.constraint(equalToConstant: 0)
+        compress.priority = .required - 1
+        compress.isActive = true
+
+        NSLayoutConstraint.activate([
+            accessory.leftAnchor.constraint(equalTo: leftAccessoryView.leftAnchor),
+            accessory.rightAnchor.constraint(equalTo: leftAccessoryView.rightAnchor),
+            accessory.heightAnchor.constraint(equalTo: leftAccessoryView.heightAnchor),
+            accessory.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
+        ])
+
+        leftAccessoryView.isHidden = false
+    }
+
+    func buildLeftAccessoryButton() -> UIButton {
+        leftInputAccessory = nil
+        leftAccessoryView.isHidden = false
+        let button = buildAccessoryButton(in: leftAccessoryView)
+        button.addTarget(self, action: #selector(didTapLeftAccessory), for: .touchUpInside)
+        leftInputAccessory = button
+        return button
+    }
+
+    func buildAccessoryButton(in accessory: UIView) -> UIButton {
+        let button = UIButton(type: .custom)
+        button.backgroundColor = .clear
+        button.translatesAutoresizingMaskIntoConstraints = false
+        button.tag = buttonTag
+
+//        addSubview(button)
+//
+//        NSLayoutConstraint.activate([
+//            button.widthAnchor.constraint(equalTo: button.heightAnchor),
+//            button.leftAnchor.constraint(equalTo: accessory.leftAnchor),
+//            button.rightAnchor.constraint(equalTo: accessory.rightAnchor),
+//            button.heightAnchor.constraint(equalTo: accessory.heightAnchor),
+//            button.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
+//        ])
+
+        return button
+    }
+
+    @objc func didTapRightAccessory() {
+        event = .rightAccessoryTap
+    }
+
+    @objc func didTapLeftAccessory() {
+        event = .leftAccessoryTap
+    }
+}
+
+extension UIView {
+    var asAccessoryButton: UIButton? {
+        guard self.tag == buttonTag else { return nil }
+        return self as? UIButton
     }
 }

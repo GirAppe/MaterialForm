@@ -25,7 +25,7 @@ extension MaterialTextField {
 
         func build() {
             minHeight = heightAnchor.constraint(greaterThanOrEqualToConstant: font.lineHeight)
-            let c = heightAnchor.constraint(equalToConstant: font.lineHeight)
+            let c = heightAnchor.constraint(equalToConstant: font.lineHeight + 4)
             c.priority = .defaultLow
             c.isActive = true
             minHeight.isActive = true

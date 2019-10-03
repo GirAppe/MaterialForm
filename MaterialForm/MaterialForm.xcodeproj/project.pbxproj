@@ -11,6 +11,7 @@
 		C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
 		C823E9BD2344C57A00AD214B /* MaterialTextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */; };
 		C823E9BF2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */; };
+		C823E9C12346398E00AD214B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C02346398E00AD214B /* ViewController.swift */; };
 		C88688D2234200A000C8ED7D /* MaterialForm.h in Headers */ = {isa = PBXBuildFile; fileRef = C88688D0234200A000C8ED7D /* MaterialForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C88688DF234200DA00C8ED7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688DE234200DA00C8ED7D /* AppDelegate.swift */; };
 		C88688E5234200DB00C8ED7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C88688E4234200DB00C8ED7D /* Assets.xcassets */; };
@@ -56,6 +57,7 @@
 		C8188CA0234495150097FB9E /* UnderlyingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingField.swift; sourceTree = "<group>"; };
 		C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+Components.swift"; sourceTree = "<group>"; };
 		C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+UIITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		C823E9C02346398E00AD214B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C88688CD234200A000C8ED7D /* MaterialForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C88688D0234200A000C8ED7D /* MaterialForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialForm.h; sourceTree = "<group>"; };
 		C88688D1234200A000C8ED7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -137,6 +139,7 @@
 			isa = PBXGroup;
 			children = (
 				C88688DE234200DA00C8ED7D /* AppDelegate.swift */,
+				C823E9C02346398E00AD214B /* ViewController.swift */,
 				C88688F8234201E400C8ED7D /* Main.storyboard */,
 				C88688E4234200DB00C8ED7D /* Assets.xcassets */,
 				C88688E9234200DB00C8ED7D /* LaunchScreen.storyboard */,
@@ -323,6 +326,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C823E9C12346398E00AD214B /* ViewController.swift in Sources */,
 				C88688DF234200DA00C8ED7D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
