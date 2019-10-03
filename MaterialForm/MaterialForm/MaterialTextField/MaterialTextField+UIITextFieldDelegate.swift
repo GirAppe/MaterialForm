@@ -16,6 +16,7 @@ extension MaterialTextField: UITextFieldDelegate {
         guard proxyDelegate?.textFieldShouldBeginEditing?(self) != false else {
             return false
         }
+        
         return true
     }
 

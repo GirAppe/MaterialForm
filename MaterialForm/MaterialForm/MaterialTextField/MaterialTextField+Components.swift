@@ -69,17 +69,22 @@ extension MaterialTextField {
             self.layer.masksToBounds = true
             self.layer.mask = shape
         }
-
-        func animateStateChange(animate: Bool, _ change: @escaping (BackgroundView) -> Void)  {
-            let animation = {
-                change(self)
-            }
-
-            guard animate else { return animation() }
-
-            UIView.animate(withDuration: 0.36, animations: animation)
-        }
-
     }
 }
 
+protocol Animatable {}
+
+extension Animatable where Self: UIView {
+
+    func animateStateChange(animate: Bool, _ change: @escaping (Self) -> Void)  {
+        let animation = {
+            change(self)
+        }
+
+        guard animate else { return animation() }
+
+        UIView.animate(withDuration: 0.3, animations: animation)
+    }
+}
+
+extension UIView: Animatable {}

@@ -18,11 +18,11 @@ open class MaterialTextField: UITextField, MaterialField {
 
     @IBInspectable open var extendLineUnderAccessory: Bool = true { didSet { update() } }
 
-    @IBInspectable open var animationDuration: Float = 0.36
-    @IBInspectable open var animationCurve: String? {
+    open var animationDuration: Float = 0.36
+    open var animationCurve: String? {
         didSet { curve = AnimationCurve(name: animationCurve) ?? curve }
     }
-    @IBInspectable open var animationDamping: Float = 1
+    open var animationDamping: Float = 1
 
     @IBInspectable open var radius: CGFloat = 4 { didSet { backgroundView.setup(radius: radius) } }
     open var insets: UIEdgeInsets = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 12) {
@@ -66,7 +66,7 @@ open class MaterialTextField: UITextField, MaterialField {
         get { return floatingLabel.text }
         set { floatingLabel.text = newValue }
     }
-    open override var font: UIFont? { didSet { field.font = font } }
+    open override var font: UIFont? { willSet { field.font = newValue } }
     open override var tintColor: UIColor! { didSet { update() } }
     open override var backgroundColor: UIColor? {
         get { return backgroundView.backgroundColor }
@@ -110,7 +110,7 @@ open class MaterialTextField: UITextField, MaterialField {
         container.translatesAutoresizingMaskIntoConstraints = false
         container.axis = .horizontal
         container.alignment = .fill
-        container.spacing = 4
+        container.spacing = 8
         container.isUserInteractionEnabled = true
         return container
     }()
@@ -157,7 +157,7 @@ open class MaterialTextField: UITextField, MaterialField {
     private let floatingLabel = UILabel()
 
     private var topPadding: CGFloat {
-        return floatingLabel.font.pointSize * placeholderScaleMultiplier + 4
+        return floatingLabel.font.lineHeight * placeholderScaleMultiplier
     }
     private var bottomPadding: CGFloat {
         return infoLabel.bounds.height + lineContainer.bounds.height + mainContainer.spacing * 2
@@ -193,9 +193,8 @@ open class MaterialTextField: UITextField, MaterialField {
     private var isBuilt: Bool = false
 
     public var placeholderAdjustment: CGFloat = 0.9
-    var placeholderScaleMultiplier: CGFloat {
-        return placeholderPointSize / fontSize * placeholderAdjustment
-    }
+
+    var placeholderScaleMultiplier: CGFloat { return placeholderPointSize / fontSize * placeholderAdjustment }
     var fontSize: CGFloat { return font?.pointSize ?? 17 }
 
     // MARK: - Lifecycle
@@ -254,6 +253,10 @@ open class MaterialTextField: UITextField, MaterialField {
         return base
     }
 
+    open override func caretRect(for position: UITextPosition) -> CGRect {
+        return super.caretRect(for: position).insetBy(dx: 0, dy: fontSize * 0.12)
+    }
+
     // MARK: - Setup
 
     private func setup() {
@@ -278,7 +281,6 @@ open class MaterialTextField: UITextField, MaterialField {
             defaultStyle?.defaultPlaceholderColor = color
         }
 
-        // TODO: Rest of text field properties
         field.font = font
         field.textColor = .clear
         field.text = placeholder ?? "-"
@@ -368,7 +370,7 @@ private extension MaterialTextField {
 
             let left = -floatingLabel.bounds.width / 2
             let top = -floatingLabel.bounds.height / 2
-            let bottom = (insets.top + topPadding) / 2 / placeholderScaleMultiplier
+            let bottom = ((insets.top + topPadding) / 2 + mainContainer.spacing) / placeholderScaleMultiplier
 
             let moveToZero = CGAffineTransform(translationX: left, y: top)
             let scale = moveToZero.scaledBy(x: placeholderScaleMultiplier, y: placeholderScaleMultiplier)
@@ -404,6 +406,7 @@ private extension MaterialTextField {
             it.setup(radius: self.radius)
         }
 
+        placeholderLabel
         // TODO: Implement text field and placeholder colors
     }
 
