@@ -120,6 +120,8 @@ final internal class UnderlyingLineView: UIStackView {
     }
 
     private func animateLineHorizontally(from: CGFloat, to: CGFloat) {
+        layer.removeAllAnimations()
+        
         func show() {
             let initialTransform = CGAffineTransform(scaleX: 0, y: 1)
             let finalTransform = CGAffineTransform.identity
@@ -138,7 +140,7 @@ final internal class UnderlyingLineView: UIStackView {
 
         func hide() {
             let initialTransform = CGAffineTransform.identity
-            let finalTransform = CGAffineTransform(scaleX: 0, y: 1)
+            let finalTransform = CGAffineTransform(scaleX: 0.00001, y: 1)
 
             heightContraint.constant = from
             transform = initialTransform
@@ -170,7 +172,7 @@ final internal class UnderlyingLineView: UIStackView {
         let animation = { change(); self.layoutSubviews() }
 
         guard animateChange else {
-            return animation()
+            animation(); completion?(); return
         }
 
         UIView.animate(withDuration: animationDuration, animations: animation) { finished in
@@ -178,4 +180,3 @@ final internal class UnderlyingLineView: UIStackView {
         }
     }
 }
-s
