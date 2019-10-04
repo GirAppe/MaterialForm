@@ -36,11 +36,9 @@ extension MaterialTextField {
 
             self.text = field.isShowingError ? errorValue : infoValue
 
-            let change = { self.textColor = style.infoColor(for: field) }
-
-            guard animated else { return change() }
-
-            UIView.animate(withDuration: animationDuration, animations: change)
+            animateStateChange(animate: animated, duration: animationDuration) { it in
+                it.textColor = style.infoColor(for: field)
+            }
         }
     }
 
