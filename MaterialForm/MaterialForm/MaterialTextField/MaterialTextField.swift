@@ -1,11 +1,10 @@
 import UIKit
 
 internal var isDebuggingViewHierarchy = false
-private let buttonTag = 321823
 
 // MARK: - Main Implementation
 
-open class MaterialTextField: UITextField, MaterialField {
+open class MaterialTextField: UITextField, MaterialFieldState {
 
     // MARK: - Configuration
 
@@ -24,9 +23,21 @@ open class MaterialTextField: UITextField, MaterialField {
     }
     open var animationDamping: Float = 1
 
-    @IBInspectable open var radius: CGFloat = 4 { didSet { backgroundView.setup(radius: radius) } }
+    @IBInspectable open var radius: CGFloat {
+        get { return style.cornerRadius }
+        set { style.cornerRadius = newValue; updateCornerRadius() }
+    }
     open var insets: UIEdgeInsets = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 12) {
         didSet { update(animated: false) }
+    }
+
+    open var innerHorizontalSpacing: CGFloat {
+        get { return fieldContainer.spacing }
+        set { fieldContainer.spacing = newValue; update(animated: false) }
+    }
+    open var innerVerticalSpacing: CGFloat {
+        get { return mainContainer.spacing }
+        set { mainContainer.spacing = newValue; update(animated: false) }
     }
 
     private var duration: TimeInterval { return TimeInterval(animationDuration) }
@@ -93,6 +104,14 @@ open class MaterialTextField: UITextField, MaterialField {
         set { proxyDelegate = newValue }
     }
     internal weak var proxyDelegate: UITextFieldDelegate? = nil
+
+    open override var borderStyle: UITextField.BorderStyle {
+        get { return styleType }
+        set { styleType = newValue }
+    }
+    private var styleType: UITextField.BorderStyle = .roundedRect {
+        didSet {  }
+    }
 
     // MARK: - Inner structure
 
@@ -172,6 +191,10 @@ open class MaterialTextField: UITextField, MaterialField {
     // MARK: - Background View
 
     private let backgroundView = BackgroundView()
+
+    // MARK: - Bezel layer
+
+    private let bezelView = BezelView()
 
     // MARK: - Info view
 
@@ -271,7 +294,16 @@ open class MaterialTextField: UITextField, MaterialField {
         rightAccessoryView.backgroundColor = .clear
         leftAccessoryView.backgroundColor = .clear
 
-        defaultStyle?.backgroundColor = super.backgroundColor ?? defaultStyle?.backgroundColor ?? .clear
+        // Setup default style
+        updateStyleType()
+
+        if let defaultStyle = self.defaultStyle {
+            setIfPossible(&defaultStyle.defaultColor, to: textColor)
+            setIfPossible(&defaultStyle.defaultPlaceholderColor, to: textColor)
+            setIfPossible(&defaultStyle.backgroundColor, to: super.backgroundColor)
+            setIfPossible(&defaultStyle.focusedColor, to: tintColor)
+        }
+
         super.backgroundColor = .clear
 
         placeholderLabel.font = font ?? placeholderLabel.font
@@ -290,8 +322,6 @@ open class MaterialTextField: UITextField, MaterialField {
         infoLabel.font = (font ?? infoLabel.font)?.withSize(11)
         infoLabel.lineBreakMode = .byTruncatingTail
         infoLabel.numberOfLines = 1
-
-        defaultStyle?.focusedColor = tintColor
     }
 
     private func setup(with style: MaterialTextFieldStyle) {
@@ -333,6 +363,10 @@ private extension MaterialTextField {
         super.placeholder = nil
         super.borderStyle = .none
 
+        bezelView.backgroundColor = .clear
+        bezelView.state = self
+        bezelView.style = style
+
         defaultStyle?.focusedColor = tintColor
         placeholderLabel.font = placeholderLabel.font.withSize(fontSize)
 
@@ -350,10 +384,27 @@ private extension MaterialTextField {
         animateFloatingLabel(animated: animated)
         animateColors(animated: animated)
         infoLabel.update(style: style, animated: animated)
+        bezelView.update(animated: animated)
+    }
+
+    func updateStyleType() {
+        switch styleType {
+        case .bezel:        style = Style.bezel
+        case .line:         style = Style.line
+        case .none:         style = Style.none
+        case .roundedRect:  style = Style.rounded
+        @unknown default:   style = Style.rounded
+        }
     }
 
     func updateLineViewHeight() {
         lineViewHeight?.constant = style.maxLineWidth
+    }
+
+    func updateCornerRadius() {
+        backgroundView.clipsToBounds = true
+        backgroundView.setup(radius: style.cornerRadius)
+        layer.cornerRadius = style.cornerRadius
     }
 
     func animateFloatingLabel(animated: Bool = true) {
@@ -406,8 +457,9 @@ private extension MaterialTextField {
             it.setup(radius: self.radius)
         }
 
-        placeholderLabel
-        // TODO: Implement text field and placeholder colors
+        placeholderLabel.animateStateChange(animate: animated) { it in
+            it.textColor = self.style.placeholderColor(for: self)
+        }
     }
 
     @objc func updateText() {
@@ -436,6 +488,7 @@ private extension MaterialTextField {
         buildRightAccessory()
         buildLeftAccessory()
         buildLine()
+        buildBezel()
         buildBackground()
         buildFloatingLabel()
         buildInfoLabel()
@@ -491,8 +544,8 @@ private extension MaterialTextField {
         NSLayoutConstraint.activate([
             floatingLabel.topAnchor.constraint(equalTo: topAnchor),
             floatingLabel.leftAnchor.constraint(equalTo: field.leftAnchor),
-            floatingLabel.rightAnchor.constraint(equalTo: field.rightAnchor),
-            floatingLabel.bottomAnchor.constraint(equalTo: lineContainer.topAnchor)
+            floatingLabel.bottomAnchor.constraint(equalTo: lineContainer.topAnchor),
+            floatingLabel.rightAnchor.constraint(lessThanOrEqualTo: field.rightAnchor)
         ])
     }
 
@@ -528,10 +581,21 @@ private extension MaterialTextField {
         line.underAccessory = extendLineUnderAccessory
     }
 
-    func buildBackground() {
-//        guard isBuilt else { return }
-//        guard superview != nil else { return }
+    func buildBezel() {
+        bezelView.isUserInteractionEnabled = false
+        bezelView.backgroundColor = .clear
+        addSubview(bezelView.clear())
+        sendSubviewToBack(bezelView)
 
+        NSLayoutConstraint.activate([
+            bezelView.topAnchor.constraint(equalTo: topAnchor),
+            bezelView.leftAnchor.constraint(equalTo: leftAnchor),
+            bezelView.rightAnchor.constraint(equalTo: rightAnchor),
+            bezelView.bottomAnchor.constraint(equalTo: lineContainer.bottomAnchor)
+        ])
+    }
+
+    func buildBackground() {
         backgroundView.isUserInteractionEnabled = false
         backgroundView.clipsToBounds = true
         addSubview(backgroundView.clear())
@@ -643,18 +707,7 @@ extension MaterialTextField {
         let button = UIButton(type: .custom)
         button.backgroundColor = .clear
         button.translatesAutoresizingMaskIntoConstraints = false
-        button.tag = buttonTag
-
-//        addSubview(button)
-//
-//        NSLayoutConstraint.activate([
-//            button.widthAnchor.constraint(equalTo: button.heightAnchor),
-//            button.leftAnchor.constraint(equalTo: accessory.leftAnchor),
-//            button.rightAnchor.constraint(equalTo: accessory.rightAnchor),
-//            button.heightAnchor.constraint(equalTo: accessory.heightAnchor),
-//            button.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
-//        ])
-
+        button.tag = UIView.buttonTag
         return button
     }
 
@@ -667,9 +720,14 @@ extension MaterialTextField {
     }
 }
 
+// MARK: - UIView + Button accessory
+
 extension UIView {
+
+    static var buttonTag: Int { return 321823 }
+
     var asAccessoryButton: UIButton? {
-        guard self.tag == buttonTag else { return nil }
+        guard self.tag == UIView.buttonTag else { return nil }
         return self as? UIButton
     }
 }

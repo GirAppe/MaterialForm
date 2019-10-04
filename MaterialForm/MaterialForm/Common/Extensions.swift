@@ -64,3 +64,8 @@ internal extension UIView.AnimationCurve {
         }
     }
 }
+
+func setIfPossible<T>(_ lhs: inout T, to value: T?) {
+    guard value != nil else { return }
+    lhs = value!
+}

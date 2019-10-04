@@ -12,6 +12,8 @@
 		C823E9BD2344C57A00AD214B /* MaterialTextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */; };
 		C823E9BF2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */; };
 		C823E9C12346398E00AD214B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C02346398E00AD214B /* ViewController.swift */; };
+		C823E9C323473F3D00AD214B /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C223473F3D00AD214B /* Animatable.swift */; };
+		C823E9C82347406700AD214B /* DefaultMaterialTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */; };
 		C88688D2234200A000C8ED7D /* MaterialForm.h in Headers */ = {isa = PBXBuildFile; fileRef = C88688D0234200A000C8ED7D /* MaterialForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C88688DF234200DA00C8ED7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688DE234200DA00C8ED7D /* AppDelegate.swift */; };
 		C88688E5234200DB00C8ED7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C88688E4234200DB00C8ED7D /* Assets.xcassets */; };
@@ -26,6 +28,9 @@
 		C886890123424D3D00C8ED7D /* FieldTriggerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890023424D3D00C8ED7D /* FieldTriggerEvent.swift */; };
 		C886890323424DB700C8ED7D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890223424DB700C8ED7D /* Extensions.swift */; };
 		C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */; };
+		C8CC487923479929005BE5E8 /* MaterialTextField+DefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */; };
+		C8CC487B23479C4F005BE5E8 /* MaterialFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */; };
+		C8CC487D23479C6D005BE5E8 /* AccessoryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487C23479C6D005BE5E8 /* AccessoryState.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +63,8 @@
 		C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+Components.swift"; sourceTree = "<group>"; };
 		C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+UIITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		C823E9C02346398E00AD214B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C823E9C223473F3D00AD214B /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
+		C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMaterialTextFieldStyle.swift; sourceTree = "<group>"; };
 		C88688CD234200A000C8ED7D /* MaterialForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C88688D0234200A000C8ED7D /* MaterialForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialForm.h; sourceTree = "<group>"; };
 		C88688D1234200A000C8ED7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -74,6 +81,9 @@
 		C886890023424D3D00C8ED7D /* FieldTriggerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTriggerEvent.swift; sourceTree = "<group>"; };
 		C886890223424DB700C8ED7D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingLineView.swift; sourceTree = "<group>"; };
+		C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+DefaultStyles.swift"; sourceTree = "<group>"; };
+		C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialFieldState.swift; sourceTree = "<group>"; };
+		C8CC487C23479C6D005BE5E8 /* AccessoryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryState.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,6 +111,17 @@
 				C8188C9E234395FC0097FB9E /* KeyboardView.swift */,
 			);
 			path = KeyboardView;
+			sourceTree = "<group>";
+		};
+		C823E9C42347400F00AD214B /* State & Style */ = {
+			isa = PBXGroup;
+			children = (
+				C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */,
+				C8CC487C23479C6D005BE5E8 /* AccessoryState.swift */,
+				C88688FA23424CEE00C8ED7D /* MaterialTextFieldStyle.swift */,
+				C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */,
+			);
+			path = "State & Style";
 			sourceTree = "<group>";
 		};
 		C88688C3234200A000C8ED7D = {
@@ -168,9 +189,10 @@
 			isa = PBXGroup;
 			children = (
 				C88688F02342010E00C8ED7D /* MaterialTextField.swift */,
+				C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */,
 				C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */,
 				C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */,
-				C88688FA23424CEE00C8ED7D /* MaterialTextFieldStyle.swift */,
+				C823E9C42347400F00AD214B /* State & Style */,
 			);
 			path = MaterialTextField;
 			sourceTree = "<group>";
@@ -181,6 +203,7 @@
 				C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */,
 				C8188CA0234495150097FB9E /* UnderlyingField.swift */,
 				C886890223424DB700C8ED7D /* Extensions.swift */,
+				C823E9C223473F3D00AD214B /* Animatable.swift */,
 			);
 			path = Common;
 			sourceTree = "<group>";
@@ -312,11 +335,16 @@
 				C886890323424DB700C8ED7D /* Extensions.swift in Sources */,
 				C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */,
 				C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */,
+				C8CC487D23479C6D005BE5E8 /* AccessoryState.swift in Sources */,
 				C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */,
+				C8CC487923479929005BE5E8 /* MaterialTextField+DefaultStyles.swift in Sources */,
 				C88688FB23424CEE00C8ED7D /* MaterialTextFieldStyle.swift in Sources */,
 				C823E9BF2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift in Sources */,
+				C823E9C82347406700AD214B /* DefaultMaterialTextFieldStyle.swift in Sources */,
+				C823E9C323473F3D00AD214B /* Animatable.swift in Sources */,
 				C886890123424D3D00C8ED7D /* FieldTriggerEvent.swift in Sources */,
 				C88688F12342010E00C8ED7D /* MaterialTextField.swift in Sources */,
+				C8CC487B23479C4F005BE5E8 /* MaterialFieldState.swift in Sources */,
 				C823E9BD2344C57A00AD214B /* MaterialTextField+Components.swift in Sources */,
 				C88688FF23424D2900C8ED7D /* FieldControlState.swift in Sources */,
 			);

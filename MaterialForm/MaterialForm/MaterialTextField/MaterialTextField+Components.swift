@@ -20,7 +20,7 @@ extension MaterialTextField {
         var infoValue: String?
         var errorValue: String?
 
-        weak var field: MaterialField?
+        weak var field: MaterialFieldState?
         var animationDuration: TimeInterval = 0.36
 
         func build() {
@@ -70,21 +70,24 @@ extension MaterialTextField {
             self.layer.mask = shape
         }
     }
-}
 
-protocol Animatable {}
+    // MARK: - Bezel View
 
-extension Animatable where Self: UIView {
+    internal class BezelView: UIView {
 
-    func animateStateChange(animate: Bool, _ change: @escaping (Self) -> Void)  {
-        let animation = {
-            change(self)
+        var state: MaterialFieldState?
+        var style: MaterialTextFieldStyle?
+
+        func update(animated: Bool) {
+            backgroundColor = .clear
+
+            guard let state = state, let style = style else { return }
+
+            animateStateChange(animate: animated) { it in
+                it.layer.borderColor = style.borderColor(for: state).cgColor
+                it.layer.borderWidth = style.borderWidth(for: state)
+                it.layer.cornerRadius = style.cornerRadius
+            }
         }
-
-        guard animate else { return animation() }
-
-        UIView.animate(withDuration: 0.3, animations: animation)
     }
 }
-
-extension UIView: Animatable {}
