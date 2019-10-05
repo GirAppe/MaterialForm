@@ -74,10 +74,6 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
         return backgroundColor
     }
 
-    func showsBackgorund(for state: MaterialFieldState) -> Bool {
-        return true
-    }
-
     func borderWidth(for state: MaterialFieldState) -> CGFloat {
         return 0
     }

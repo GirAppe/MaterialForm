@@ -16,7 +16,7 @@ extension Animatable where Self: UIView {
 
     func animateStateChange(
         animate: Bool,
-        duration: TimeInterval = 0.3,
+        with duration: TimeInterval = 0.3,
         _ change: @escaping (Self) -> Void
     )  {
         let animation = {

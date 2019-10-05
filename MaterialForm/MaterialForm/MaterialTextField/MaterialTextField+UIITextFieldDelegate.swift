@@ -13,37 +13,55 @@ import UIKit
 extension MaterialTextField: UITextFieldDelegate {
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
-        guard proxyDelegate?.textFieldShouldBeginEditing?(self) != false else {
-            return false
+        defer {
+            event = .tap
         }
-        
-        return true
+        return proxyDelegate?.textFieldShouldBeginEditing?(self) ?? isEditingEnabled
     }
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
-        defer { fieldState = .focused }
+        defer {
+            event = .beginEditing
+            fieldState = .focused
+        }
         proxyDelegate?.textFieldDidBeginEditing?(self)
     }
 
     public func textFieldShouldEndEditing(_ textField: UITextField) -> Bool {
-        return true
+        return proxyDelegate?.textFieldShouldEndEditing?(self) ?? true
     }
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
-        defer { fieldState = text.isEmptyOrNil ? .empty : .filled }
-        resignFirstResponder()
-        self.layoutSubviews()
+        defer {
+            event = .endEditing
+            fieldState = text.isEmptyOrNil ? .empty : .filled
+        }
         proxyDelegate?.textFieldDidEndEditing?(self)
     }
 
-    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
-        return true
+    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+        defer {
+            event = .endEditing
+            fieldState = text.isEmptyOrNil ? .empty : .filled
+        }
+        proxyDelegate?.textFieldDidEndEditing?(textField, reason: reason)
     }
 
     public func textField(_ textField: UITextField,
                           shouldChangeCharactersIn range: NSRange,
                           replacementString string: String) -> Bool {
-        return true
+        let delegateValue = proxyDelegate?.textField?(
+            self,
+            shouldChangeCharactersIn: range,
+            replacementString: string
+        )
+
+        guard delegateValue == nil else { return delegateValue! }
+        guard maxCharactersCount > 0 else { return true }
+
+        let newText = ((text ?? "") as NSString).replacingCharacters(in: range, with: string)
+
+        return newText.count <= maxCharactersCount
     }
 
     @available(iOS 13.0, *)
@@ -51,4 +69,19 @@ extension MaterialTextField: UITextFieldDelegate {
         proxyDelegate?.textFieldDidChangeSelection?(self)
     }
 
+    public func textFieldShouldClear(_ textField: UITextField) -> Bool {
+        return (proxyDelegate?.textFieldShouldClear?(self) ?? true) && {
+            event = .clear
+            return true
+        }()
+    }
+
+    public func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        return (proxyDelegate?.textFieldShouldReturn?(self) ?? true) && {
+            resignFirstResponder()
+            event = .endEditing
+            nextField?.becomeFirstResponder()
+            return true
+        }()
+    }
 }

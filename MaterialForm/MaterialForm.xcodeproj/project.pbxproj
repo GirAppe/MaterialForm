@@ -31,6 +31,7 @@
 		C8CC487923479929005BE5E8 /* MaterialTextField+DefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */; };
 		C8CC487B23479C4F005BE5E8 /* MaterialFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */; };
 		C8CC487D23479C6D005BE5E8 /* AccessoryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487C23479C6D005BE5E8 /* AccessoryState.swift */; };
+		CCFB37612347DD50000E4ED6 /* MaterialTextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialTextField+Accessory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -84,6 +85,7 @@
 		C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+DefaultStyles.swift"; sourceTree = "<group>"; };
 		C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialFieldState.swift; sourceTree = "<group>"; };
 		C8CC487C23479C6D005BE5E8 /* AccessoryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryState.swift; sourceTree = "<group>"; };
+		CCFB37602347DD50000E4ED6 /* MaterialTextField+Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+Accessory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -189,6 +191,7 @@
 			isa = PBXGroup;
 			children = (
 				C88688F02342010E00C8ED7D /* MaterialTextField.swift */,
+				CCFB37602347DD50000E4ED6 /* MaterialTextField+Accessory.swift */,
 				C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */,
 				C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */,
 				C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */,
@@ -333,6 +336,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				C886890323424DB700C8ED7D /* Extensions.swift in Sources */,
+				CCFB37612347DD50000E4ED6 /* MaterialTextField+Accessory.swift in Sources */,
 				C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */,
 				C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */,
 				C8CC487D23479C6D005BE5E8 /* AccessoryState.swift in Sources */,

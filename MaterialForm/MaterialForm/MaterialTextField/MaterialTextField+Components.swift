@@ -19,9 +19,10 @@ extension MaterialTextField {
         var minHeight: NSLayoutConstraint!
         var infoValue: String?
         var errorValue: String?
+        var duration: TimeInterval = 0.36
 
-        weak var field: MaterialFieldState?
-        var animationDuration: TimeInterval = 0.36
+        weak var state: MaterialFieldState?
+        weak var style: MaterialTextFieldStyle?
 
         func build() {
             minHeight = heightAnchor.constraint(greaterThanOrEqualToConstant: font.lineHeight)
@@ -31,13 +32,18 @@ extension MaterialTextField {
             minHeight.isActive = true
         }
 
-        func update(style: MaterialTextFieldStyle, animated: Bool) {
-            guard let field = field else { return }
+        func set(state: MaterialFieldState, style: MaterialTextFieldStyle) {
+            self.state = state
+            self.style = style
+        }
 
-            self.text = field.isShowingError ? errorValue : infoValue
+        func update(animated: Bool) {
+            guard let state = state, let style = style else { return }
 
-            animateStateChange(animate: animated, duration: animationDuration) { it in
-                it.textColor = style.infoColor(for: field)
+            self.text = state.isShowingError ? errorValue : infoValue
+
+            animateStateChange(animate: animated, with: duration) { it in
+                it.textColor = style.infoColor(for: state)
             }
         }
     }
@@ -45,12 +51,29 @@ extension MaterialTextField {
     // MARK: - Background View
 
     internal class BackgroundView: UIView {
-        func setup(radius: CGFloat) {
-            layer.cornerRadius = radius
+
+        var duration: TimeInterval = 0.36
+
+        weak var state: MaterialFieldState?
+        weak var style: MaterialTextFieldStyle?
+
+        func set(state: MaterialFieldState, style: MaterialTextFieldStyle) {
+            self.state = state
+            self.style = style
+        }
+
+        func update(animated: Bool) {
+            guard let state = state, let style = style else { return }
+
+            layer.cornerRadius = style.cornerRadius
             if #available(iOS 11.0, *) {
                 layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
             } else {
                 maskByRoundingCorners([.topLeft, .topRight])
+            }
+
+            animateStateChange(animate: animated, with: duration) { it in
+                it.backgroundColor = style.backgroundColor(for: state)
             }
         }
 
@@ -73,15 +96,22 @@ extension MaterialTextField {
 
     internal class BezelView: UIView {
 
-        var state: MaterialFieldState?
-        var style: MaterialTextFieldStyle?
+        var duration: TimeInterval = 0.36
+
+        weak var state: MaterialFieldState?
+        weak var style: MaterialTextFieldStyle?
+
+        func set(state: MaterialFieldState, style: MaterialTextFieldStyle) {
+            self.state = state
+            self.style = style
+        }
 
         func update(animated: Bool) {
             backgroundColor = .clear
 
             guard let state = state, let style = style else { return }
-
-            animateStateChange(animate: animated) { it in
+            
+            animateStateChange(animate: animated, with: duration) { it in
                 it.layer.borderColor = style.borderColor(for: state).cgColor
                 it.layer.borderWidth = style.borderWidth(for: state)
                 it.layer.cornerRadius = style.cornerRadius

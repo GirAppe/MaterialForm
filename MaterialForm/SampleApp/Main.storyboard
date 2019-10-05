@@ -61,6 +61,11 @@
                                                         <userDefinedRuntimeAttributes>
                                                             <userDefinedRuntimeAttribute type="string" keyPath="infoMessage" value="Hello font 20 of size with a very very very very long long long text"/>
                                                             <userDefinedRuntimeAttribute type="image" keyPath="rightIcon" value="show"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="showCharactersCounter" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="boolean" keyPath="isEditingEnabled" value="YES"/>
+                                                            <userDefinedRuntimeAttribute type="number" keyPath="maxCharactersCount">
+                                                                <integer key="value" value="40"/>
+                                                            </userDefinedRuntimeAttribute>
                                                         </userDefinedRuntimeAttributes>
                                                     </textField>
                                                     <textField opaque="NO" contentMode="scaleToFill" verticalHuggingPriority="253" horizontalCompressionResistancePriority="1000" verticalCompressionResistancePriority="1000" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="AAA" textAlignment="natural" minimumFontSize="17" clearButtonMode="always" translatesAutoresizingMaskIntoConstraints="NO" id="d4F-24-2Xc" customClass="MaterialTextField" customModule="MaterialForm">
