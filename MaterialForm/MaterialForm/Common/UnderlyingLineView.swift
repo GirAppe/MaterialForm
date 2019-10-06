@@ -86,7 +86,7 @@ final internal class UnderlyingLineView: UIStackView {
     // MARK: - Actions
 
     func animateStateChange(animate: Bool, _ change: (UnderlyingLineView.State) -> Void)  {
-        animateChange = true
+        animateChange = animate
         change(self.state)
         animateChange = false
     }

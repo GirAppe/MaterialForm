@@ -59,9 +59,10 @@ extension MaterialTextField: UITextFieldDelegate {
         guard delegateValue == nil else { return delegateValue! }
         guard maxCharactersCount > 0 else { return true }
 
-        let newText = ((text ?? "") as NSString).replacingCharacters(in: range, with: string)
+        let oldText = text ?? ""
+        let newText = (oldText as NSString).replacingCharacters(in: range, with: string)
 
-        return newText.count <= maxCharactersCount
+        return newText.count <= maxCharactersCount || newText.count < oldText.count
     }
 
     @available(iOS 13.0, *)

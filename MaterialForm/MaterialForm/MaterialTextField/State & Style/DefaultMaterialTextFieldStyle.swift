@@ -17,6 +17,7 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
     var infoColor: UIColor = .gray
     var focusedColor: UIColor = .blue
     var backgroundColor: UIColor = UIColor.lightGray.withAlphaComponent(0.4)
+    var insets = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 12) 
 
     var lineWidths: [FieldControlState: CGFloat] = [.focused: 2, .filled: 1]
     var lineColors: [FieldControlState: UIColor] = [:]

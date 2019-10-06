@@ -22,8 +22,10 @@ private class NoneFieldStyle: DefaultMaterialTextFieldStyle {
 
     override init() {
         super.init()
+        lineWidths[.empty] = 0
         defaultWidth = 1
         backgroundColor = .clear
+        insets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }
 }
 
@@ -33,6 +35,7 @@ private class LineFieldStyle: DefaultMaterialTextFieldStyle {
         super.init()
         defaultWidth = 1
         backgroundColor = .clear
+        insets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }
 }
 

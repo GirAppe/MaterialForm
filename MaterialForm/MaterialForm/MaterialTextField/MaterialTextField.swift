@@ -59,7 +59,12 @@ open class MaterialTextField: UITextField, MaterialFieldState {
 
     // MARK: - Style
 
-    var style: MaterialTextFieldStyle = DefaultMaterialTextFieldStyle() { didSet { update() } }
+    var style: MaterialTextFieldStyle = DefaultMaterialTextFieldStyle() {
+        didSet {
+            insets = defaultStyle?.insets ?? insets
+            update(animated: false)
+        }
+    }
     var defaultStyle: DefaultMaterialTextFieldStyle? { return style as? DefaultMaterialTextFieldStyle }
 
     // MARK: - Observable properties
@@ -107,7 +112,7 @@ open class MaterialTextField: UITextField, MaterialFieldState {
         set { styleType = newValue }
     }
     var styleType: UITextField.BorderStyle = .roundedRect {
-        didSet {  }
+        didSet { updateStyleType() }
     }
 
     // MARK: - Inner structure
@@ -210,6 +215,7 @@ open class MaterialTextField: UITextField, MaterialFieldState {
 
     var observations: [Any] = []
     var isBuilt: Bool = false
+    var overrideAnimated: Bool?
 
     public var placeholderAdjustment: CGFloat = 0.9
 
@@ -221,7 +227,6 @@ open class MaterialTextField: UITextField, MaterialFieldState {
     lazy var buildOnce: () -> Void = {
         setup()
         build()
-        setup(with: style)
         setupPostBuild()
         setupObservers()
         return {}
@@ -320,18 +325,6 @@ open class MaterialTextField: UITextField, MaterialFieldState {
         infoLabel.numberOfLines = 1
     }
 
-    func setup(with style: MaterialTextFieldStyle) {
-        switch style {
-        case let style as DefaultMaterialTextFieldStyle:
-            backgroundColor = style.backgroundColor
-            backgroundView.isHidden = false
-        // TODO: Plain
-        // TODO: Rounded
-        default:
-            return
-        }
-    }
-
     func setupPostBuild() {
         if let rightIcon = rightIconFromIB {
             rightAccessory = .action(rightIcon)
@@ -339,12 +332,14 @@ open class MaterialTextField: UITextField, MaterialFieldState {
         if let leftIcon = leftIconFromIB {
             leftAccessory = .info(leftIcon)
         }
+        insets = defaultStyle?.insets ?? insets
     }
 
     func setupObservers() {
         observations = [
             observe(\.fieldState) { it, _ in it.update(animated: true) },
             observe(\.text) { it, _ in it.updateCharactersCount() },
+            observe(\.text) { it, _ in it.updateFieldState() },
         ]
         addTarget(self, action: #selector(updateText), for: .editingChanged)
     }
@@ -356,6 +351,9 @@ extension MaterialTextField {
 
     func update(animated: Bool = true) {
         guard isBuilt else { return }
+
+        let animated = overrideAnimated ?? animated
+        defer { overrideAnimated = nil }
 
         super.placeholder = nil
         super.borderStyle = .none
@@ -383,7 +381,7 @@ extension MaterialTextField {
 
         infoLabel.update(animated: animated)
         bezelView.update(animated: animated)
-        backgroundView.update(animated: true)
+        backgroundView.update(animated: animated)
 
         updateErrorAccessory()
 
@@ -473,6 +471,13 @@ extension MaterialTextField {
 
     func updateCharactersCount() {
         infoAccessory.text = "\(text?.count ?? 0)/\(maxCharactersCount)"
+    }
+
+    func updateFieldState() {
+        guard !isEditing else { return }
+        guard fieldState == .empty || fieldState == .filled else { return }
+        overrideAnimated = false
+        fieldState = !(text ?? "").isEmpty ? .filled : .empty
     }
 
     @objc func updateText() {

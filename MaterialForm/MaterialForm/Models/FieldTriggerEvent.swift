@@ -17,4 +17,17 @@ import Foundation
     case returnTap
     case beginEditing
     case endEditing
+
+    public var description: String {
+        switch self {
+        case .none: return "none"
+        case .tap: return "tap"
+        case .rightAccessoryTap: return "rightAccessoryTap"
+        case .leftAccessoryTap: return "leftAccessoryTap"
+        case .clear: return "clear"
+        case .returnTap: return "returnTap"
+        case .beginEditing: return "beginEditing"
+        case .endEditing: return "endEditing"
+        }
+    }
 }
