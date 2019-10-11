@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14868" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X3q-jz-Ocv">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15400" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="X3q-jz-Ocv">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14824"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15404"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -262,6 +262,7 @@
                                         </constraints>
                                     </view>
                                 </subviews>
+                                <gestureRecognizers/>
                                 <constraints>
                                     <constraint firstItem="fhg-D9-JZx" firstAttribute="leading" secondItem="flw-4w-ybo" secondAttribute="leading" id="0yN-H4-3NK"/>
                                     <constraint firstItem="fhg-D9-JZx" firstAttribute="top" secondItem="flw-4w-ybo" secondAttribute="top" id="8hz-GW-d7U"/>
@@ -270,6 +271,9 @@
                                 </constraints>
                                 <viewLayoutGuide key="contentLayoutGuide" id="ZBY-0D-8Ht"/>
                                 <viewLayoutGuide key="frameLayoutGuide" id="oEW-VV-TiE"/>
+                                <connections>
+                                    <outletCollection property="gestureRecognizers" destination="SbI-bd-vsk" appends="YES" id="IY0-1u-RYJ"/>
+                                </connections>
                             </scrollView>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Ksf-HJ-tNg" customClass="KeyboardView" customModule="MaterialForm">
                                 <rect key="frame" x="0.0" y="896" width="414" height="0.0"/>
@@ -302,6 +306,11 @@
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cLB-Yr-STq" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="SbI-bd-vsk">
+                    <connections>
+                        <action selector="endEditing" destination="X3q-jz-Ocv" id="K06-vk-WTR"/>
+                    </connections>
+                </tapGestureRecognizer>
             </objects>
             <point key="canvasLocation" x="128.98550724637681" y="107.8125"/>
         </scene>

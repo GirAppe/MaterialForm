@@ -129,4 +129,8 @@ class ViewController: UIViewController {
     @IBAction func setFromCode() {
         field.text = "This is text"
     }
+
+    @IBAction func endEditing() {
+        view.endEditing(true)
+    }
 }

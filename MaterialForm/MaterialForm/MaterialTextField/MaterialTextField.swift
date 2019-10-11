@@ -248,25 +248,22 @@ open class MaterialTextField: UITextField, MaterialFieldState {
         return width + fieldContainer.spacing
     }
 
-    open override func textRect(forBounds bounds: CGRect) -> CGRect {
-        let base = super.textRect(forBounds: bounds)
-        let textInsets = UIEdgeInsets(
+    private var textInsets: UIEdgeInsets {
+        return UIEdgeInsets(
             top: topPadding + insets.top,
             left: rectLeftPadding + insets.left,
             bottom: bottomPadding + insets.bottom,
             right: rectRightPadding + insets.right
         )
+    }
+
+    open override func textRect(forBounds bounds: CGRect) -> CGRect {
+        let base = super.textRect(forBounds: bounds)
         return base.inset(by: textInsets)
     }
 
     open override func editingRect(forBounds bounds: CGRect) -> CGRect {
         let base = super.editingRect(forBounds: bounds)
-        let textInsets = UIEdgeInsets(
-            top: topPadding + insets.top,
-            left: rectLeftPadding + insets.left,
-            bottom: bottomPadding + insets.bottom,
-            right: rectRightPadding + insets.right
-        )
         return base.inset(by: textInsets)
     }
 
@@ -342,6 +339,7 @@ open class MaterialTextField: UITextField, MaterialFieldState {
             observe(\.text) { it, _ in it.updateFieldState() },
         ]
         addTarget(self, action: #selector(updateText), for: .editingChanged)
+        addTarget(self, action: #selector(preventImplicitAnimations), for: .editingDidEnd)
     }
 }
 
@@ -486,6 +484,13 @@ extension MaterialTextField {
         field.text = text ?? placeholder ?? "-"
         field.adjustsFontForContentSizeCategory = adjustsFontForContentSizeCategory
         layoutSubviews()
+    }
+
+    @objc func preventImplicitAnimations() {
+        UIView.performWithoutAnimation {
+            layoutSubviews()
+            layoutIfNeeded()
+        }
     }
 }
 
