@@ -11,8 +11,8 @@ open class MaterialTextField: UITextField, MaterialFieldState {
     @IBOutlet weak var nextField: UITextField?
 
     /// Makes intrinsic content size being at least X in height.
-    /// Defaults to 64 (recommended 44 + some buffer for the placeholder),
-    /// since it is nice number because of being power of 2
+    /// Defaults to 64 (recommended 44 + some buffer for the placeholder).
+    /// And it is a nice number because of being power of 2.
     @IBInspectable open var minimumHeight: CGFloat = 64 { didSet { update() } }
     @IBInspectable open var placeholderPointSize: CGFloat = 11 { didSet { update() } }
     @IBInspectable open var extendLineUnderAccessory: Bool = true { didSet { update() } }
@@ -240,11 +240,13 @@ open class MaterialTextField: UITextField, MaterialFieldState {
 
     var rectLeftPadding: CGFloat {
         guard let width = leftInputAccessory?.bounds.width else { return 0 }
+        guard !leftAccessoryView.isHidden else { return 0 }
         return width + fieldContainer.spacing
     }
 
     var rectRightPadding: CGFloat {
         guard let width = rightInputAccessory?.bounds.width else { return 0 }
+        guard !rightAccessoryView.isHidden else { return 0 }
         return width + fieldContainer.spacing
     }
 
@@ -411,9 +413,11 @@ extension MaterialTextField {
     func updateErrorAccessory() {
         if case Accessory.error = rightAccessory {
             rightAccessoryView.isHidden = !isShowingError
+            rightInputAccessory?.isHidden = !isShowingError
         }
         if case Accessory.error = leftAccessory {
             leftAccessoryView.isHidden = !isShowingError
+            leftInputAccessory?.isHidden = !isShowingError
         }
     }
 

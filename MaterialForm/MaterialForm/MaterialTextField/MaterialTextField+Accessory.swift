@@ -100,6 +100,7 @@ extension MaterialTextField {
         ])
 
         leftAccessoryView.isHidden = false
+        updateErrorAccessory()
     }
 
     private func buildAccessoryButton(with icon: UIImage) -> UIButton {
