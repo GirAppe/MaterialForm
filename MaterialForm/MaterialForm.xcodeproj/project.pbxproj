@@ -30,7 +30,6 @@
 		C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */; };
 		C8CC487923479929005BE5E8 /* MaterialTextField+DefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */; };
 		C8CC487B23479C4F005BE5E8 /* MaterialFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */; };
-		C8CC487D23479C6D005BE5E8 /* AccessoryState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487C23479C6D005BE5E8 /* AccessoryState.swift */; };
 		CCFB37612347DD50000E4ED6 /* MaterialTextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialTextField+Accessory.swift */; };
 /* End PBXBuildFile section */
 
@@ -84,7 +83,6 @@
 		C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingLineView.swift; sourceTree = "<group>"; };
 		C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+DefaultStyles.swift"; sourceTree = "<group>"; };
 		C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialFieldState.swift; sourceTree = "<group>"; };
-		C8CC487C23479C6D005BE5E8 /* AccessoryState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AccessoryState.swift; sourceTree = "<group>"; };
 		CCFB37602347DD50000E4ED6 /* MaterialTextField+Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+Accessory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -119,7 +117,6 @@
 			isa = PBXGroup;
 			children = (
 				C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */,
-				C8CC487C23479C6D005BE5E8 /* AccessoryState.swift */,
 				C88688FA23424CEE00C8ED7D /* MaterialTextFieldStyle.swift */,
 				C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */,
 			);
@@ -339,7 +336,6 @@
 				CCFB37612347DD50000E4ED6 /* MaterialTextField+Accessory.swift in Sources */,
 				C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */,
 				C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */,
-				C8CC487D23479C6D005BE5E8 /* AccessoryState.swift in Sources */,
 				C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */,
 				C8CC487923479929005BE5E8 /* MaterialTextField+DefaultStyles.swift in Sources */,
 				C88688FB23424CEE00C8ED7D /* MaterialTextFieldStyle.swift in Sources */,

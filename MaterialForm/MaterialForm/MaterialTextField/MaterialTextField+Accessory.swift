@@ -75,7 +75,7 @@ extension MaterialTextField {
         ])
 
         rightAccessoryView.isHidden = false
-        updateErrorAccessory()
+        updateAccessory()
     }
 
     func buildLeftAccessory() {
@@ -95,12 +95,12 @@ extension MaterialTextField {
         NSLayoutConstraint.activate([
             accessory.leftAnchor.constraint(equalTo: leftAccessoryView.leftAnchor),
             accessory.rightAnchor.constraint(equalTo: leftAccessoryView.rightAnchor),
-            accessory.heightAnchor.constraint(equalTo: leftAccessoryView.heightAnchor),
+            accessory.heightAnchor.constraint(equalTo: backgroundView.heightAnchor),
             accessory.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
         ])
 
         leftAccessoryView.isHidden = false
-        updateErrorAccessory()
+        updateAccessory()
     }
 
     private func buildAccessoryButton(with icon: UIImage) -> UIButton {

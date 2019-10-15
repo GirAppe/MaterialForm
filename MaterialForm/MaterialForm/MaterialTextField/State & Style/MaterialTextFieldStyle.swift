@@ -8,6 +8,11 @@
 
 import UIKit
 
+public struct AccessoryState {
+    let tintColor: UIColor
+    let isHidden: Bool
+}
+
 public protocol MaterialTextFieldStyle: class {
 
     var maxLineWidth: CGFloat { get }
@@ -24,4 +29,7 @@ public protocol MaterialTextFieldStyle: class {
 
     func borderWidth(for state: MaterialFieldState) -> CGFloat
     func borderColor(for state: MaterialFieldState) -> UIColor
+
+    func left(accessory: MaterialTextField.Accessory, for state: MaterialFieldState) -> AccessoryState
+    func right(accessory: MaterialTextField.Accessory, for state: MaterialFieldState) -> AccessoryState
 }

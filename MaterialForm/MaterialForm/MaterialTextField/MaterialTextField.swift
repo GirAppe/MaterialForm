@@ -94,6 +94,7 @@ open class MaterialTextField: UITextField, MaterialFieldState {
         get { return backgroundView.backgroundColor }
         set { backgroundView.backgroundColor = newValue }
     }
+    private var superBackgroundColor: UIColor?
 
     @available(*, unavailable, message: "Not supported yet")
     open override var adjustsFontSizeToFitWidth: Bool {
@@ -297,21 +298,17 @@ open class MaterialTextField: UITextField, MaterialFieldState {
         // Setup default style
         updateStyleType()
 
+        superBackgroundColor = super.backgroundColor
+        super.backgroundColor = .clear
+
         if let defaultStyle = self.defaultStyle {
             setIfPossible(&defaultStyle.defaultColor, to: textColor)
             setIfPossible(&defaultStyle.defaultPlaceholderColor, to: textColor)
-            setIfPossible(&defaultStyle.backgroundColor, to: super.backgroundColor)
+            setIfPossible(&defaultStyle.backgroundColor, to: superBackgroundColor)
             setIfPossible(&defaultStyle.focusedColor, to: tintColor)
         }
 
-        super.backgroundColor = .clear
-
         placeholderLabel.font = font ?? placeholderLabel.font
-
-        if let color = textColor {
-            defaultStyle?.defaultColor = color
-            defaultStyle?.defaultPlaceholderColor = color
-        }
 
         field.font = font
         field.textColor = .clear
@@ -383,7 +380,7 @@ extension MaterialTextField {
         bezelView.update(animated: animated)
         backgroundView.update(animated: animated)
 
-        updateErrorAccessory()
+        updateAccessory()
 
         infoAccessory.isHidden = !showCharactersCounter || maxCharactersCount <= 0
         infoAccessory.textColor = infoLabel.textColor
@@ -399,6 +396,15 @@ extension MaterialTextField {
         case .roundedRect:  style = Style.rounded
         @unknown default:   style = Style.rounded
         }
+
+        if let defaultStyle = self.defaultStyle {
+            setIfPossible(&defaultStyle.defaultColor, to: textColor)
+            setIfPossible(&defaultStyle.defaultPlaceholderColor, to: textColor)
+            setIfPossible(&defaultStyle.backgroundColor, to: superBackgroundColor)
+            setIfPossible(&defaultStyle.focusedColor, to: tintColor)
+        }
+
+        update(animated: false)
     }
 
     func updateLineViewHeight() {
@@ -410,15 +416,16 @@ extension MaterialTextField {
         layer.cornerRadius = style.cornerRadius
     }
 
-    func updateErrorAccessory() {
-        if case Accessory.error = rightAccessory {
-            rightAccessoryView.isHidden = !isShowingError
-            rightInputAccessory?.isHidden = !isShowingError
-        }
-        if case Accessory.error = leftAccessory {
-            leftAccessoryView.isHidden = !isShowingError
-            leftInputAccessory?.isHidden = !isShowingError
-        }
+    func updateAccessory() {
+        let left = style.left(accessory: leftAccessory, for: self)
+        leftAccessoryView.isHidden = left.isHidden
+        leftInputAccessory?.isHidden = left.isHidden
+        leftInputAccessory?.tintColor = left.tintColor
+
+        let right = style.right(accessory: rightAccessory, for: self)
+        rightAccessoryView.isHidden = right.isHidden
+        rightInputAccessory?.isHidden = right.isHidden
+        rightInputAccessory?.tintColor = right.tintColor
     }
 
     func animateFloatingLabel(animated: Bool = true) {

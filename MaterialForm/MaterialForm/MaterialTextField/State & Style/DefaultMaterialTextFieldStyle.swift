@@ -26,6 +26,7 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
 
     var defaultRadius: CGFloat = 6
     var defaultWidth: CGFloat = 0
+
     var defaultColor: UIColor = .darkText
     var defaultPlaceholderColor: UIColor = .darkText
 
@@ -81,5 +82,33 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
 
     func borderColor(for state: MaterialFieldState) -> UIColor {
         return .clear
+    }
+
+    func left(accessory: MaterialTextField.Accessory, for state: MaterialFieldState) -> AccessoryState {
+        return accessoryState(accessory, for: state)
+    }
+
+    func right(accessory: MaterialTextField.Accessory, for state: MaterialFieldState) -> AccessoryState {
+        return accessoryState(accessory, for: state)
+    }
+
+    private func accessoryState(
+        _ accessory: MaterialTextField.Accessory,
+        for state: MaterialFieldState
+    ) -> AccessoryState {
+        switch accessory {
+        case .error where state.isShowingError:
+            return AccessoryState(tintColor: errorColor, isHidden: false)
+        case .error:
+            return AccessoryState(tintColor: .clear, isHidden: true)
+        case .action:
+            return AccessoryState(tintColor: focusedColor, isHidden: false)
+        case .info:
+            return AccessoryState(tintColor: defaultColor, isHidden: false)
+        case .none:
+            return AccessoryState(tintColor: .clear, isHidden: true)
+        default:
+            return AccessoryState(tintColor: focusedColor, isHidden: false)
+        }
     }
 }
