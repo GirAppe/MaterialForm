@@ -230,6 +230,7 @@ open class MaterialTextField: UITextField, MaterialFieldState {
         build()
         setupPostBuild()
         setupObservers()
+        buildFloatingLabel()
         return {}
     }()
 
@@ -284,7 +285,7 @@ open class MaterialTextField: UITextField, MaterialFieldState {
     // MARK: - Setup
 
     func setup() {
-        placeholder = super.placeholder
+        placeholder = super.placeholder ?? self.placeholder
         super.placeholder = nil
         super.borderStyle = .none
         super.adjustsFontSizeToFitWidth = false
