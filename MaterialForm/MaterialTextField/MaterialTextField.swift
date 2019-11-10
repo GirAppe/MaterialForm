@@ -274,7 +274,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     open override func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
         var base = super.clearButtonRect(forBounds: bounds)
         base = base.offsetBy(dx: -rectRightPadding - insets.right, dy: -base.minY - base.height / 2)
-        base = base.offsetBy(dx: 0, dy: backgroundView.bounds.height / 2 )
+        base = base.offsetBy(dx: 0, dy: backgroundView.bounds.height / 2 + 2)
         return base
     }
 

@@ -71,7 +71,7 @@ extension MaterialUITextField {
             accessory.leftAnchor.constraint(equalTo: rightAccessoryView.leftAnchor),
             accessory.rightAnchor.constraint(equalTo: rightAccessoryView.rightAnchor),
             accessory.heightAnchor.constraint(equalTo: rightAccessoryView.heightAnchor),
-            accessory.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
+            accessory.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 2)
         ])
 
         rightAccessoryView.isHidden = false
@@ -96,7 +96,7 @@ extension MaterialUITextField {
             accessory.leftAnchor.constraint(equalTo: leftAccessoryView.leftAnchor),
             accessory.rightAnchor.constraint(equalTo: leftAccessoryView.rightAnchor),
             accessory.heightAnchor.constraint(equalTo: backgroundView.heightAnchor),
-            accessory.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor)
+            accessory.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 2)
         ])
 
         leftAccessoryView.isHidden = false
