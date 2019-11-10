@@ -1,5 +1,5 @@
 //
-//  MaterialTextField+Components.swift
+//  MaterialUITextField+Components.swift
 //  MaterialForm
 //
 //  Created by Andrzej Michnia on 02/10/2019.
@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Components
 
-extension MaterialTextField {
+extension MaterialUITextField {
 
     // MARK: - Info Label
 

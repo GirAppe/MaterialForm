@@ -1,5 +1,5 @@
 //
-//  MaterialTextField+Accessory.swift
+//  MaterialUITextField+Accessory.swift
 //  MaterialForm
 //
 //  Created by Andrzej Michnia on 04/10/2019.
@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - Accessories build & Action
 
-extension MaterialTextField {
+extension MaterialUITextField {
 
     /// Accessory describes basic left/right view types:
     /// - **none**: no accessory at all
@@ -124,7 +124,7 @@ extension MaterialTextField {
 
 // MARK: - Accessory actions
 
-extension MaterialTextField {
+extension MaterialUITextField {
 
     @objc func didTapRightAccessory() {
         event = .rightAccessoryTap

@@ -1,5 +1,5 @@
 //
-//  MaterialTextField+DefaultStyles.swift
+//  MaterialUITextField+DefaultStyles.swift
 //  MaterialForm
 //
 //  Created by Andrzej Michnia on 04/10/2019.
@@ -8,7 +8,7 @@
 
 import UIKit
 
-public extension MaterialTextField {
+public extension MaterialUITextField {
 
     struct Style {
         static let none: MaterialTextFieldStyle = NoneFieldStyle()

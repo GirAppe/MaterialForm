@@ -84,16 +84,16 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
         return .clear
     }
 
-    func left(accessory: MaterialTextField.Accessory, for state: MaterialFieldState) -> AccessoryState {
+    func left(accessory: MaterialUITextField.Accessory, for state: MaterialFieldState) -> AccessoryState {
         return accessoryState(accessory, for: state)
     }
 
-    func right(accessory: MaterialTextField.Accessory, for state: MaterialFieldState) -> AccessoryState {
+    func right(accessory: MaterialUITextField.Accessory, for state: MaterialFieldState) -> AccessoryState {
         return accessoryState(accessory, for: state)
     }
 
     private func accessoryState(
-        _ accessory: MaterialTextField.Accessory,
+        _ accessory: MaterialUITextField.Accessory,
         for state: MaterialFieldState
     ) -> AccessoryState {
         switch accessory {

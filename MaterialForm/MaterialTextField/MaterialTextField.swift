@@ -4,7 +4,7 @@ internal var isDebuggingViewHierarchy = false
 
 // MARK: - Main Implementation
 
-open class MaterialTextField: UITextField, MaterialFieldState {
+open class MaterialUITextField: UITextField, MaterialFieldState {
 
     // MARK: - Configuration
 
@@ -345,7 +345,7 @@ open class MaterialTextField: UITextField, MaterialFieldState {
 
 // MARK: - Update
 
-extension MaterialTextField {
+extension MaterialUITextField {
 
     func update(animated: Bool = true) {
         guard isBuilt else { return }
@@ -508,7 +508,7 @@ extension MaterialTextField {
 
 // MARK: - Build UI Phase
 
-extension MaterialTextField {
+extension MaterialUITextField {
 
     var isInViewHierarchy: Bool {
         return self.window != nil

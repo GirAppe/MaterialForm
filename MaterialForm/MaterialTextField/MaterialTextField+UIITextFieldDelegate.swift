@@ -1,5 +1,5 @@
 //
-//  MaterialTextField+UIITextFieldDelegate.swift
+//  MaterialUITextField+UIITextFieldDelegate.swift
 //  MaterialForm
 //
 //  Created by Andrzej Michnia on 02/10/2019.
@@ -10,7 +10,7 @@ import UIKit
 
 // MARK: - UITextFieldDelegate
 
-extension MaterialTextField: UITextFieldDelegate {
+extension MaterialUITextField: UITextFieldDelegate {
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         defer {

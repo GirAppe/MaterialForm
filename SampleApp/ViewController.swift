@@ -13,9 +13,9 @@ class ViewController: UIViewController {
 
     // MARK: - Outlets
 
-    @IBOutlet weak var field: MaterialTextField!
-    @IBOutlet weak var infoTextField: MaterialTextField!
-    @IBOutlet weak var maxCharactersField: MaterialTextField!
+    @IBOutlet weak var field: MaterialUITextField!
+    @IBOutlet weak var infoTextField: MaterialUITextField!
+    @IBOutlet weak var maxCharactersField: MaterialUITextField!
     @IBOutlet weak var borderType: UISegmentedControl!
 
     @IBOutlet weak var eventsView: UITextView!

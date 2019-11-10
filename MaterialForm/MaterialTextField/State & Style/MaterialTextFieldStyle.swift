@@ -30,6 +30,6 @@ public protocol MaterialTextFieldStyle: class {
     func borderWidth(for state: MaterialFieldState) -> CGFloat
     func borderColor(for state: MaterialFieldState) -> UIColor
 
-    func left(accessory: MaterialTextField.Accessory, for state: MaterialFieldState) -> AccessoryState
-    func right(accessory: MaterialTextField.Accessory, for state: MaterialFieldState) -> AccessoryState
+    func left(accessory: MaterialUITextField.Accessory, for state: MaterialFieldState) -> AccessoryState
+    func right(accessory: MaterialUITextField.Accessory, for state: MaterialFieldState) -> AccessoryState
 }
