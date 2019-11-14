@@ -1,11 +1,3 @@
-//
-//  MaterialUITextField+UIITextFieldDelegate.swift
-//  MaterialForm
-//
-//  Created by Andrzej Michnia on 02/10/2019.
-//  Copyright © 2019 MakeAWishFoundation. All rights reserved.
-//
-
 import UIKit
 
 // MARK: - UITextFieldDelegate
@@ -39,7 +31,10 @@ extension MaterialUITextField: UITextFieldDelegate {
         proxyDelegate?.textFieldDidEndEditing?(self)
     }
 
-    public func textFieldDidEndEditing(_ textField: UITextField, reason: UITextField.DidEndEditingReason) {
+    public func textFieldDidEndEditing(
+        _ textField: UITextField,
+        reason: UITextField.DidEndEditingReason
+    ) {
         defer {
             event = .endEditing
             fieldState = text.isEmptyOrNil ? .empty : .filled
@@ -47,9 +42,11 @@ extension MaterialUITextField: UITextFieldDelegate {
         proxyDelegate?.textFieldDidEndEditing?(textField, reason: reason)
     }
 
-    public func textField(_ textField: UITextField,
-                          shouldChangeCharactersIn range: NSRange,
-                          replacementString string: String) -> Bool {
+    public func textField(
+        _ textField: UITextField,
+        shouldChangeCharactersIn range: NSRange,
+        replacementString string: String
+    ) -> Bool {
         let delegateValue = proxyDelegate?.textField?(
             self,
             shouldChangeCharactersIn: range,

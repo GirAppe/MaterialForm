@@ -9,8 +9,8 @@
 /* Begin PBXBuildFile section */
 		C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188C9E234395FC0097FB9E /* KeyboardView.swift */; };
 		C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
-		C823E9BD2344C57A00AD214B /* MaterialTextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */; };
-		C823E9BF2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */; };
+		C823E9BD2344C57A00AD214B /* MaterialUITextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */; };
+		C823E9BF2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BE2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift */; };
 		C823E9C12346398E00AD214B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C02346398E00AD214B /* ViewController.swift */; };
 		C823E9C323473F3D00AD214B /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C223473F3D00AD214B /* Animatable.swift */; };
 		C823E9C82347406700AD214B /* DefaultMaterialTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */; };
@@ -19,7 +19,7 @@
 		C88688E5234200DB00C8ED7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C88688E4234200DB00C8ED7D /* Assets.xcassets */; };
 		C88688E8234200DB00C8ED7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C88688E7234200DB00C8ED7D /* Preview Assets.xcassets */; };
 		C88688EB234200DB00C8ED7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C88688E9234200DB00C8ED7D /* LaunchScreen.storyboard */; };
-		C88688F12342010E00C8ED7D /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688F02342010E00C8ED7D /* MaterialTextField.swift */; };
+		C88688F12342010E00C8ED7D /* MaterialUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688F02342010E00C8ED7D /* MaterialUITextField.swift */; };
 		C88688F32342019600C8ED7D /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
 		C88688F42342019600C8ED7D /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C88688F9234201E400C8ED7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C88688F8234201E400C8ED7D /* Main.storyboard */; };
@@ -28,7 +28,7 @@
 		C886890123424D3D00C8ED7D /* FieldTriggerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890023424D3D00C8ED7D /* FieldTriggerEvent.swift */; };
 		C886890323424DB700C8ED7D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890223424DB700C8ED7D /* Extensions.swift */; };
 		C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */; };
-		C8CC487923479929005BE5E8 /* MaterialTextField+DefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */; };
+		C8CC487923479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487823479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift */; };
 		C8CC487B23479C4F005BE5E8 /* MaterialFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */; };
 		CC3948FB23564C8F008299B1 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3948FA23564C8F008299B1 /* AppDelegate.swift */; };
 		CC3948FD23564C8F008299B1 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC3948FC23564C8F008299B1 /* SceneDelegate.swift */; };
@@ -38,7 +38,7 @@
 		CC39490723564C90008299B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC39490523564C90008299B1 /* LaunchScreen.storyboard */; };
 		CC39490C23564CB5008299B1 /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
 		CC39490D23564CB5008299B1 /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		CCFB37612347DD50000E4ED6 /* MaterialTextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialTextField+Accessory.swift */; };
+		CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -86,8 +86,8 @@
 /* Begin PBXFileReference section */
 		C8188C9E234395FC0097FB9E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		C8188CA0234495150097FB9E /* UnderlyingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingField.swift; sourceTree = "<group>"; };
-		C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+Components.swift"; sourceTree = "<group>"; };
-		C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+UIITextFieldDelegate.swift"; sourceTree = "<group>"; };
+		C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+Components.swift"; sourceTree = "<group>"; };
+		C823E9BE2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+UIITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		C823E9C02346398E00AD214B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C823E9C223473F3D00AD214B /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMaterialTextFieldStyle.swift; sourceTree = "<group>"; };
@@ -100,14 +100,14 @@
 		C88688E7234200DB00C8ED7D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C88688EA234200DB00C8ED7D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C88688EC234200DB00C8ED7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C88688F02342010E00C8ED7D /* MaterialTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
+		C88688F02342010E00C8ED7D /* MaterialUITextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialUITextField.swift; sourceTree = "<group>"; };
 		C88688F8234201E400C8ED7D /* Main.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Main.storyboard; sourceTree = "<group>"; };
 		C88688FA23424CEE00C8ED7D /* MaterialTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTextFieldStyle.swift; sourceTree = "<group>"; };
 		C88688FE23424D2900C8ED7D /* FieldControlState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldControlState.swift; sourceTree = "<group>"; };
 		C886890023424D3D00C8ED7D /* FieldTriggerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTriggerEvent.swift; sourceTree = "<group>"; };
 		C886890223424DB700C8ED7D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingLineView.swift; sourceTree = "<group>"; };
-		C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+DefaultStyles.swift"; sourceTree = "<group>"; };
+		C8CC487823479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+DefaultStyles.swift"; sourceTree = "<group>"; };
 		C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialFieldState.swift; sourceTree = "<group>"; };
 		CC3948F823564C8F008299B1 /* SampleSwiftUI.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleSwiftUI.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		CC3948FA23564C8F008299B1 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -117,7 +117,7 @@
 		CC39490323564C90008299B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CC39490623564C90008299B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC39490823564C90008299B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		CCFB37602347DD50000E4ED6 /* MaterialTextField+Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialTextField+Accessory.swift"; sourceTree = "<group>"; };
+		CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+Accessory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -190,7 +190,7 @@
 			isa = PBXGroup;
 			children = (
 				C886890623424E7E00C8ED7D /* Models */,
-				C88688FC23424D0100C8ED7D /* MaterialTextField */,
+				C88688FC23424D0100C8ED7D /* MaterialUITextField */,
 				C8188C9D234395ED0097FB9E /* KeyboardView */,
 				C88688FD23424D0A00C8ED7D /* Common */,
 				C88688D0234200A000C8ED7D /* MaterialForm.h */,
@@ -228,17 +228,17 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		C88688FC23424D0100C8ED7D /* MaterialTextField */ = {
+		C88688FC23424D0100C8ED7D /* MaterialUITextField */ = {
 			isa = PBXGroup;
 			children = (
-				C88688F02342010E00C8ED7D /* MaterialTextField.swift */,
-				CCFB37602347DD50000E4ED6 /* MaterialTextField+Accessory.swift */,
-				C8CC487823479929005BE5E8 /* MaterialTextField+DefaultStyles.swift */,
-				C823E9BC2344C57A00AD214B /* MaterialTextField+Components.swift */,
-				C823E9BE2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift */,
+				C88688F02342010E00C8ED7D /* MaterialUITextField.swift */,
+				CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */,
+				C8CC487823479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift */,
+				C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */,
+				C823E9BE2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift */,
 				C823E9C42347400F00AD214B /* State & Style */,
 			);
-			path = MaterialTextField;
+			path = MaterialUITextField;
 			sourceTree = "<group>";
 		};
 		C88688FD23424D0A00C8ED7D /* Common */ = {
@@ -432,19 +432,19 @@
 			buildActionMask = 2147483647;
 			files = (
 				C886890323424DB700C8ED7D /* Extensions.swift in Sources */,
-				CCFB37612347DD50000E4ED6 /* MaterialTextField+Accessory.swift in Sources */,
+				CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */,
 				C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */,
 				C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */,
 				C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */,
-				C8CC487923479929005BE5E8 /* MaterialTextField+DefaultStyles.swift in Sources */,
+				C8CC487923479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift in Sources */,
 				C88688FB23424CEE00C8ED7D /* MaterialTextFieldStyle.swift in Sources */,
-				C823E9BF2344C5B700AD214B /* MaterialTextField+UIITextFieldDelegate.swift in Sources */,
+				C823E9BF2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift in Sources */,
 				C823E9C82347406700AD214B /* DefaultMaterialTextFieldStyle.swift in Sources */,
 				C823E9C323473F3D00AD214B /* Animatable.swift in Sources */,
 				C886890123424D3D00C8ED7D /* FieldTriggerEvent.swift in Sources */,
-				C88688F12342010E00C8ED7D /* MaterialTextField.swift in Sources */,
+				C88688F12342010E00C8ED7D /* MaterialUITextField.swift in Sources */,
 				C8CC487B23479C4F005BE5E8 /* MaterialFieldState.swift in Sources */,
-				C823E9BD2344C57A00AD214B /* MaterialTextField+Components.swift in Sources */,
+				C823E9BD2344C57A00AD214B /* MaterialUITextField+Components.swift in Sources */,
 				C88688FF23424D2900C8ED7D /* FieldControlState.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -1,11 +1,3 @@
-//
-//  MaterialUITextField+Accessory.swift
-//  MaterialForm
-//
-//  Created by Andrzej Michnia on 04/10/2019.
-//  Copyright © 2019 MakeAWishFoundation. All rights reserved.
-//
-
 import UIKit
 
 // MARK: - Accessories build & Action

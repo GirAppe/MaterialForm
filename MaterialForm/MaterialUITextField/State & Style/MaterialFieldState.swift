@@ -1,14 +1,6 @@
-//
-//  MaterialFieldState.swift
-//  MaterialForm
-//
-//  Created by Andrzej Michnia on 04/10/2019.
-//  Copyright © 2019 MakeAWishFoundation. All rights reserved.
-//
-
 import UIKit
 
-// MARK: - MaterialFieldState
+// MARK: - Field State
 
 public protocol MaterialFieldState: class {
     var fieldState: FieldControlState { get }

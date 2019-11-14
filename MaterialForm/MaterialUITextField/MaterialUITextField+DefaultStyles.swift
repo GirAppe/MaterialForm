@@ -1,12 +1,6 @@
-//
-//  MaterialUITextField+DefaultStyles.swift
-//  MaterialForm
-//
-//  Created by Andrzej Michnia on 04/10/2019.
-//  Copyright © 2019 MakeAWishFoundation. All rights reserved.
-//
-
 import UIKit
+
+// MARK: - Styles Container
 
 public extension MaterialUITextField {
 
@@ -17,6 +11,8 @@ public extension MaterialUITextField {
         static let rounded: MaterialTextFieldStyle = RoundedFieldStyle()
     }
 }
+
+// MARK: - None
 
 private class NoneFieldStyle: DefaultMaterialTextFieldStyle {
 
@@ -29,6 +25,8 @@ private class NoneFieldStyle: DefaultMaterialTextFieldStyle {
     }
 }
 
+// MARK: - Line
+
 private class LineFieldStyle: DefaultMaterialTextFieldStyle {
 
     override init() {
@@ -38,6 +36,8 @@ private class LineFieldStyle: DefaultMaterialTextFieldStyle {
         insets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
     }
 }
+
+// MARK: - Bezel
 
 private class BezelFieldStyle: DefaultMaterialTextFieldStyle {
 
@@ -62,5 +62,6 @@ private class BezelFieldStyle: DefaultMaterialTextFieldStyle {
     }
 }
 
-private class RoundedFieldStyle: DefaultMaterialTextFieldStyle { }
+// MARK: - Rounded
 
+private class RoundedFieldStyle: DefaultMaterialTextFieldStyle { }

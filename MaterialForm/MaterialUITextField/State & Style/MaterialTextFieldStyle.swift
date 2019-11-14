@@ -1,17 +1,6 @@
-//
-//  MaterialTextFieldStyle.swift
-//  MaterialForm
-//
-//  Created by Andrzej Michnia on 30/09/2019.
-//  Copyright © 2019 MakeAWishFoundation. All rights reserved.
-//
-
 import UIKit
 
-public struct AccessoryState {
-    let tintColor: UIColor
-    let isHidden: Bool
-}
+// MARK: - Text Field State
 
 public protocol MaterialTextFieldStyle: class {
 
@@ -32,4 +21,11 @@ public protocol MaterialTextFieldStyle: class {
 
     func left(accessory: MaterialUITextField.Accessory, for state: MaterialFieldState) -> AccessoryState
     func right(accessory: MaterialUITextField.Accessory, for state: MaterialFieldState) -> AccessoryState
+}
+
+// MARK: - Accessory State
+
+public struct AccessoryState {
+    let tintColor: UIColor
+    let isHidden: Bool
 }

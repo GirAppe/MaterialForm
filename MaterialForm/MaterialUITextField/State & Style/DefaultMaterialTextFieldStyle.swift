@@ -1,11 +1,3 @@
-//
-//  DefaultMaterialTextFieldState.swift
-//  MaterialForm
-//
-//  Created by Andrzej Michnia on 04/10/2019.
-//  Copyright © 2019 MakeAWishFoundation. All rights reserved.
-//
-
 import UIKit
 
 // MARK: - Default implementation
@@ -84,11 +76,17 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
         return .clear
     }
 
-    func left(accessory: MaterialUITextField.Accessory, for state: MaterialFieldState) -> AccessoryState {
+    func left(
+        accessory: MaterialUITextField.Accessory,
+        for state: MaterialFieldState
+    ) -> AccessoryState {
         return accessoryState(accessory, for: state)
     }
 
-    func right(accessory: MaterialUITextField.Accessory, for state: MaterialFieldState) -> AccessoryState {
+    func right(
+        accessory: MaterialUITextField.Accessory,
+        for state: MaterialFieldState
+    ) -> AccessoryState {
         return accessoryState(accessory, for: state)
     }
 

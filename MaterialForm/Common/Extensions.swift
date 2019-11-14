@@ -1,12 +1,3 @@
-
-//
-//  Extensions.swift
-//  MaterialForm
-//
-//  Created by Andrzej Michnia on 30/09/2019.
-//  Copyright © 2019 MakeAWishFoundation. All rights reserved.
-//
-
 import UIKit
 
 internal extension CGSize {
