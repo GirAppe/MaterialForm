@@ -69,6 +69,16 @@ public extension MaterialTextField {
     }
 }
 
+// MARK: - Styling
+
+public extension MaterialTextField {
+
+    func styled(_ style: (MaterialUITextField) -> Void) -> some View {
+        style(uiField)
+        return self
+    }
+}
+
 // MARK: - Not yet available
 
 //struct MaterialTextFieldStyle: TextFieldStyle {

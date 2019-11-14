@@ -45,6 +45,8 @@ extension MaterialUITextField {
     }
 
     func buildRightAccessory() {
+        guard isBuilt else { return }
+
         // Clear old
         rightInputAccessory?.clear()
         rightInputAccessory = build(rightAccessory, on: .right)
@@ -71,6 +73,8 @@ extension MaterialUITextField {
     }
 
     func buildLeftAccessory() {
+        guard isBuilt else { return }
+
         leftInputAccessory?.clear()
         leftInputAccessory = build(leftAccessory, on: .left)
 

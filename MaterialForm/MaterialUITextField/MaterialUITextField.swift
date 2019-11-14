@@ -235,7 +235,11 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     }()
 
     open override func layoutSubviews() {
-        buildOnce(); super.layoutSubviews(); updateFieldState()
+        buildOnce()
+        super.layoutSubviews()
+        updateFieldState()
+        buildLeftAccessory()
+        buildRightAccessory()
     }
 
     // MARK: - Area

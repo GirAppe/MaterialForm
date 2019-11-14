@@ -17,18 +17,28 @@ struct ContentView: View {
 
     var body: some View {
         VStack {
-            Text("Hello World")
             MaterialTextField(title: "Test 1", text: $string)
                 .padding(8)
+                .textContentType(UITextContentType.password)
             MaterialTextField(title: $placeholder, text: $string)
                 .padding(8)
             MaterialTextField(title: "Placeholder above:", text: $placeholder)
-                .padding(8)
-            TextField("Test 3", text: $string)
+                .styled { field in
+                    field.font = UIFont.systemFont(ofSize: 40, weight: .bold)
+                    field.textColor = .blue
+                    field.showCharactersCounter = true
+                    field.clearButtonMode = .whileEditing
+                    field.leftAccessory = .info(#imageLiteral(resourceName: "show"))
+                }
                 .padding(8)
             TextField("Test 4", text: $string)
                 .padding(8)
+                .foregroundColor(.green)
         }
+        .padding(.bottom, 320)
+        .accentColor(.orange)
+        .foregroundColor(.green)
+        .font(.system(size: 20, weight: .bold, design: .default))
     }
 }
 
