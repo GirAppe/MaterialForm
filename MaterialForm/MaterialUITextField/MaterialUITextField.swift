@@ -86,7 +86,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     }
     open override var placeholder: String? {
         get { return floatingLabel.text }
-        set { floatingLabel.text = newValue }
+        set { floatingLabel.text = newValue; update(animated: false) }
     }
     open override var font: UIFont? { willSet { field.font = newValue } }
     open override var tintColor: UIColor! { didSet { update() } }
@@ -235,7 +235,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     }()
 
     open override func layoutSubviews() {
-        buildOnce(); super.layoutSubviews()
+        buildOnce(); super.layoutSubviews(); updateFieldState()
     }
 
     // MARK: - Area
@@ -347,7 +347,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
 
 extension MaterialUITextField {
 
-    func update(animated: Bool = true) {
+    public func update(animated: Bool = true) {
         guard isBuilt else { return }
 
         let animated = overrideAnimated ?? animated
@@ -483,7 +483,7 @@ extension MaterialUITextField {
         infoAccessory.text = "\(text?.count ?? 0)/\(maxCharactersCount)"
     }
 
-    func updateFieldState() {
+    public func updateFieldState() {
         guard !isEditing else { return }
         guard fieldState == .empty || fieldState == .filled else { return }
         overrideAnimated = false
