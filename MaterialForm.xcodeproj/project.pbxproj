@@ -46,6 +46,9 @@
 		CC39490723564C90008299B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC39490523564C90008299B1 /* LaunchScreen.storyboard */; };
 		CC39490C23564CB5008299B1 /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
 		CC39490D23564CB5008299B1 /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CCD19F0C237EF3110082A5B8 /* MaterialUITextField+TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */; };
+		CCD19F0E237EF3A40082A5B8 /* MaterialUITextField+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */; };
+		CCD19F10237EF3F30082A5B8 /* MaterialUITextField+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */; };
 		CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */; };
 /* End PBXBuildFile section */
 
@@ -163,6 +166,9 @@
 		CC39490323564C90008299B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CC39490623564C90008299B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC39490823564C90008299B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+TextArea.swift"; sourceTree = "<group>"; };
+		CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+Update.swift"; sourceTree = "<group>"; };
+		CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+Build.swift"; sourceTree = "<group>"; };
 		CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+Accessory.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -308,6 +314,9 @@
 			isa = PBXGroup;
 			children = (
 				C88688F02342010E00C8ED7D /* MaterialUITextField.swift */,
+				CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */,
+				CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */,
+				CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */,
 				CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */,
 				C8CC487823479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift */,
 				C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */,
@@ -557,18 +566,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				CCD19F0E237EF3A40082A5B8 /* MaterialUITextField+Update.swift in Sources */,
 				C886890323424DB700C8ED7D /* Extensions.swift in Sources */,
 				CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */,
 				C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */,
 				C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */,
 				C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */,
 				C8CC487923479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift in Sources */,
+				CCD19F10237EF3F30082A5B8 /* MaterialUITextField+Build.swift in Sources */,
 				C88688FB23424CEE00C8ED7D /* MaterialTextFieldStyle.swift in Sources */,
 				C823E9BF2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift in Sources */,
 				C823E9C82347406700AD214B /* DefaultMaterialTextFieldStyle.swift in Sources */,
 				C823E9C323473F3D00AD214B /* Animatable.swift in Sources */,
 				C886890123424D3D00C8ED7D /* FieldTriggerEvent.swift in Sources */,
 				C88688F12342010E00C8ED7D /* MaterialUITextField.swift in Sources */,
+				CCD19F0C237EF3110082A5B8 /* MaterialUITextField+TextArea.swift in Sources */,
 				C8CC487B23479C4F005BE5E8 /* MaterialFieldState.swift in Sources */,
 				C823E9BD2344C57A00AD214B /* MaterialUITextField+Components.swift in Sources */,
 				C88688FF23424D2900C8ED7D /* FieldControlState.swift in Sources */,

@@ -5,8 +5,8 @@ import MaterialForm
 
 public struct MaterialTextField: UIViewRepresentable {
 
-    public typealias UIField = MaterialUITextField
-    public typealias Styling = (MaterialUITextField) -> Void
+    public typealias UIField = MaterialForm.MaterialUITextField
+    public typealias Styling = (UIField) -> Void
 
     // MARK: - Properties
 
@@ -109,17 +109,3 @@ public extension MaterialTextField {
         return self
     }
 }
-
-// MARK: - Not yet available
-
-//struct MaterialTextFieldStyle: TextFieldStyle {
-//    typealias Body = MaterialTextField
-//
-//    @State var aaa = ""
-//
-//    func _body(configuration: TextField<Self._Label>) -> MaterialTextFieldStyle.Body {
-//        return MaterialTextField(title: "aaa", text: $aaa)
-//    }
-//
-//    typealias Configuration = Void
-//}
