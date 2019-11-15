@@ -75,7 +75,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     // MARK: - Overrides
 
     open override var intrinsicContentSize: CGSize {
-        var maxHeight = textRect(forBounds: bounds).height
+        var maxHeight = super.textRect(forBounds: bounds).height
         maxHeight += insets.top
         maxHeight += topPadding
         maxHeight += bottomPadding
