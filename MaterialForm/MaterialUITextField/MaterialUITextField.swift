@@ -189,6 +189,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     var lineContainer = UIView()
     var lineViewHeight: NSLayoutConstraint?
     var line = UnderlyingLineView()
+    var lineHeight: CGFloat { return lineContainer.bounds.height }
 
     // MARK: - Background View
 
@@ -231,6 +232,8 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
         setupPostBuild()
         setupObservers()
         buildFloatingLabel()
+        buildLeftAccessory()
+        buildRightAccessory()
         return {}
     }()
 
@@ -238,22 +241,18 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
         buildOnce()
         super.layoutSubviews()
         updateFieldState()
-        buildLeftAccessory()
-        buildRightAccessory()
     }
 
     // MARK: - Area
 
     var rectLeftPadding: CGFloat {
-        guard let width = leftInputAccessory?.bounds.width else { return 0 }
         guard !leftAccessoryView.isHidden else { return 0 }
-        return width + fieldContainer.spacing
+        return leftAccessoryView.bounds.width + innerHorizontalSpacing
     }
 
     var rectRightPadding: CGFloat {
-        guard let width = rightInputAccessory?.bounds.width else { return 0 }
         guard !rightAccessoryView.isHidden else { return 0 }
-        return width + fieldContainer.spacing
+        return rightAccessoryView.bounds.width + innerHorizontalSpacing
     }
 
     private var textInsets: UIEdgeInsets {
@@ -391,6 +390,8 @@ extension MaterialUITextField {
         infoAccessory.textColor = infoLabel.textColor
         infoAccessory.font = infoLabel.font
         updateCharactersCount()
+
+        line.underAccessory = extendLineUnderAccessory
     }
 
     func updateStyleType() {
@@ -431,6 +432,8 @@ extension MaterialUITextField {
         rightAccessoryView.isHidden = right.isHidden
         rightInputAccessory?.isHidden = right.isHidden
         rightInputAccessory?.tintColor = right.tintColor
+
+        setupDebug()
     }
 
     func animateFloatingLabel(animated: Bool = true) {
@@ -658,15 +661,25 @@ extension MaterialUITextField {
         infoAccessory.backgroundColor = .clear
     }
 
+    #if DEBUG
     func setupDebug() {
         guard isDebuggingViewHierarchy else { return }
-        #if DEBUG
         layer.borderWidth = 1
-        layer.borderColor = UIColor.red.cgColor
+        layer.borderColor = UIColor.gray.withAlphaComponent(0.3).cgColor
         field.layer.borderWidth = 1
-        field.layer.borderColor = UIColor.green.cgColor
+        field.layer.borderColor = UIColor.green.withAlphaComponent(0.5).cgColor
         floatingLabel.layer.borderWidth = 1
-        floatingLabel.layer.borderColor = UIColor.blue.cgColor
-        #endif
+        floatingLabel.layer.borderColor = UIColor.blue.withAlphaComponent(0.5).cgColor
+        leftView?.layer.borderWidth = 1
+        leftView?.layer.borderColor = UIColor.magenta.withAlphaComponent(0.5).cgColor
+        leftAccessoryView.layer.borderWidth = 1
+        leftAccessoryView.layer.borderColor = UIColor.cyan.withAlphaComponent(0.5).cgColor
+        rightView?.layer.borderWidth = 1
+        rightView?.layer.borderColor = UIColor.magenta.withAlphaComponent(0.5).cgColor
+        rightAccessoryView.layer.borderWidth = 1
+        rightAccessoryView.layer.borderColor = UIColor.cyan.withAlphaComponent(0.5).cgColor
     }
+    #else
+    func setupDebug() {}
+    #endif
 }
