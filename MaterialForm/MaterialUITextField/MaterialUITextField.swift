@@ -1,6 +1,6 @@
 import UIKit
 
-internal var isDebuggingViewHierarchy = false
+internal let isDebuggingViewHierarchy = false
 
 // MARK: - Main Implementation
 
@@ -243,6 +243,8 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
         updateFieldState()
     }
 
+
+
     // MARK: - Area
 
     var rectLeftPadding: CGFloat {
@@ -391,7 +393,7 @@ extension MaterialUITextField {
         infoAccessory.font = infoLabel.font
         updateCharactersCount()
 
-        line.underAccessory = extendLineUnderAccessory
+        line.underAccessory = extendLineUnderAccessory || styleType == .roundedRect
     }
 
     func updateStyleType() {
@@ -619,7 +621,7 @@ extension MaterialUITextField {
         // Set initial values
         line.color = style.lineColor(for: self)
         line.width = style.lineWidth(for: self)
-        line.underAccessory = extendLineUnderAccessory
+        line.underAccessory = extendLineUnderAccessory || styleType == .roundedRect
     }
 
     func buildBezel() {

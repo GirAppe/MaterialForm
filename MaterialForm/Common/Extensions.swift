@@ -13,6 +13,29 @@ internal extension CGSize {
     func constrainedTo(minWidth: CGFloat) -> CGSize {
         return CGSize(width: max(width, minWidth), height: height)
     }
+
+    func constrainedTo(maxWidth: CGFloat) -> CGSize {
+        return CGSize(width: min(width, maxWidth), height: height)
+    }
+}
+
+internal extension CGRect {
+
+    func constrainedTo(minHeight: CGFloat) -> CGRect {
+        return insetBy(dx: 0, dy: (height - size.constrainedTo(minHeight: minHeight).height) / 2)
+    }
+
+    func constrainedTo(maxHeight: CGFloat) -> CGRect {
+        return insetBy(dx: 0, dy: (height - size.constrainedTo(maxHeight: maxHeight).height) / 2)
+    }
+
+    func constrainedTo(minWidth: CGFloat) -> CGRect {
+        return insetBy(dx: (width - size.constrainedTo(minWidth: minWidth).width) / 2, dy: 0)
+    }
+
+    func constrainedTo(maxWidth: CGFloat) -> CGRect {
+        return insetBy(dx: (width - size.constrainedTo(maxWidth: maxWidth).width) / 2, dy: 0)
+    }
 }
 
 internal extension UIView {

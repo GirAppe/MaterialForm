@@ -64,7 +64,7 @@ extension MaterialUITextField {
         NSLayoutConstraint.activate([
             accessory.leftAnchor.constraint(equalTo: rightAccessoryView.leftAnchor),
             accessory.rightAnchor.constraint(equalTo: rightAccessoryView.rightAnchor),
-            accessory.heightAnchor.constraint(equalTo: rightAccessoryView.heightAnchor),
+            accessory.heightAnchor.constraint(equalTo: backgroundView.heightAnchor),
             accessory.centerYAnchor.constraint(equalTo: backgroundView.centerYAnchor, constant: 2)
         ])
 
@@ -100,7 +100,7 @@ extension MaterialUITextField {
     }
 
     private func buildAccessoryButton(with icon: UIImage) -> UIButton {
-        let button = UIButton(type: .custom)
+        let button = ExtendedUIButton(type: .custom)
         button.backgroundColor = .clear
         button.setImage(icon, for: .normal)
         button.translatesAutoresizingMaskIntoConstraints = false
@@ -141,5 +141,18 @@ extension UIView {
     var asAccessoryButton: UIButton? {
         guard self.tag == UIView.buttonTag else { return nil }
         return self as? UIButton
+    }
+}
+
+// MARK: - UIButton with extensible tappable area
+
+private class ExtendedUIButton: UIButton {
+
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        let superPoint = super.point(inside: point, with: event)
+        let extendedBounds = bounds
+            .constrainedTo(minHeight: 40)
+            .constrainedTo(minWidth: 40)
+        return superPoint || extendedBounds.contains(point)
     }
 }
