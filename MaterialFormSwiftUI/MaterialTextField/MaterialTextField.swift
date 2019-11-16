@@ -7,13 +7,18 @@ public struct MaterialTextField: UIViewRepresentable {
 
     public typealias UIField = MaterialForm.MaterialUITextField
     public typealias Styling = (UIField) -> Void
+    public typealias Event = MaterialForm.FieldTriggerEvent
+    public typealias EventHandler = (Event) -> Void
 
     // MARK: - Properties
 
     @Binding public var title: String
     @Binding public var text: String
-    @Binding public var info: String?
+    @Binding public var info: String
     @Binding public var error: String?
+    @Binding public var maxCharacterCount: Int
+
+    public var borderStyle: UITextField.BorderStyle
 
     var isShowingError: Bool { error != nil }
 
@@ -27,30 +32,41 @@ public struct MaterialTextField: UIViewRepresentable {
     public init(
         title: Binding<String>,
         text: Binding<String>,
-        info: Binding<String?>? = nil,
+        info: Binding<String>? = nil,
         error: Binding<String?>? = nil,
-        styling: Styling? = nil
+        maxCharacterCount: Binding<Int>? = nil,
+        borderStyle: UITextField.BorderStyle = .roundedRect,
+        action: EventHandler? = nil,
+        style: Styling? = nil
     ) {
         self._title = title
         self._text = text
-        self._info = info ?? .constant(nil)
+        self._info = info ?? .constant("")
         self._error = error ?? .constant(nil)
-        self.style = styling
+        self._maxCharacterCount = maxCharacterCount ?? .constant(0)
+        self.borderStyle = borderStyle
+        self.style = style
     }
 
     public init(
         title: String,
         text: Binding<String>,
-        info: Binding<String?>? = nil,
+        info: Binding<String>? = nil,
         error: Binding<String?>? = nil,
-        styling: Styling? = nil
+        maxCharacterCount: Binding<Int>? = nil,
+        borderStyle: UITextField.BorderStyle = .roundedRect,
+        action: EventHandler? = nil,
+        style: Styling? = nil
     ) {
         self.init(
             title: .constant(title),
             text: text,
             info: info,
             error: error,
-            styling: styling
+            maxCharacterCount: maxCharacterCount,
+            borderStyle: borderStyle,
+            action: action,
+            style: style
         )
     }
 }
@@ -63,6 +79,7 @@ public extension MaterialTextField {
         uiField.text = text
         uiField.borderStyle = .roundedRect
         uiField.placeholder = title
+        uiField.borderStyle = borderStyle
 
         uiField.setContentHuggingPriority(.defaultHigh, for: .vertical)
         uiField.setContentHuggingPriority(.defaultLow, for: .horizontal)
@@ -70,14 +87,22 @@ public extension MaterialTextField {
         uiField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
         style?(uiField)
+        uiField.setNeedsLayout()
+        uiField.setNeedsDisplay()
 
         return uiField
     }
 
-    func updateUIView(_ field: UIField, context: Context) {
-        field.placeholder = title
-        field.text = text
+    func updateUIView(_ uiField: UIField, context: Context) {
+        uiField.placeholder = title
+        uiField.text = text
+        uiField.errorMessage = error
+        uiField.infoMessage = info
+        uiField.maxCharactersCount = maxCharacterCount
+        uiField.borderStyle = borderStyle
         style?(uiField)
+        uiField.setNeedsLayout()
+        uiField.setNeedsDisplay()
     }
 }
 
