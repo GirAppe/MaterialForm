@@ -36,37 +36,12 @@
 		CC39490723564C90008299B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC39490523564C90008299B1 /* LaunchScreen.storyboard */; };
 		CC8021782381F7950030C2B2 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8021772381F7950030C2B2 /* MaterialTextField.swift */; };
 		CC80217B2381F9A70030C2B2 /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = CC80217A2381F9A70030C2B2 /* MaterialForm */; };
-		CC80217E2381FD5A0030C2B2 /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
-		CC80217F2381FD5A0030C2B2 /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CC8021842381FF360030C2B2 /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = CC8021832381FF360030C2B2 /* MaterialForm */; };
 		CCD19F0C237EF3110082A5B8 /* MaterialUITextField+TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */; };
 		CCD19F0E237EF3A40082A5B8 /* MaterialUITextField+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */; };
 		CCD19F10237EF3F30082A5B8 /* MaterialUITextField+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */; };
 		CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		CC8021802381FD5A0030C2B2 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C88688C4234200A000C8ED7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C88688CC234200A000C8ED7D;
-			remoteInfo = MaterialForm;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		CC8021822381FD5A0030C2B2 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CC80217F2381FD5A0030C2B2 /* MaterialForm.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C8188C9E234395FC0097FB9E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
@@ -129,7 +104,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC80217E2381FD5A0030C2B2 /* MaterialForm.framework in Frameworks */,
+				CC8021842381FF360030C2B2 /* MaterialForm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -351,15 +326,14 @@
 				CC3948F423564C8F008299B1 /* Sources */,
 				CC3948F523564C8F008299B1 /* Frameworks */,
 				CC3948F623564C8F008299B1 /* Resources */,
-				CC8021822381FD5A0030C2B2 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CC8021812381FD5A0030C2B2 /* PBXTargetDependency */,
 			);
 			name = SampleSwiftUI;
 			packageProductDependencies = (
+				CC8021832381FF360030C2B2 /* MaterialForm */,
 			);
 			productName = SampleSwiftUI;
 			productReference = CC3948F823564C8F008299B1 /* SampleSwiftUI.app */;
@@ -488,14 +462,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		CC8021812381FD5A0030C2B2 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C88688CC234200A000C8ED7D /* MaterialForm */;
-			targetProxy = CC8021802381FD5A0030C2B2 /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C88688E9234200DB00C8ED7D /* LaunchScreen.storyboard */ = {
@@ -836,6 +802,11 @@
 
 /* Begin XCSwiftPackageProductDependency section */
 		CC80217A2381F9A70030C2B2 /* MaterialForm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC8021792381F9A70030C2B2 /* XCRemoteSwiftPackageReference "MaterialForm" */;
+			productName = MaterialForm;
+		};
+		CC8021832381FF360030C2B2 /* MaterialForm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = CC8021792381F9A70030C2B2 /* XCRemoteSwiftPackageReference "MaterialForm" */;
 			productName = MaterialForm;
