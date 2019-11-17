@@ -5,9 +5,9 @@
         "package": "MaterialForm",
         "repositoryURL": "git@github.com:amichnia/MaterialForm.git",
         "state": {
-          "branch": null,
-          "revision": "039fccf81704be7a0ff999ea29807b87e9f1fdc5",
-          "version": "0.0.1"
+          "branch": "master",
+          "revision": "dc672c9828fdc8b555915dceb36bdaf3d6df58d6",
+          "version": null
         }
       }
     ]

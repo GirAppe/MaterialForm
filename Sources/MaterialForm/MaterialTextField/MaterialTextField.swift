@@ -135,6 +135,8 @@ public extension MaterialTextField {
 
     func style(_ style: (MaterialUITextField) -> Void) -> some View {
         style(uiField)
+        uiField.setNeedsLayout()
+        uiField.setNeedsDisplay()
         return self
     }
 }

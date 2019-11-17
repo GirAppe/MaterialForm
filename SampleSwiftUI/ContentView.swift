@@ -7,7 +7,7 @@
 //
 
 import SwiftUI
-import MaterialFormSwiftUI
+import MaterialForm
 
 struct ContentView: View {
 
