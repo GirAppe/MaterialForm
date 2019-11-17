@@ -1,7 +1,10 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 // MARK: - Build UI Phase
 
+@available(iOS 10, *)
 extension MaterialUITextField {
 
     var isInViewHierarchy: Bool {
@@ -171,3 +174,4 @@ extension MaterialUITextField {
     #endif
 }
 
+#endif

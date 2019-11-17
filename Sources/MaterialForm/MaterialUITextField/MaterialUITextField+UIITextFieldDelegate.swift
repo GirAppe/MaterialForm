@@ -1,7 +1,10 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 // MARK: - UITextFieldDelegate
 
+@available(iOS 10, *)
 extension MaterialUITextField: UITextFieldDelegate {
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -83,3 +86,5 @@ extension MaterialUITextField: UITextFieldDelegate {
         }()
     }
 }
+
+#endif

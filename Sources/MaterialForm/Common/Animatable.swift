@@ -1,3 +1,5 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 protocol Animatable {}
@@ -22,3 +24,5 @@ extension Animatable where Self: UIView {
         UIView.animate(withDuration: duration, animations: animation)
     }
 }
+
+#endif

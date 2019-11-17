@@ -1,7 +1,10 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 // MARK: - Text Field State
 
+@available(iOS 10, *)
 public protocol MaterialTextFieldStyle: class {
 
     var maxLineWidth: CGFloat { get }
@@ -25,7 +28,10 @@ public protocol MaterialTextFieldStyle: class {
 
 // MARK: - Accessory State
 
+@available(iOS 10, *)
 public struct AccessoryState {
     let tintColor: UIColor
     let isHidden: Bool
 }
+
+#endif

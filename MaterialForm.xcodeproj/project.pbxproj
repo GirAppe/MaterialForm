@@ -3,20 +3,16 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188C9E234395FC0097FB9E /* KeyboardView.swift */; };
 		C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
 		C81D8D50237D979F00DF972C /* MaterialFormSwiftUI.h in Headers */ = {isa = PBXBuildFile; fileRef = C81D8D4E237D979F00DF972C /* MaterialFormSwiftUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C81D8D53237D979F00DF972C /* MaterialFormSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D8D4C237D979F00DF972C /* MaterialFormSwiftUI.framework */; };
-		C81D8D54237D979F00DF972C /* MaterialFormSwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C81D8D4C237D979F00DF972C /* MaterialFormSwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C81D8D58237D97C000DF972C /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
 		C81D8D59237D97C000DF972C /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C81D8D5F237D97D500DF972C /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81D8D5E237D97D500DF972C /* MaterialTextField.swift */; };
-		C81D8D60237DA08B00DF972C /* MaterialFormSwiftUI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C81D8D4C237D979F00DF972C /* MaterialFormSwiftUI.framework */; };
-		C81D8D61237DA08B00DF972C /* MaterialFormSwiftUI.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C81D8D4C237D979F00DF972C /* MaterialFormSwiftUI.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C823E9BD2344C57A00AD214B /* MaterialUITextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */; };
 		C823E9BF2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BE2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift */; };
 		C823E9C12346398E00AD214B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C02346398E00AD214B /* ViewController.swift */; };
@@ -28,8 +24,6 @@
 		C88688E8234200DB00C8ED7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C88688E7234200DB00C8ED7D /* Preview Assets.xcassets */; };
 		C88688EB234200DB00C8ED7D /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C88688E9234200DB00C8ED7D /* LaunchScreen.storyboard */; };
 		C88688F12342010E00C8ED7D /* MaterialUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688F02342010E00C8ED7D /* MaterialUITextField.swift */; };
-		C88688F32342019600C8ED7D /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
-		C88688F42342019600C8ED7D /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C88688F9234201E400C8ED7D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C88688F8234201E400C8ED7D /* Main.storyboard */; };
 		C88688FB23424CEE00C8ED7D /* MaterialTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688FA23424CEE00C8ED7D /* MaterialTextFieldStyle.swift */; };
 		C88688FF23424D2900C8ED7D /* FieldControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688FE23424D2900C8ED7D /* FieldControlState.swift */; };
@@ -44,8 +38,9 @@
 		CC39490123564C90008299B1 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC39490023564C90008299B1 /* Assets.xcassets */; };
 		CC39490423564C90008299B1 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = CC39490323564C90008299B1 /* Preview Assets.xcassets */; };
 		CC39490723564C90008299B1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = CC39490523564C90008299B1 /* LaunchScreen.storyboard */; };
-		CC39490C23564CB5008299B1 /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
-		CC39490D23564CB5008299B1 /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		CC8021712381E4D80030C2B2 /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = CC8021702381E4D80030C2B2 /* MaterialForm */; };
+		CC8021732381F1540030C2B2 /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = CC8021722381F1540030C2B2 /* MaterialForm */; };
+		CC8021752381F1540030C2B2 /* MaterialFormSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CC8021742381F1540030C2B2 /* MaterialFormSwiftUI */; };
 		CCD19F0C237EF3110082A5B8 /* MaterialUITextField+TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */; };
 		CCD19F0E237EF3A40082A5B8 /* MaterialUITextField+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */; };
 		CCD19F10237EF3F30082A5B8 /* MaterialUITextField+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */; };
@@ -53,35 +48,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
-		C81D8D51237D979F00DF972C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C88688C4234200A000C8ED7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C81D8D4B237D979F00DF972C;
-			remoteInfo = MaterialFormSwiftUI;
-		};
 		C81D8D5A237D97C000DF972C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C88688C4234200A000C8ED7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C88688CC234200A000C8ED7D;
-			remoteInfo = MaterialForm;
-		};
-		C81D8D62237DA08B00DF972C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C88688C4234200A000C8ED7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C81D8D4B237D979F00DF972C;
-			remoteInfo = MaterialFormSwiftUI;
-		};
-		C88688F52342019600C8ED7D /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C88688C4234200A000C8ED7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C88688CC234200A000C8ED7D;
-			remoteInfo = MaterialForm;
-		};
-		CC39490E23564CB5008299B1 /* PBXContainerItemProxy */ = {
 			isa = PBXContainerItemProxy;
 			containerPortal = C88688C4234200A000C8ED7D /* Project object */;
 			proxyType = 1;
@@ -98,30 +65,6 @@
 			dstSubfolderSpec = 10;
 			files = (
 				C81D8D59237D97C000DF972C /* MaterialForm.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		C88688F72342019600C8ED7D /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C88688F42342019600C8ED7D /* MaterialForm.framework in Embed Frameworks */,
-				C81D8D54237D979F00DF972C /* MaterialFormSwiftUI.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-		CC39491023564CB5008299B1 /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				CC39490D23564CB5008299B1 /* MaterialForm.framework in Embed Frameworks */,
-				C81D8D61237DA08B00DF972C /* MaterialFormSwiftUI.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -192,8 +135,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C88688F32342019600C8ED7D /* MaterialForm.framework in Frameworks */,
-				C81D8D53237D979F00DF972C /* MaterialFormSwiftUI.framework in Frameworks */,
+				CC8021712381E4D80030C2B2 /* MaterialForm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -201,8 +143,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				CC39490C23564CB5008299B1 /* MaterialForm.framework in Frameworks */,
-				C81D8D60237DA08B00DF972C /* MaterialFormSwiftUI.framework in Frameworks */,
+				CC8021732381F1540030C2B2 /* MaterialForm in Frameworks */,
+				CC8021752381F1540030C2B2 /* MaterialFormSwiftUI in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -248,8 +190,7 @@
 		C88688C3234200A000C8ED7D = {
 			isa = PBXGroup;
 			children = (
-				C88688CF234200A000C8ED7D /* MaterialForm */,
-				C81D8D4D237D979F00DF972C /* MaterialFormSwiftUI */,
+				CCA301CC2381DC6A00645A67 /* Sources */,
 				C88688DD234200DA00C8ED7D /* SampleApp */,
 				CC3948F923564C8F008299B1 /* SampleSwiftUI */,
 				C88688CE234200A000C8ED7D /* Products */,
@@ -368,6 +309,15 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CCA301CC2381DC6A00645A67 /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				C88688CF234200A000C8ED7D /* MaterialForm */,
+				C81D8D4D237D979F00DF972C /* MaterialFormSwiftUI */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -435,15 +385,15 @@
 				C88688D8234200DA00C8ED7D /* Sources */,
 				C88688D9234200DA00C8ED7D /* Frameworks */,
 				C88688DA234200DA00C8ED7D /* Resources */,
-				C88688F72342019600C8ED7D /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C88688F62342019600C8ED7D /* PBXTargetDependency */,
-				C81D8D52237D979F00DF972C /* PBXTargetDependency */,
 			);
 			name = SampleApp;
+			packageProductDependencies = (
+				CC8021702381E4D80030C2B2 /* MaterialForm */,
+			);
 			productName = SampleApp;
 			productReference = C88688DC234200DA00C8ED7D /* SampleApp.app */;
 			productType = "com.apple.product-type.application";
@@ -455,15 +405,16 @@
 				CC3948F423564C8F008299B1 /* Sources */,
 				CC3948F523564C8F008299B1 /* Frameworks */,
 				CC3948F623564C8F008299B1 /* Resources */,
-				CC39491023564CB5008299B1 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				CC39490F23564CB5008299B1 /* PBXTargetDependency */,
-				C81D8D63237DA08B00DF972C /* PBXTargetDependency */,
 			);
 			name = SampleSwiftUI;
+			packageProductDependencies = (
+				CC8021722381F1540030C2B2 /* MaterialForm */,
+				CC8021742381F1540030C2B2 /* MaterialFormSwiftUI */,
+			);
 			productName = SampleSwiftUI;
 			productReference = CC3948F823564C8F008299B1 /* SampleSwiftUI.app */;
 			productType = "com.apple.product-type.application";
@@ -503,6 +454,9 @@
 				Base,
 			);
 			mainGroup = C88688C3234200A000C8ED7D;
+			packageReferences = (
+				CC80216F2381E4D80030C2B2 /* XCRemoteSwiftPackageReference "MaterialForm" */,
+			);
 			productRefGroup = C88688CE234200A000C8ED7D /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -609,30 +563,10 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXTargetDependency section */
-		C81D8D52237D979F00DF972C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C81D8D4B237D979F00DF972C /* MaterialFormSwiftUI */;
-			targetProxy = C81D8D51237D979F00DF972C /* PBXContainerItemProxy */;
-		};
 		C81D8D5B237D97C000DF972C /* PBXTargetDependency */ = {
 			isa = PBXTargetDependency;
 			target = C88688CC234200A000C8ED7D /* MaterialForm */;
 			targetProxy = C81D8D5A237D97C000DF972C /* PBXContainerItemProxy */;
-		};
-		C81D8D63237DA08B00DF972C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C81D8D4B237D979F00DF972C /* MaterialFormSwiftUI */;
-			targetProxy = C81D8D62237DA08B00DF972C /* PBXContainerItemProxy */;
-		};
-		C88688F62342019600C8ED7D /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C88688CC234200A000C8ED7D /* MaterialForm */;
-			targetProxy = C88688F52342019600C8ED7D /* PBXContainerItemProxy */;
-		};
-		CC39490F23564CB5008299B1 /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C88688CC234200A000C8ED7D /* MaterialForm */;
-			targetProxy = CC39490E23564CB5008299B1 /* PBXContainerItemProxy */;
 		};
 /* End PBXTargetDependency section */
 
@@ -666,7 +600,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MaterialFormSwiftUI/Info.plist;
+				INFOPLIST_FILE = Sources/MaterialFormSwiftUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -693,7 +627,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MaterialFormSwiftUI/Info.plist;
+				INFOPLIST_FILE = Sources/MaterialFormSwiftUI/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -840,7 +774,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MaterialForm/Info.plist;
+				INFOPLIST_FILE = Sources/MaterialForm/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -869,7 +803,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = MaterialForm/Info.plist;
+				INFOPLIST_FILE = Sources/MaterialForm/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -889,7 +823,6 @@
 		C88688EE234200DB00C8ED7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SampleApp/Preview Content\"";
@@ -911,7 +844,6 @@
 		C88688EF234200DB00C8ED7D /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				ALWAYS_EMBED_SWIFT_STANDARD_LIBRARIES = YES;
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"SampleApp/Preview Content\"";
@@ -1021,6 +953,35 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		CC80216F2381E4D80030C2B2 /* XCRemoteSwiftPackageReference "MaterialForm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "git@github.com:amichnia/MaterialForm.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		CC8021702381E4D80030C2B2 /* MaterialForm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC80216F2381E4D80030C2B2 /* XCRemoteSwiftPackageReference "MaterialForm" */;
+			productName = MaterialForm;
+		};
+		CC8021722381F1540030C2B2 /* MaterialForm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC80216F2381E4D80030C2B2 /* XCRemoteSwiftPackageReference "MaterialForm" */;
+			productName = MaterialForm;
+		};
+		CC8021742381F1540030C2B2 /* MaterialFormSwiftUI */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = CC80216F2381E4D80030C2B2 /* XCRemoteSwiftPackageReference "MaterialForm" */;
+			productName = MaterialFormSwiftUI;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C88688C4234200A000C8ED7D /* Project object */;
 }

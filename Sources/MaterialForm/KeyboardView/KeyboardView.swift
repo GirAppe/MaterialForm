@@ -1,5 +1,8 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
+@available(iOS 10, *)
 public class KeyboardView: UIView {
 
     // MARK: - Properties
@@ -69,3 +72,5 @@ public class KeyboardView: UIView {
         UIView.commitAnimations()
     }
 }
+
+#endif

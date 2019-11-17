@@ -1,7 +1,10 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 // MARK: - Underlying View
 
+@available(iOS 10, *)
 final internal class UnderlyingLineView: UIStackView {
 
     // MARK: - State
@@ -172,3 +175,5 @@ final internal class UnderlyingLineView: UIStackView {
         }
     }
 }
+
+#endif

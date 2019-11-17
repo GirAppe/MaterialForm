@@ -1,7 +1,10 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 // MARK: - Accessories build & Action
 
+@available(iOS 10, *)
 extension MaterialUITextField {
 
     /// Accessory describes basic left/right view types:
@@ -120,6 +123,7 @@ extension MaterialUITextField {
 
 // MARK: - Accessory actions
 
+@available(iOS 10, *)
 extension MaterialUITextField {
 
     @objc func didTapRightAccessory() {
@@ -133,6 +137,7 @@ extension MaterialUITextField {
 
 // MARK: - UIView + Button accessory
 
+@available(iOS 10, *)
 extension UIView {
 
     static var buttonTag: Int { return 321823 }
@@ -146,6 +151,7 @@ extension UIView {
 
 // MARK: - UIButton with extensible tappable area
 
+@available(iOS 10, *)
 private class ExtendedUIButton: UIButton {
 
     override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
@@ -156,3 +162,5 @@ private class ExtendedUIButton: UIButton {
         return superPoint || extendedBounds.contains(point)
     }
 }
+
+#endif

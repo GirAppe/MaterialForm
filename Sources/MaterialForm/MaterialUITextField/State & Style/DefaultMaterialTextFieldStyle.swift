@@ -1,7 +1,10 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 // MARK: - Default implementation
 
+@available(iOS 10, *)
 class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
 
     var errorLineWidth: CGFloat = 2
@@ -110,3 +113,5 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
         }
     }
 }
+
+#endif

@@ -2,6 +2,7 @@ import Foundation
 
 // MARK: - Control Event
 
+@available(iOS 10, *)
 @objc public enum FieldTriggerEvent: Int {
     case none
     case tap

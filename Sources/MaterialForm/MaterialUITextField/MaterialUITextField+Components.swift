@@ -1,7 +1,10 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 // MARK: - Components
 
+@available(iOS 10, *)
 extension MaterialUITextField {
 
     // MARK: - Info Label
@@ -111,3 +114,5 @@ extension MaterialUITextField {
         }
     }
 }
+
+#endif

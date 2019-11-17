@@ -1,8 +1,11 @@
+#if os(iOS) || os(tvOS)
+
 import SwiftUI
 import MaterialForm
 
 // MARK: - Material Text Field
 
+@available(iOS 13, *)
 public struct MaterialTextField: UIViewRepresentable {
 
     public typealias UIField = MaterialForm.MaterialUITextField
@@ -70,6 +73,7 @@ public struct MaterialTextField: UIViewRepresentable {
 
 // MARK: - UIViewRepresentable
 
+@available(iOS 13, *)
 public extension MaterialTextField {
 
     func makeUIView(context: Context) -> UIField {
@@ -103,6 +107,7 @@ public extension MaterialTextField {
 
 // MARK: - Coordinator
 
+@available(iOS 13, *)
 public extension MaterialTextField {
 
     func makeCoordinator() -> Coordinator {
@@ -126,10 +131,13 @@ public extension MaterialTextField {
 
 // MARK: - Styling
 
+@available(iOS 13, *)
 public extension MaterialTextField {
 
-    func style(_ style: (MaterialUITextField) -> Void) -> some View {
+    public func style(_ style: (MaterialUITextField) -> Void) -> some View {
         style(uiField)
         return self
     }
 }
+
+#endif

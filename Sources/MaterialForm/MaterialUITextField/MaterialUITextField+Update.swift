@@ -1,7 +1,10 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 // MARK: - Update State Cycle
 
+@available(iOS 10, *)
 extension MaterialUITextField {
 
     public func update(animated: Bool = true) {
@@ -166,3 +169,5 @@ extension MaterialUITextField {
         }
     }
 }
+
+#endif

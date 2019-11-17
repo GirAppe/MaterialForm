@@ -1,7 +1,10 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 // MARK: - Styles Container
 
+@available(iOS 10, *)
 public extension MaterialUITextField {
 
     struct Style {
@@ -14,6 +17,7 @@ public extension MaterialUITextField {
 
 // MARK: - None
 
+@available(iOS 10, *)
 private class NoneFieldStyle: DefaultMaterialTextFieldStyle {
 
     override init() {
@@ -27,6 +31,7 @@ private class NoneFieldStyle: DefaultMaterialTextFieldStyle {
 
 // MARK: - Line
 
+@available(iOS 10, *)
 private class LineFieldStyle: DefaultMaterialTextFieldStyle {
 
     override init() {
@@ -39,6 +44,7 @@ private class LineFieldStyle: DefaultMaterialTextFieldStyle {
 
 // MARK: - Bezel
 
+@available(iOS 10, *)
 private class BezelFieldStyle: DefaultMaterialTextFieldStyle {
 
     var borderWidth: CGFloat = 1
@@ -64,4 +70,7 @@ private class BezelFieldStyle: DefaultMaterialTextFieldStyle {
 
 // MARK: - Rounded
 
+@available(iOS 10, *)
 private class RoundedFieldStyle: DefaultMaterialTextFieldStyle { }
+
+#endif

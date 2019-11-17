@@ -1,9 +1,12 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 internal let isDebuggingViewHierarchy = false
 
 // MARK: - Main Implementation
 
+@available(iOS 10, *)
 open class MaterialUITextField: UITextField, MaterialFieldState {
 
     // MARK: - Configuration
@@ -114,6 +117,29 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     }
     var styleType: UITextField.BorderStyle = .roundedRect {
         didSet { updateStyleType() }
+    }
+
+    // MARK: - Area
+
+    open override func textRect(forBounds bounds: CGRect) -> CGRect {
+        let base = super.textRect(forBounds: bounds)
+        return base.inset(by: textInsets)
+    }
+
+    open override func editingRect(forBounds bounds: CGRect) -> CGRect {
+        let base = super.editingRect(forBounds: bounds)
+        return base.inset(by: textInsets)
+    }
+
+    open override func clearButtonRect(forBounds bounds: CGRect) -> CGRect {
+        var base = super.clearButtonRect(forBounds: bounds)
+        base = base.offsetBy(dx: -rectRightPadding - insets.right, dy: -base.minY - base.height / 2)
+        base = base.offsetBy(dx: 0, dy: backgroundView.bounds.height / 2 + 2)
+        return base
+    }
+
+    open override func caretRect(for position: UITextPosition) -> CGRect {
+        return super.caretRect(for: position).insetBy(dx: 0, dy: fontSize * 0.12)
     }
 
     // MARK: - Inner structure
@@ -303,3 +329,4 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
         addTarget(self, action: #selector(preventImplicitAnimations), for: .editingDidEnd)
     }
 }
+#endif

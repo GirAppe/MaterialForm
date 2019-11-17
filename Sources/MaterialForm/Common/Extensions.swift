@@ -1,3 +1,5 @@
+#if os(iOS) || os(tvOS)
+
 import UIKit
 
 internal extension CGSize {
@@ -38,8 +40,10 @@ internal extension CGRect {
     }
 }
 
+@available(iOS 10, *)
 internal extension UIView {
 
+    @available(iOS 10, *)
     @discardableResult func clear() -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
         removeFromSuperview()
@@ -83,3 +87,5 @@ func setIfPossible<T>(_ lhs: inout T, to value: T?) {
     guard value != nil else { return }
     lhs = value!
 }
+
+#endif
