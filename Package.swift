@@ -5,24 +5,22 @@ import PackageDescription
 
 let package = Package(
     name: "MaterialForm",
+    platforms:  [.iOS(.v10), .tvOS(.v10)],
     products: [
         .library(
             name: "MaterialForm",
-            targets: ["MaterialForm"]),
-        .library(
-            name: "MaterialFormSwiftUI",
-            targets: ["MaterialFormSwiftUI"]),
+            targets: ["MaterialForm"]
+        ),
     ],
     dependencies: [],
     targets: [
         .target(
             name: "MaterialForm",
-            dependencies: []),
-        .target(
-            name: "MaterialFormSwiftUI",
-            dependencies: ["MaterialForm"]),
+            dependencies: []
+        ),
         .testTarget(
             name: "MaterialFormTests",
-            dependencies: ["MaterialForm", "MaterialFormSwiftUI"]),
+            dependencies: ["MaterialForm"]
+        ),
     ]
 )

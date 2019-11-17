@@ -9,10 +9,6 @@
 /* Begin PBXBuildFile section */
 		C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188C9E234395FC0097FB9E /* KeyboardView.swift */; };
 		C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
-		C81D8D50237D979F00DF972C /* MaterialFormSwiftUI.h in Headers */ = {isa = PBXBuildFile; fileRef = C81D8D4E237D979F00DF972C /* MaterialFormSwiftUI.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C81D8D58237D97C000DF972C /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
-		C81D8D59237D97C000DF972C /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
-		C81D8D5F237D97D500DF972C /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C81D8D5E237D97D500DF972C /* MaterialTextField.swift */; };
 		C823E9BD2344C57A00AD214B /* MaterialUITextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */; };
 		C823E9BF2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BE2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift */; };
 		C823E9C12346398E00AD214B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C02346398E00AD214B /* ViewController.swift */; };
@@ -41,43 +37,16 @@
 		CC8021712381E4D80030C2B2 /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = CC8021702381E4D80030C2B2 /* MaterialForm */; };
 		CC8021732381F1540030C2B2 /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = CC8021722381F1540030C2B2 /* MaterialForm */; };
 		CC8021752381F1540030C2B2 /* MaterialFormSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = CC8021742381F1540030C2B2 /* MaterialFormSwiftUI */; };
+		CC8021782381F7950030C2B2 /* MaterialTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = CC8021772381F7950030C2B2 /* MaterialTextField.swift */; };
 		CCD19F0C237EF3110082A5B8 /* MaterialUITextField+TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */; };
 		CCD19F0E237EF3A40082A5B8 /* MaterialUITextField+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */; };
 		CCD19F10237EF3F30082A5B8 /* MaterialUITextField+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */; };
 		CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */; };
 /* End PBXBuildFile section */
 
-/* Begin PBXContainerItemProxy section */
-		C81D8D5A237D97C000DF972C /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C88688C4234200A000C8ED7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C88688CC234200A000C8ED7D;
-			remoteInfo = MaterialForm;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C81D8D5C237D97C000DF972C /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C81D8D59237D97C000DF972C /* MaterialForm.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
-
 /* Begin PBXFileReference section */
 		C8188C9E234395FC0097FB9E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		C8188CA0234495150097FB9E /* UnderlyingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingField.swift; sourceTree = "<group>"; };
-		C81D8D4C237D979F00DF972C /* MaterialFormSwiftUI.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialFormSwiftUI.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C81D8D4E237D979F00DF972C /* MaterialFormSwiftUI.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialFormSwiftUI.h; sourceTree = "<group>"; };
-		C81D8D4F237D979F00DF972C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		C81D8D5E237D97D500DF972C /* MaterialTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+Components.swift"; sourceTree = "<group>"; };
 		C823E9BE2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+UIITextFieldDelegate.swift"; sourceTree = "<group>"; };
 		C823E9C02346398E00AD214B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -109,6 +78,7 @@
 		CC39490323564C90008299B1 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		CC39490623564C90008299B1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		CC39490823564C90008299B1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		CC8021772381F7950030C2B2 /* MaterialTextField.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MaterialTextField.swift; sourceTree = "<group>"; };
 		CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+TextArea.swift"; sourceTree = "<group>"; };
 		CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+Update.swift"; sourceTree = "<group>"; };
 		CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+Build.swift"; sourceTree = "<group>"; };
@@ -116,14 +86,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C81D8D49237D979F00DF972C /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C81D8D58237D97C000DF972C /* MaterialForm.framework in Frameworks */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C88688CA234200A000C8ED7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -159,24 +121,6 @@
 			path = KeyboardView;
 			sourceTree = "<group>";
 		};
-		C81D8D4D237D979F00DF972C /* MaterialFormSwiftUI */ = {
-			isa = PBXGroup;
-			children = (
-				C81D8D5D237D97C700DF972C /* MaterialTextField */,
-				C81D8D4E237D979F00DF972C /* MaterialFormSwiftUI.h */,
-				C81D8D4F237D979F00DF972C /* Info.plist */,
-			);
-			path = MaterialFormSwiftUI;
-			sourceTree = "<group>";
-		};
-		C81D8D5D237D97C700DF972C /* MaterialTextField */ = {
-			isa = PBXGroup;
-			children = (
-				C81D8D5E237D97D500DF972C /* MaterialTextField.swift */,
-			);
-			path = MaterialTextField;
-			sourceTree = "<group>";
-		};
 		C823E9C42347400F00AD214B /* State & Style */ = {
 			isa = PBXGroup;
 			children = (
@@ -204,7 +148,6 @@
 				C88688CD234200A000C8ED7D /* MaterialForm.framework */,
 				C88688DC234200DA00C8ED7D /* SampleApp.app */,
 				CC3948F823564C8F008299B1 /* SampleSwiftUI.app */,
-				C81D8D4C237D979F00DF972C /* MaterialFormSwiftUI.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -214,6 +157,7 @@
 			children = (
 				C886890623424E7E00C8ED7D /* Models */,
 				C88688FC23424D0100C8ED7D /* MaterialUITextField */,
+				CC8021762381F7950030C2B2 /* MaterialTextField */,
 				C8188C9D234395ED0097FB9E /* KeyboardView */,
 				C88688FD23424D0A00C8ED7D /* Common */,
 				C88688D0234200A000C8ED7D /* MaterialForm.h */,
@@ -309,11 +253,18 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
+		CC8021762381F7950030C2B2 /* MaterialTextField */ = {
+			isa = PBXGroup;
+			children = (
+				CC8021772381F7950030C2B2 /* MaterialTextField.swift */,
+			);
+			path = MaterialTextField;
+			sourceTree = "<group>";
+		};
 		CCA301CC2381DC6A00645A67 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
 				C88688CF234200A000C8ED7D /* MaterialForm */,
-				C81D8D4D237D979F00DF972C /* MaterialFormSwiftUI */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -321,14 +272,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		C81D8D47237D979F00DF972C /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C81D8D50237D979F00DF972C /* MaterialFormSwiftUI.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C88688C8234200A000C8ED7D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -340,26 +283,6 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		C81D8D4B237D979F00DF972C /* MaterialFormSwiftUI */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C81D8D55237D979F00DF972C /* Build configuration list for PBXNativeTarget "MaterialFormSwiftUI" */;
-			buildPhases = (
-				C81D8D47237D979F00DF972C /* Headers */,
-				C81D8D48237D979F00DF972C /* Sources */,
-				C81D8D49237D979F00DF972C /* Frameworks */,
-				C81D8D4A237D979F00DF972C /* Resources */,
-				C81D8D5C237D97C000DF972C /* Embed Frameworks */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-				C81D8D5B237D97C000DF972C /* PBXTargetDependency */,
-			);
-			name = MaterialFormSwiftUI;
-			productName = MaterialFormSwiftUI;
-			productReference = C81D8D4C237D979F00DF972C /* MaterialFormSwiftUI.framework */;
-			productType = "com.apple.product-type.framework";
-		};
 		C88688CC234200A000C8ED7D /* MaterialForm */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = C88688D5234200A000C8ED7D /* Build configuration list for PBXNativeTarget "MaterialForm" */;
@@ -429,10 +352,6 @@
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = MakeAWishFoundation;
 				TargetAttributes = {
-					C81D8D4B237D979F00DF972C = {
-						CreatedOnToolsVersion = 11.2.1;
-						LastSwiftMigration = 1120;
-					};
 					C88688CC234200A000C8ED7D = {
 						CreatedOnToolsVersion = 11.1;
 						LastSwiftMigration = 1110;
@@ -462,7 +381,6 @@
 			projectRoot = "";
 			targets = (
 				C88688CC234200A000C8ED7D /* MaterialForm */,
-				C81D8D4B237D979F00DF972C /* MaterialFormSwiftUI */,
 				C88688DB234200DA00C8ED7D /* SampleApp */,
 				CC3948F723564C8F008299B1 /* SampleSwiftUI */,
 			);
@@ -470,13 +388,6 @@
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C81D8D4A237D979F00DF972C /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C88688CB234200A000C8ED7D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -508,14 +419,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C81D8D48237D979F00DF972C /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C81D8D5F237D97D500DF972C /* MaterialTextField.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C88688C9234200A000C8ED7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -527,6 +430,7 @@
 				C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */,
 				C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */,
 				C8CC487923479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift in Sources */,
+				CC8021782381F7950030C2B2 /* MaterialTextField.swift in Sources */,
 				CCD19F10237EF3F30082A5B8 /* MaterialUITextField+Build.swift in Sources */,
 				C88688FB23424CEE00C8ED7D /* MaterialTextFieldStyle.swift in Sources */,
 				C823E9BF2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift in Sources */,
@@ -562,14 +466,6 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
-/* Begin PBXTargetDependency section */
-		C81D8D5B237D97C000DF972C /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C88688CC234200A000C8ED7D /* MaterialForm */;
-			targetProxy = C81D8D5A237D97C000DF972C /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
-
 /* Begin PBXVariantGroup section */
 		C88688E9234200DB00C8ED7D /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -590,59 +486,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C81D8D56237D979F00DF972C /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = YYAKJ5SR76;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/MaterialFormSwiftUI/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.girappe.MaterialFormSwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Debug;
-		};
-		C81D8D57237D979F00DF972C /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CLANG_ENABLE_MODULES = YES;
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = YYAKJ5SR76;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/MaterialFormSwiftUI/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.girappe.MaterialFormSwiftUI;
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
-			};
-			name = Release;
-		};
 		C88688D3234200A000C8ED7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -907,15 +750,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C81D8D55237D979F00DF972C /* Build configuration list for PBXNativeTarget "MaterialFormSwiftUI" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C81D8D56237D979F00DF972C /* Debug */,
-				C81D8D57237D979F00DF972C /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		C88688C7234200A000C8ED7D /* Build configuration list for PBXProject "MaterialForm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

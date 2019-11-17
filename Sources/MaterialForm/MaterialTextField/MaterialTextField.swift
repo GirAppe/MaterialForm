@@ -1,7 +1,6 @@
-#if os(iOS) || os(tvOS)
-
+#if canImport(UIKit) && canImport(SwiftUI)
 import SwiftUI
-import MaterialForm
+import UIKit
 
 // MARK: - Material Text Field
 
@@ -134,7 +133,7 @@ public extension MaterialTextField {
 @available(iOS 13, *)
 public extension MaterialTextField {
 
-    public func style(_ style: (MaterialUITextField) -> Void) -> some View {
+    func style(_ style: (MaterialUITextField) -> Void) -> some View {
         style(uiField)
         return self
     }
