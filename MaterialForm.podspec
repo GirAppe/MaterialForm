@@ -7,7 +7,7 @@ Pod::Spec.new do |s|
                         DESC
 
     s.homepage         = 'https://github.com/GirAppe/MaterialForm.git'
-    s.screenshots      = 'https://raw.githubusercontent.com/GirAppe/MaterialForm/1.0.0/icon.png'
+    s.screenshots      = 'https://raw.githubusercontent.com/GirAppe/MaterialForm/0.0.1/material-form-light.gif', 'https://raw.githubusercontent.com/GirAppe/MaterialForm/0.0.1/material-form-light.gif'
     s.license          = { :type => 'MIT', :file => 'LICENSE' }
     s.author           = { 'Andrzej Michnia' => 'amichnia@gmail.com' }
     s.source           = { :git => 'https://github.com/GirAppe/MaterialForm.git', :tag => s.version.to_s }

@@ -159,7 +159,6 @@
 				C8188C9D234395ED0097FB9E /* KeyboardView */,
 				C88688FD23424D0A00C8ED7D /* Common */,
 				C88688D0234200A000C8ED7D /* MaterialForm.h */,
-				C88688D1234200A000C8ED7D /* Info.plist */,
 			);
 			path = MaterialForm;
 			sourceTree = "<group>";
@@ -263,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				C88688CF234200A000C8ED7D /* MaterialForm */,
+				C88688D1234200A000C8ED7D /* Info.plist */,
 			);
 			path = Sources;
 			sourceTree = "<group>";
@@ -614,7 +614,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/MaterialForm/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -643,7 +643,7 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/MaterialForm/Info.plist;
+				INFOPLIST_FILE = Sources/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
 				IPHONEOS_DEPLOYMENT_TARGET = 10.0;
 				LD_RUNPATH_SEARCH_PATHS = (
