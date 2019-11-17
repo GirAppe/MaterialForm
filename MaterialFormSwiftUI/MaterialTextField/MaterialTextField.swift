@@ -9,6 +9,7 @@ public struct MaterialTextField: UIViewRepresentable {
     public typealias Styling = (UIField) -> Void
     public typealias Event = MaterialForm.FieldTriggerEvent
     public typealias EventHandler = (Event) -> Void
+    public typealias Accessory = MaterialUITextField.Accessory
 
     // MARK: - Properties
 
@@ -18,14 +19,13 @@ public struct MaterialTextField: UIViewRepresentable {
     @Binding public var error: String?
     @Binding public var maxCharacterCount: Int
 
-    public var borderStyle: UITextField.BorderStyle
-
     var isShowingError: Bool { error != nil }
+    let action: EventHandler?
 
     // MARK: - Internal properties
 
     private let uiField = UIField()
-    private let style: Styling?
+    private let style: Styling
 
     // MARK: - Initializers
 
@@ -35,17 +35,16 @@ public struct MaterialTextField: UIViewRepresentable {
         info: Binding<String>? = nil,
         error: Binding<String?>? = nil,
         maxCharacterCount: Binding<Int>? = nil,
-        borderStyle: UITextField.BorderStyle = .roundedRect,
         action: EventHandler? = nil,
-        style: Styling? = nil
+        style: @escaping Styling = { _ in }
     ) {
         self._title = title
         self._text = text
         self._info = info ?? .constant("")
         self._error = error ?? .constant(nil)
         self._maxCharacterCount = maxCharacterCount ?? .constant(0)
-        self.borderStyle = borderStyle
         self.style = style
+        self.action = action
     }
 
     public init(
@@ -54,9 +53,8 @@ public struct MaterialTextField: UIViewRepresentable {
         info: Binding<String>? = nil,
         error: Binding<String?>? = nil,
         maxCharacterCount: Binding<Int>? = nil,
-        borderStyle: UITextField.BorderStyle = .roundedRect,
         action: EventHandler? = nil,
-        style: Styling? = nil
+        style: @escaping Styling = { _ in }
     ) {
         self.init(
             title: .constant(title),
@@ -64,7 +62,6 @@ public struct MaterialTextField: UIViewRepresentable {
             info: info,
             error: error,
             maxCharacterCount: maxCharacterCount,
-            borderStyle: borderStyle,
             action: action,
             style: style
         )
@@ -79,14 +76,13 @@ public extension MaterialTextField {
         uiField.text = text
         uiField.borderStyle = .roundedRect
         uiField.placeholder = title
-        uiField.borderStyle = borderStyle
 
         uiField.setContentHuggingPriority(.defaultHigh, for: .vertical)
         uiField.setContentHuggingPriority(.defaultLow, for: .horizontal)
         uiField.setContentCompressionResistancePriority(.required, for: .vertical)
         uiField.setContentCompressionResistancePriority(.defaultLow, for: .horizontal)
 
-        style?(uiField)
+        style(uiField)
         uiField.setNeedsLayout()
         uiField.setNeedsDisplay()
 
@@ -99,8 +95,7 @@ public extension MaterialTextField {
         uiField.errorMessage = error
         uiField.infoMessage = info
         uiField.maxCharactersCount = maxCharacterCount
-        uiField.borderStyle = borderStyle
-        style?(uiField)
+        style(uiField)
         uiField.setNeedsLayout()
         uiField.setNeedsDisplay()
     }
@@ -116,10 +111,14 @@ public extension MaterialTextField {
 
     class Coordinator: NSObject {
         var textObservation: Any
+        var eventObservation: Any
 
         init(of field: MaterialTextField) {
-            textObservation = field.uiField.observe(\MaterialUITextField.text) { it, _ in
+            textObservation = field.uiField.observe(\.text) { it, _ in
                 DispatchQueue.main.async { field.text = it.text ?? "" }
+            }
+            eventObservation = field.uiField.observe(\.event) { it, _ in
+                DispatchQueue.main.async { field.action?(it.event) }
             }
         }
     }
