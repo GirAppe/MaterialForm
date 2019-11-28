@@ -5,7 +5,7 @@ import PackageDescription
 
 let package = Package(
     name: "MaterialForm",
-    platforms:  [.iOS(.v10), .tvOS(.v10)],
+    platforms:  [.iOS(.v10), .tvOS(.v11)],
     products: [
         .library(
             name: "MaterialForm",

@@ -65,7 +65,7 @@ extension MaterialUITextField: UITextFieldDelegate {
         return newText.count <= maxCharactersCount || newText.count < oldText.count
     }
 
-    @available(iOS 13.0, *)
+    @available(iOS 13.0, tvOS 13.0, *)
     public func textFieldDidChangeSelection(_ textField: UITextField) {
         proxyDelegate?.textFieldDidChangeSelection?(self)
     }
