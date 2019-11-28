@@ -22,8 +22,13 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
     var defaultRadius: CGFloat = 6
     var defaultWidth: CGFloat = 0
 
+    #if os(iOS)
     var defaultColor: UIColor = .darkText
     var defaultPlaceholderColor: UIColor = .darkText
+    #elseif os(tvOS)
+    var defaultColor: UIColor = .black
+    var defaultPlaceholderColor: UIColor = .darkGray
+    #endif
 
     // MARK: - Style
 

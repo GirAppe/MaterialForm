@@ -35,7 +35,11 @@ final internal class UnderlyingLineView: UIStackView {
     private var animateChange: Bool = false
 
     var width: CGFloat = 1 { didSet { animateLineWidth(from: oldValue, to: width) } }
+    #if os(iOS)
     var color: UIColor = .darkText { didSet { animateColor(to: color) } }
+    #elseif os(tvOS)
+    var color: UIColor = .black { didSet { animateColor(to: color) } }
+    #endif
     var underAccessory: Bool = true { didSet { updateUnderAccessory() } }
     var animationDuration: TimeInterval = 0.3
 
