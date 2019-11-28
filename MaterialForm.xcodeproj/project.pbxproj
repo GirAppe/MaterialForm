@@ -3,12 +3,11 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 52;
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C804AD0F238FD42400AFD26B /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
-		C804AD10238FD42400AFD26B /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
+		C804AD16238FD72C00AFD26B /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = C804AD15238FD72C00AFD26B /* MaterialForm */; };
 		C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188C9E234395FC0097FB9E /* KeyboardView.swift */; };
 		C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
 		C823E9BD2344C57A00AD214B /* MaterialUITextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */; };
@@ -35,30 +34,6 @@
 		CCD19F10237EF3F30082A5B8 /* MaterialUITextField+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */; };
 		CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */; };
 /* End PBXBuildFile section */
-
-/* Begin PBXContainerItemProxy section */
-		C804AD11238FD42400AFD26B /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = C88688C4234200A000C8ED7D /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = C88688CC234200A000C8ED7D;
-			remoteInfo = MaterialForm;
-		};
-/* End PBXContainerItemProxy section */
-
-/* Begin PBXCopyFilesBuildPhase section */
-		C804AD13238FD42400AFD26B /* Embed Frameworks */ = {
-			isa = PBXCopyFilesBuildPhase;
-			buildActionMask = 2147483647;
-			dstPath = "";
-			dstSubfolderSpec = 10;
-			files = (
-				C804AD10238FD42400AFD26B /* MaterialForm.framework in Embed Frameworks */,
-			);
-			name = "Embed Frameworks";
-			runOnlyForDeploymentPostprocessing = 0;
-		};
-/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C8188C9E234395FC0097FB9E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
@@ -104,7 +79,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C804AD0F238FD42400AFD26B /* MaterialForm.framework in Frameworks */,
+				C804AD16238FD72C00AFD26B /* MaterialForm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -273,15 +248,14 @@
 				C88688D8234200DA00C8ED7D /* Sources */,
 				C88688D9234200DA00C8ED7D /* Frameworks */,
 				C88688DA234200DA00C8ED7D /* Resources */,
-				C804AD13238FD42400AFD26B /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
 			dependencies = (
-				C804AD12238FD42400AFD26B /* PBXTargetDependency */,
 			);
 			name = SampleApp;
 			packageProductDependencies = (
+				C804AD15238FD72C00AFD26B /* MaterialForm */,
 			);
 			productName = SampleApp;
 			productReference = C88688DC234200DA00C8ED7D /* SampleApp.app */;
@@ -316,6 +290,7 @@
 			);
 			mainGroup = C88688C3234200A000C8ED7D;
 			packageReferences = (
+				C804AD14238FD72C00AFD26B /* XCRemoteSwiftPackageReference "MaterialForm" */,
 			);
 			productRefGroup = C88688CE234200A000C8ED7D /* Products */;
 			projectDirPath = "";
@@ -384,14 +359,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
-
-/* Begin PBXTargetDependency section */
-		C804AD12238FD42400AFD26B /* PBXTargetDependency */ = {
-			isa = PBXTargetDependency;
-			target = C88688CC234200A000C8ED7D /* MaterialForm */;
-			targetProxy = C804AD11238FD42400AFD26B /* PBXContainerItemProxy */;
-		};
-/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C88688E9234200DB00C8ED7D /* LaunchScreen.storyboard */ = {
@@ -659,6 +626,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C804AD14238FD72C00AFD26B /* XCRemoteSwiftPackageReference "MaterialForm" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/GirAppe/MaterialForm.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C804AD15238FD72C00AFD26B /* MaterialForm */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C804AD14238FD72C00AFD26B /* XCRemoteSwiftPackageReference "MaterialForm" */;
+			productName = MaterialForm;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C88688C4234200A000C8ED7D /* Project object */;
 }
