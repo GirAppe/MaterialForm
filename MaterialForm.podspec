@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
     s.name             = 'MaterialForm'
-    s.version          = '0.0.1'
+    s.version          = '0.0.2'
     s.summary          = 'Material UI Text Field for both UIKit (iOS 10+) and SwiftUI (iOS 13+).'
     s.description      = <<-DESC
     Defines reusable and observable Material text field component, that works both with UIKit (iOS 10+) and SwiftUI (iOS 13+).
