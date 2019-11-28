@@ -26,6 +26,7 @@
 		C8168036239003F400CDD261 /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
 		C8168037239003F400CDD261 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890223424DB700C8ED7D /* Extensions.swift */; };
 		C8168038239003F400CDD261 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C223473F3D00AD214B /* Animatable.swift */; };
+		C81680392390055400CDD261 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188C9E234395FC0097FB9E /* KeyboardView.swift */; };
 		C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188C9E234395FC0097FB9E /* KeyboardView.swift */; };
 		C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
 		C823E9BD2344C57A00AD214B /* MaterialUITextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */; };
@@ -230,9 +231,9 @@
 		CCA301CC2381DC6A00645A67 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
+				C88688CF234200A000C8ED7D /* MaterialForm */,
 				C88688D0234200A000C8ED7D /* MaterialForm_iOS.h */,
 				C81680212390031700CDD261 /* MaterialForm_tvOS.h */,
-				C88688CF234200A000C8ED7D /* MaterialForm */,
 				C88688D1234200A000C8ED7D /* Info.plist */,
 			);
 			path = Sources;
@@ -397,6 +398,7 @@
 				C8168033239003F400CDD261 /* MaterialTextFieldStyle.swift in Sources */,
 				C816802D239003F400CDD261 /* MaterialUITextField+TextArea.swift in Sources */,
 				C8168036239003F400CDD261 /* UnderlyingField.swift in Sources */,
+				C81680392390055400CDD261 /* KeyboardView.swift in Sources */,
 				C8168038239003F400CDD261 /* Animatable.swift in Sources */,
 				C8168031239003F400CDD261 /* MaterialUITextField+UIITextFieldDelegate.swift in Sources */,
 				C8168035239003F400CDD261 /* UnderlyingLineView.swift in Sources */,
