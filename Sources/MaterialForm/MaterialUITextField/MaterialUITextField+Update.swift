@@ -44,7 +44,7 @@ extension MaterialUITextField {
 
         updateAccessory()
 
-        infoAccessory.isHidden = !showCharactersCounter || maxCharactersCount <= 0
+        infoAccessory.isHidden = !showCharactersCounter
         infoAccessory.textColor = infoLabel.textColor
         infoAccessory.font = infoLabel.font
         updateCharactersCount()
@@ -145,7 +145,11 @@ extension MaterialUITextField {
     }
 
     func updateCharactersCount() {
-        infoAccessory.text = "\(text?.count ?? 0)/\(maxCharactersCount)"
+        if maxCharactersCount > 0 {
+            infoAccessory.text = "\(text?.count ?? 0)/\(maxCharactersCount)"
+        } else {
+            infoAccessory.text = "\(text?.count ?? 0)"
+        }
     }
 
     public func updateFieldState() {
