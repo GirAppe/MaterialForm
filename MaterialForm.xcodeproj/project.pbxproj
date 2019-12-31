@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C804AD16238FD72C00AFD26B /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = C804AD15238FD72C00AFD26B /* MaterialForm */; };
 		C81680232390031700CDD261 /* MaterialForm_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C81680212390031700CDD261 /* MaterialForm_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C8168028239003F400CDD261 /* FieldControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688FE23424D2900C8ED7D /* FieldControlState.swift */; };
 		C8168029239003F400CDD261 /* FieldTriggerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890023424D3D00C8ED7D /* FieldTriggerEvent.swift */; };
@@ -48,11 +47,27 @@
 		C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */; };
 		C8CC487923479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487823479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift */; };
 		C8CC487B23479C4F005BE5E8 /* MaterialFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */; };
+		C8E10E0123BB778900D4F425 /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = C8E10E0023BB778900D4F425 /* MaterialForm */; };
+		C8E10E0223BB778900D4F425 /* MaterialForm in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C8E10E0023BB778900D4F425 /* MaterialForm */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CCD19F0C237EF3110082A5B8 /* MaterialUITextField+TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */; };
 		CCD19F0E237EF3A40082A5B8 /* MaterialUITextField+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */; };
 		CCD19F10237EF3F30082A5B8 /* MaterialUITextField+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */; };
 		CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		C8E10E0323BB778900D4F425 /* Embed Frameworks */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 10;
+			files = (
+				C8E10E0223BB778900D4F425 /* MaterialForm in Embed Frameworks */,
+			);
+			name = "Embed Frameworks";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
 		C816801F2390031700CDD261 /* MaterialForm_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialForm_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -107,7 +122,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C804AD16238FD72C00AFD26B /* MaterialForm in Frameworks */,
+				C8E10E0123BB778900D4F425 /* MaterialForm in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -304,6 +319,7 @@
 				C88688D8234200DA00C8ED7D /* Sources */,
 				C88688D9234200DA00C8ED7D /* Frameworks */,
 				C88688DA234200DA00C8ED7D /* Resources */,
+				C8E10E0323BB778900D4F425 /* Embed Frameworks */,
 			);
 			buildRules = (
 			);
@@ -311,7 +327,7 @@
 			);
 			name = SampleApp;
 			packageProductDependencies = (
-				C804AD15238FD72C00AFD26B /* MaterialForm */,
+				C8E10E0023BB778900D4F425 /* MaterialForm */,
 			);
 			productName = SampleApp;
 			productReference = C88688DC234200DA00C8ED7D /* SampleApp.app */;
@@ -794,7 +810,7 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		C804AD15238FD72C00AFD26B /* MaterialForm */ = {
+		C8E10E0023BB778900D4F425 /* MaterialForm */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = C804AD14238FD72C00AFD26B /* XCRemoteSwiftPackageReference "MaterialForm" */;
 			productName = MaterialForm;
