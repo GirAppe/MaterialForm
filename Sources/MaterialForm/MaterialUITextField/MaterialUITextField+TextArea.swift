@@ -17,14 +17,12 @@ extension MaterialUITextField {
         return rightAccessoryView.bounds.width + innerHorizontalSpacing
     }
 
-    var textInsets: UIEdgeInsets {
-        return UIEdgeInsets(
-            top: topPadding + insets.top,
-            left: rectLeftPadding + insets.left,
-            bottom: bottomPadding + insets.bottom,
-            right: rectRightPadding + insets.right
-        )
-    }
+    var textInsets: UIEdgeInsets { UIEdgeInsets(
+        top: topPadding + insets.top,
+        left: rectLeftPadding + insets.left,
+        bottom: bottomPadding + insets.bottom,
+        right: rectRightPadding + insets.right
+    )}
 }
 
 #endif

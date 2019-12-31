@@ -37,6 +37,7 @@ extension MaterialUITextField {
         infoLabel.set(state: self, style: style)
         backgroundView.set(state: self, style: style)
 
+        infoLabel.font = (font ?? infoLabel.font)?.withSize(infoPointSize)
         infoLabel.update(animated: animated)
         bezelView.update(animated: animated)
         backgroundView.update(animated: animated)

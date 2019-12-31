@@ -2,6 +2,8 @@
 
 import UIKit
 
+/// `KeyboardView` is a view you can attach to the bottom of the screen, and it will extend itself to cover the space under keyboard. Intended to use on iPhone's to assure
+/// that field placed in a scroll view is always visible when keyboard appears. Refer to the sample app or documentation for examples.
 @available(iOS 10, *)
 public class KeyboardView: UIView {
 

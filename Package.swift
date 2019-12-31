@@ -9,6 +9,7 @@ let package = Package(
     products: [
         .library(
             name: "MaterialForm",
+            type: .dynamic,
             targets: ["MaterialForm"]
         ),
     ],

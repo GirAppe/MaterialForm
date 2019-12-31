@@ -7,10 +7,15 @@ import UIKit
 @available(iOS 10, *)
 public extension MaterialUITextField {
 
+    /// Container for default styles
     struct Style {
+        /// MaterialuitextField style for border type == `.none`
         static let none: MaterialTextFieldStyle = NoneFieldStyle()
+        /// MaterialuitextField style for border type == `.line`
         static let line: MaterialTextFieldStyle = LineFieldStyle()
+        /// MaterialuitextField style for border type == `.bezel`
         static let bezel: MaterialTextFieldStyle = BezelFieldStyle()
+        /// MaterialuitextField style for border type == `.roundedRect`
         static let rounded: MaterialTextFieldStyle = RoundedFieldStyle()
     }
 }

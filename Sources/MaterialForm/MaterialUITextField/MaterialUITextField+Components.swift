@@ -9,6 +9,7 @@ extension MaterialUITextField {
 
     // MARK: - Info Label
 
+    /// [Internal] info label class
     public class InfoLabel: UILabel {
 
         var minHeight: NSLayoutConstraint!
@@ -61,7 +62,7 @@ extension MaterialUITextField {
             guard let state = state, let style = style else { return }
 
             layer.cornerRadius = style.cornerRadius
-            if #available(iOS 11.0, *) {
+            if #available(iOS 11.0, tvOS 11.0, *) {
                 layer.maskedCorners = [.layerMinXMinYCorner,.layerMaxXMinYCorner]
             } else {
                 maskByRoundingCorners([.topLeft, .topRight])

@@ -12,7 +12,7 @@ extension MaterialUITextField {
     /// - **view(UIView)**: custom accessory view (same as setting leftView/rightView properties)
     /// - **info(UIImage)**: basic icon tinted same as text
     /// - **error(UIImage)**: basic icon visible only when showing error
-    /// - **error(UIImage)**: clickable accessory, tinted with focused color
+    /// - **action(UIImage)**: clickable accessory, tinted with focused color
     public enum Accessory {
         case none
         case view(UIView)
