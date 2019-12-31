@@ -7,25 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		C81680232390031700CDD261 /* MaterialForm_tvOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C81680212390031700CDD261 /* MaterialForm_tvOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		C8168028239003F400CDD261 /* FieldControlState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688FE23424D2900C8ED7D /* FieldControlState.swift */; };
-		C8168029239003F400CDD261 /* FieldTriggerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890023424D3D00C8ED7D /* FieldTriggerEvent.swift */; };
-		C816802A239003F400CDD261 /* MaterialUITextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688F02342010E00C8ED7D /* MaterialUITextField.swift */; };
-		C816802B239003F400CDD261 /* MaterialUITextField+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */; };
-		C816802C239003F400CDD261 /* MaterialUITextField+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */; };
-		C816802D239003F400CDD261 /* MaterialUITextField+TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */; };
-		C816802E239003F400CDD261 /* MaterialUITextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */; };
-		C816802F239003F400CDD261 /* MaterialUITextField+DefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487823479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift */; };
-		C8168030239003F400CDD261 /* MaterialUITextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */; };
-		C8168031239003F400CDD261 /* MaterialUITextField+UIITextFieldDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BE2344C5B700AD214B /* MaterialUITextField+UIITextFieldDelegate.swift */; };
-		C8168032239003F400CDD261 /* MaterialFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */; };
-		C8168033239003F400CDD261 /* MaterialTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688FA23424CEE00C8ED7D /* MaterialTextFieldStyle.swift */; };
-		C8168034239003F400CDD261 /* DefaultMaterialTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */; };
-		C8168035239003F400CDD261 /* UnderlyingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */; };
-		C8168036239003F400CDD261 /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
-		C8168037239003F400CDD261 /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890223424DB700C8ED7D /* Extensions.swift */; };
-		C8168038239003F400CDD261 /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C223473F3D00AD214B /* Animatable.swift */; };
-		C81680392390055400CDD261 /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188C9E234395FC0097FB9E /* KeyboardView.swift */; };
 		C8188C9F234395FC0097FB9E /* KeyboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188C9E234395FC0097FB9E /* KeyboardView.swift */; };
 		C8188CA1234495150097FB9E /* UnderlyingField.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8188CA0234495150097FB9E /* UnderlyingField.swift */; };
 		C823E9BD2344C57A00AD214B /* MaterialUITextField+Components.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */; };
@@ -70,7 +51,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C816801F2390031700CDD261 /* MaterialForm_tvOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialForm_tvOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C81680212390031700CDD261 /* MaterialForm_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialForm_tvOS.h; sourceTree = "<group>"; };
 		C8188C9E234395FC0097FB9E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		C8188CA0234495150097FB9E /* UnderlyingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingField.swift; sourceTree = "<group>"; };
@@ -79,7 +59,7 @@
 		C823E9C02346398E00AD214B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C823E9C223473F3D00AD214B /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMaterialTextFieldStyle.swift; sourceTree = "<group>"; };
-		C88688CD234200A000C8ED7D /* MaterialForm_iOS.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialForm_iOS.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		C88688CD234200A000C8ED7D /* MaterialForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		C88688D0234200A000C8ED7D /* MaterialForm_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialForm_iOS.h; sourceTree = "<group>"; };
 		C88688D1234200A000C8ED7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C88688DC234200DA00C8ED7D /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -104,13 +84,6 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		C816801C2390031700CDD261 /* Frameworks */ = {
-			isa = PBXFrameworksBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C88688CA234200A000C8ED7D /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -160,9 +133,8 @@
 		C88688CE234200A000C8ED7D /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				C88688CD234200A000C8ED7D /* MaterialForm_iOS.framework */,
+				C88688CD234200A000C8ED7D /* MaterialForm.framework */,
 				C88688DC234200DA00C8ED7D /* SampleApp.app */,
-				C816801F2390031700CDD261 /* MaterialForm_tvOS.framework */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -257,14 +229,6 @@
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
-		C816801A2390031700CDD261 /* Headers */ = {
-			isa = PBXHeadersBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C81680232390031700CDD261 /* MaterialForm_tvOS.h in Headers */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C88688C8234200A000C8ED7D /* Headers */ = {
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
@@ -276,27 +240,9 @@
 /* End PBXHeadersBuildPhase section */
 
 /* Begin PBXNativeTarget section */
-		C816801E2390031700CDD261 /* MaterialForm tvOS */ = {
+		C88688CC234200A000C8ED7D /* MaterialForm */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = C81680242390031700CDD261 /* Build configuration list for PBXNativeTarget "MaterialForm tvOS" */;
-			buildPhases = (
-				C816801A2390031700CDD261 /* Headers */,
-				C816801B2390031700CDD261 /* Sources */,
-				C816801C2390031700CDD261 /* Frameworks */,
-				C816801D2390031700CDD261 /* Resources */,
-			);
-			buildRules = (
-			);
-			dependencies = (
-			);
-			name = "MaterialForm tvOS";
-			productName = "MaterialForm tvOS";
-			productReference = C816801F2390031700CDD261 /* MaterialForm_tvOS.framework */;
-			productType = "com.apple.product-type.framework";
-		};
-		C88688CC234200A000C8ED7D /* MaterialForm iOS */ = {
-			isa = PBXNativeTarget;
-			buildConfigurationList = C88688D5234200A000C8ED7D /* Build configuration list for PBXNativeTarget "MaterialForm iOS" */;
+			buildConfigurationList = C88688D5234200A000C8ED7D /* Build configuration list for PBXNativeTarget "MaterialForm" */;
 			buildPhases = (
 				C88688C8234200A000C8ED7D /* Headers */,
 				C88688C9234200A000C8ED7D /* Sources */,
@@ -307,9 +253,9 @@
 			);
 			dependencies = (
 			);
-			name = "MaterialForm iOS";
+			name = MaterialForm;
 			productName = MaterialForm;
-			productReference = C88688CD234200A000C8ED7D /* MaterialForm_iOS.framework */;
+			productReference = C88688CD234200A000C8ED7D /* MaterialForm.framework */;
 			productType = "com.apple.product-type.framework";
 		};
 		C88688DB234200DA00C8ED7D /* SampleApp */ = {
@@ -343,9 +289,6 @@
 				LastUpgradeCheck = 1110;
 				ORGANIZATIONNAME = MakeAWishFoundation;
 				TargetAttributes = {
-					C816801E2390031700CDD261 = {
-						CreatedOnToolsVersion = 11.2.1;
-					};
 					C88688CC234200A000C8ED7D = {
 						CreatedOnToolsVersion = 11.1;
 						LastSwiftMigration = 1110;
@@ -371,21 +314,13 @@
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				C88688CC234200A000C8ED7D /* MaterialForm iOS */,
-				C816801E2390031700CDD261 /* MaterialForm tvOS */,
+				C88688CC234200A000C8ED7D /* MaterialForm */,
 				C88688DB234200DA00C8ED7D /* SampleApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		C816801D2390031700CDD261 /* Resources */ = {
-			isa = PBXResourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C88688CB234200A000C8ED7D /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -407,31 +342,6 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		C816801B2390031700CDD261 /* Sources */ = {
-			isa = PBXSourcesBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-				C8168033239003F400CDD261 /* MaterialTextFieldStyle.swift in Sources */,
-				C816802D239003F400CDD261 /* MaterialUITextField+TextArea.swift in Sources */,
-				C8168036239003F400CDD261 /* UnderlyingField.swift in Sources */,
-				C81680392390055400CDD261 /* KeyboardView.swift in Sources */,
-				C8168038239003F400CDD261 /* Animatable.swift in Sources */,
-				C8168031239003F400CDD261 /* MaterialUITextField+UIITextFieldDelegate.swift in Sources */,
-				C8168035239003F400CDD261 /* UnderlyingLineView.swift in Sources */,
-				C8168034239003F400CDD261 /* DefaultMaterialTextFieldStyle.swift in Sources */,
-				C816802E239003F400CDD261 /* MaterialUITextField+Accessory.swift in Sources */,
-				C8168030239003F400CDD261 /* MaterialUITextField+Components.swift in Sources */,
-				C816802A239003F400CDD261 /* MaterialUITextField.swift in Sources */,
-				C816802C239003F400CDD261 /* MaterialUITextField+Update.swift in Sources */,
-				C816802F239003F400CDD261 /* MaterialUITextField+DefaultStyles.swift in Sources */,
-				C8168037239003F400CDD261 /* Extensions.swift in Sources */,
-				C8168029239003F400CDD261 /* FieldTriggerEvent.swift in Sources */,
-				C8168028239003F400CDD261 /* FieldControlState.swift in Sources */,
-				C816802B239003F400CDD261 /* MaterialUITextField+Build.swift in Sources */,
-				C8168032239003F400CDD261 /* MaterialFieldState.swift in Sources */,
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-		};
 		C88688C9234200A000C8ED7D /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -480,60 +390,6 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
-		C81680252390031700CDD261 /* Debug */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = YYAKJ5SR76;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 0.9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.girappe.material.MaterialForm-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Debug;
-		};
-		C81680262390031700CDD261 /* Release */ = {
-			isa = XCBuildConfiguration;
-			buildSettings = {
-				CODE_SIGN_STYLE = Automatic;
-				DEFINES_MODULE = YES;
-				DEVELOPMENT_TEAM = YYAKJ5SR76;
-				DYLIB_COMPATIBILITY_VERSION = 1;
-				DYLIB_CURRENT_VERSION = 1;
-				DYLIB_INSTALL_NAME_BASE = "@rpath";
-				INFOPLIST_FILE = Sources/Info.plist;
-				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				LD_RUNPATH_SEARCH_PATHS = (
-					"$(inherited)",
-					"@executable_path/Frameworks",
-					"@loader_path/Frameworks",
-				);
-				MARKETING_VERSION = 0.9.0;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.girappe.material.MaterialForm-tvOS";
-				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
-				SDKROOT = appletvos;
-				SKIP_INSTALL = YES;
-				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = 3;
-				TVOS_DEPLOYMENT_TARGET = 10.0;
-			};
-			name = Release;
-		};
 		C88688D3234200A000C8ED7D /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -673,14 +529,16 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 0.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MakeAWishFoundation.MaterialForm;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Debug;
 		};
@@ -703,13 +561,15 @@
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 0.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.MakeAWishFoundation.MaterialForm;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = "iphonesimulator iphoneos appletvsimulator appletvos";
 				SUPPORTS_MACCATALYST = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
+				TVOS_DEPLOYMENT_TARGET = 10.0;
 			};
 			name = Release;
 		};
@@ -727,7 +587,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 0.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.girappe.material.SampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -749,7 +609,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 0.9.0;
+				MARKETING_VERSION = 0.9.1;
 				PRODUCT_BUNDLE_IDENTIFIER = com.girappe.material.SampleApp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -760,15 +620,6 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		C81680242390031700CDD261 /* Build configuration list for PBXNativeTarget "MaterialForm tvOS" */ = {
-			isa = XCConfigurationList;
-			buildConfigurations = (
-				C81680252390031700CDD261 /* Debug */,
-				C81680262390031700CDD261 /* Release */,
-			);
-			defaultConfigurationIsVisible = 0;
-			defaultConfigurationName = Release;
-		};
 		C88688C7234200A000C8ED7D /* Build configuration list for PBXProject "MaterialForm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
@@ -778,7 +629,7 @@
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		C88688D5234200A000C8ED7D /* Build configuration list for PBXNativeTarget "MaterialForm iOS" */ = {
+		C88688D5234200A000C8ED7D /* Build configuration list for PBXNativeTarget "MaterialForm" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
 				C88688D6234200A000C8ED7D /* Debug */,

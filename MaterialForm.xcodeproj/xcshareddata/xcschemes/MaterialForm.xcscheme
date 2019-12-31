@@ -15,8 +15,8 @@
             <BuildableReference
                BuildableIdentifier = "primary"
                BlueprintIdentifier = "C88688CC234200A000C8ED7D"
-               BuildableName = "MaterialForm_iOS.framework"
-               BlueprintName = "MaterialForm iOS"
+               BuildableName = "MaterialForm.framework"
+               BlueprintName = "MaterialForm"
                ReferencedContainer = "container:MaterialForm.xcodeproj">
             </BuildableReference>
          </BuildActionEntry>
@@ -51,8 +51,8 @@
          <BuildableReference
             BuildableIdentifier = "primary"
             BlueprintIdentifier = "C88688CC234200A000C8ED7D"
-            BuildableName = "MaterialForm_iOS.framework"
-            BlueprintName = "MaterialForm iOS"
+            BuildableName = "MaterialForm.framework"
+            BlueprintName = "MaterialForm"
             ReferencedContainer = "container:MaterialForm.xcodeproj">
          </BuildableReference>
       </MacroExpansion>

@@ -21,7 +21,7 @@ Default look and feel for light and dark theme style:
 Add to your `Package.swift`, or setup within XCode 11+:
 
 ```swift
-.package(url: "https://github.com/GirAppe/MaterialForm.git", from: "0.9.0"),
+.package(url: "https://github.com/GirAppe/MaterialForm.git", from: "0.9.1"),
 ```
 
 ### 2. Cocoapods
@@ -64,8 +64,8 @@ MaterialUITextField is a UITextField subclass. There is no additional setup requ
 
 <!-- Images -->
 
-[example-light]: material-form-light.gif  "Default light theme styling"
-[example-dark]: material-form-dark.gif  "Default dark theme styling"
+[example-light]: https://raw.githubusercontent.com/GirAppe/MaterialForm/0.9.1/material-form-light.gif  "Default light theme styling"
+[example-dark]: https://raw.githubusercontent.com/GirAppe/MaterialForm/0.9.1/material-form-dark.gif  "Default dark theme styling"
 
 <!-- Links -->
 
