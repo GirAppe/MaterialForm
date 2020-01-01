@@ -14,7 +14,7 @@
 		C823E9C12346398E00AD214B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C02346398E00AD214B /* ViewController.swift */; };
 		C823E9C323473F3D00AD214B /* Animatable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C223473F3D00AD214B /* Animatable.swift */; };
 		C823E9C82347406700AD214B /* DefaultMaterialTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */; };
-		C88688D2234200A000C8ED7D /* MaterialForm_iOS.h in Headers */ = {isa = PBXBuildFile; fileRef = C88688D0234200A000C8ED7D /* MaterialForm_iOS.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		C88688D2234200A000C8ED7D /* MaterialForm.h in Headers */ = {isa = PBXBuildFile; fileRef = C88688D0234200A000C8ED7D /* MaterialForm.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		C88688DF234200DA00C8ED7D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C88688DE234200DA00C8ED7D /* AppDelegate.swift */; };
 		C88688E5234200DB00C8ED7D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C88688E4234200DB00C8ED7D /* Assets.xcassets */; };
 		C88688E8234200DB00C8ED7D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C88688E7234200DB00C8ED7D /* Preview Assets.xcassets */; };
@@ -51,7 +51,6 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		C81680212390031700CDD261 /* MaterialForm_tvOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialForm_tvOS.h; sourceTree = "<group>"; };
 		C8188C9E234395FC0097FB9E /* KeyboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardView.swift; sourceTree = "<group>"; };
 		C8188CA0234495150097FB9E /* UnderlyingField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingField.swift; sourceTree = "<group>"; };
 		C823E9BC2344C57A00AD214B /* MaterialUITextField+Components.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+Components.swift"; sourceTree = "<group>"; };
@@ -60,7 +59,7 @@
 		C823E9C223473F3D00AD214B /* Animatable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Animatable.swift; sourceTree = "<group>"; };
 		C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DefaultMaterialTextFieldStyle.swift; sourceTree = "<group>"; };
 		C88688CD234200A000C8ED7D /* MaterialForm.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = MaterialForm.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		C88688D0234200A000C8ED7D /* MaterialForm_iOS.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialForm_iOS.h; sourceTree = "<group>"; };
+		C88688D0234200A000C8ED7D /* MaterialForm.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MaterialForm.h; sourceTree = "<group>"; };
 		C88688D1234200A000C8ED7D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		C88688DC234200DA00C8ED7D /* SampleApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SampleApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C88688DE234200DA00C8ED7D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
@@ -219,8 +218,7 @@
 			isa = PBXGroup;
 			children = (
 				C88688CF234200A000C8ED7D /* MaterialForm */,
-				C88688D0234200A000C8ED7D /* MaterialForm_iOS.h */,
-				C81680212390031700CDD261 /* MaterialForm_tvOS.h */,
+				C88688D0234200A000C8ED7D /* MaterialForm.h */,
 				C88688D1234200A000C8ED7D /* Info.plist */,
 			);
 			path = Sources;
@@ -233,7 +231,7 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C88688D2234200A000C8ED7D /* MaterialForm_iOS.h in Headers */,
+				C88688D2234200A000C8ED7D /* MaterialForm.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

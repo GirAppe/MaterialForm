@@ -7,9 +7,7 @@ import UIKit
 @available(iOS 10, *)
 extension MaterialUITextField {
 
-    var isInViewHierarchy: Bool {
-        return self.window != nil
-    }
+    var isInViewHierarchy: Bool { window != nil }
 
     func build() {
         guard isInViewHierarchy else { return }

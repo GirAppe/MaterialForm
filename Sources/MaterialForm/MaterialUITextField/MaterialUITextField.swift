@@ -314,7 +314,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     }()
 
     open override func layoutSubviews() {
-        buildOnce()
+        if isInViewHierarchy { buildOnce() }
         super.layoutSubviews()
         updateFieldState()
     }
