@@ -302,7 +302,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
 
     // MARK: - Lifecycle
 
-    lazy var buildOnce: () -> Void = {
+    private lazy var buildOnce: () -> Void = {
         setup()
         build()
         setupPostBuild()
@@ -312,11 +312,23 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
         buildRightAccessory()
         return {}
     }()
+    private func setupBuilding() { isInViewHierarchy ? buildOnce() : () }
+
 
     open override func layoutSubviews() {
-        if isInViewHierarchy { buildOnce() }
+        setupBuilding()
         super.layoutSubviews()
         updateFieldState()
+    }
+
+    open override func didMoveToWindow() {
+        super.didMoveToWindow()
+        setupBuilding()
+    }
+
+    open override func didMoveToSuperview() {
+        super.didMoveToSuperview()
+        setupBuilding()
     }
 
     // MARK: - Setup
