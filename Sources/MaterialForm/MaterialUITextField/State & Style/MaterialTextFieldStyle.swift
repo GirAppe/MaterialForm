@@ -14,7 +14,6 @@ public protocol MaterialTextFieldStyle: class {
     func lineColor(for state: MaterialFieldState) -> UIColor
 
     func placeholderColor(for state: MaterialFieldState) -> UIColor
-    func textColor(for state: MaterialFieldState) -> UIColor
     func infoColor(for state: MaterialFieldState) -> UIColor
 
     func backgroundColor(for state: MaterialFieldState) -> UIColor

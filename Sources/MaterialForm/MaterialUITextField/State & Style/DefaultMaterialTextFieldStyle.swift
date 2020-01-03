@@ -5,48 +5,58 @@ import UIKit
 // MARK: - Default implementation
 
 @available(iOS 10, *)
-class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
+/// Default implementation of Material Text Field style.
+public class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle, ConfigurableTextFieldStyle {
 
-    var errorLineWidth: CGFloat = 2
-    var errorColor: UIColor = .red
-    var infoColor: UIColor = .gray
-    var focusedColor: UIColor = .blue
-    var backgroundColor: UIColor = UIColor.lightGray.withAlphaComponent(0.4)
-    var insets = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 12) 
-
-    var lineWidths: [FieldControlState: CGFloat] = [.focused: 2, .filled: 1]
-    var lineColors: [FieldControlState: UIColor] = [:]
-    var colors: [FieldControlState: UIColor] = [:]
-    var placeholderColors: [FieldControlState: UIColor] = [:]
-
-    var defaultRadius: CGFloat = 6
-    var defaultWidth: CGFloat = 0
+    /// Underline width when showing error
+    public var errorLineWidth: CGFloat = 2
+    /// Accent / tint color used when showing error
+    public var errorColor: UIColor = .red
+    /// Color used for info message and character counter
+    public var infoColor: UIColor = .gray
+    /// Accent/tint color used when field is `focused`
+    public var focusedColor: UIColor = .blue
+    /// Field background color. Default is gray with 40% opacity
+    public var backgroundColor: UIColor = UIColor.lightGray.withAlphaComponent(0.4)
+    /// Field internal insets.
+    public var insets = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 12)
+    /// [Lookup table] Maps field state into underline thickness. If not specified, state would map to `defaultLineWidth`
+    public var lineWidths: [FieldControlState: CGFloat] = [.focused: 2, .filled: 1]
+    /// [Lookup table] Maps field state into underline color. If not specified, state would map to `defaultColor`
+    public var lineColors: [FieldControlState: UIColor] = [:]
+    /// [Lookup table] Maps field state into plaeholder floating label color. If not specified, state would map to `defaultColor`
+    public var placeholderColors: [FieldControlState: UIColor] = [:]
+    /// Default underline thickness. Would be used if there is no value specified in the `lineWidths` lookup table.
+    var defaultLineWidth: CGFloat = 0
 
     #if os(iOS)
-    var defaultColor: UIColor = .darkText
-    var defaultPlaceholderColor: UIColor = .darkText
+    /// Default color used for line and `.info` accessories, if no value specified for given field state
+    public var defaultColor: UIColor = .darkText
+    /// Default color used for placeholder floating label, if no value specified for given field state
+    public var defaultPlaceholderColor: UIColor = .darkText
     #elseif os(tvOS)
-    var defaultColor: UIColor = .black
-    var defaultPlaceholderColor: UIColor = .darkGray
+    /// Default color used for line and `.info` accessories, if no value specified for given field state
+    public var defaultColor: UIColor = .black
+    /// Default color used for placeholder floating label, if no value specified for given field state
+    public var defaultPlaceholderColor: UIColor = .darkGray
     #endif
+
+    /// Default corner radius used with `bezel` and `rounded` styles.
+    public var cornerRadius: CGFloat = 6
 
     // MARK: - Style
 
-    var maxLineWidth: CGFloat {
+    /// [Internal] used to prepare correct layout for line changes. Should return thickest line width possible.
+    public var maxLineWidth: CGFloat {
         return lineWidths.values.reduce(into: 0) { $0 = max($0, $1) }
     }
 
-    var cornerRadius: CGFloat {
-        get { return defaultRadius }
-        set { defaultRadius = newValue }
-    }
-
-    func lineWidth(for state: MaterialFieldState) -> CGFloat {
+    public func lineWidth(for state: MaterialFieldState) -> CGFloat {
         guard !state.isShowingError else { return errorLineWidth }
-        return lineWidths[state.fieldState] ?? defaultWidth
+        return lineWidths[state.fieldState] ?? defaultLineWidth
     }
 
-    func lineColor(for state: MaterialFieldState) -> UIColor {
+    public func lineColor(for state: MaterialFieldState) -> UIColor {
         guard !state.isShowingError else { return errorColor }
         if state.fieldState == .focused {
             return focusedColor
@@ -54,7 +64,7 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
         return lineColors[state.fieldState] ?? defaultColor
     }
 
-    func placeholderColor(for state: MaterialFieldState) -> UIColor {
+    public func placeholderColor(for state: MaterialFieldState) -> UIColor {
         guard !state.isShowingError else { return errorColor }
         if state.fieldState == .focused {
             return focusedColor
@@ -62,36 +72,31 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
         return placeholderColors[state.fieldState] ?? defaultPlaceholderColor
     }
 
-    func textColor(for state: MaterialFieldState) -> UIColor {
-        guard !state.isShowingError else { return errorColor }
-        return colors[state.fieldState] ?? defaultColor
-    }
-
-    func infoColor(for state: MaterialFieldState) -> UIColor {
+    public func infoColor(for state: MaterialFieldState) -> UIColor {
         guard !state.isShowingError else { return errorColor }
         return infoColor
     }
 
-    func backgroundColor(for state: MaterialFieldState) -> UIColor {
+    public func backgroundColor(for state: MaterialFieldState) -> UIColor {
         return backgroundColor
     }
 
-    func borderWidth(for state: MaterialFieldState) -> CGFloat {
+    public func borderWidth(for state: MaterialFieldState) -> CGFloat {
         return 0
     }
 
-    func borderColor(for state: MaterialFieldState) -> UIColor {
+    public func borderColor(for state: MaterialFieldState) -> UIColor {
         return .clear
     }
 
-    func left(
+    public func left(
         accessory: MaterialUITextField.Accessory,
         for state: MaterialFieldState
     ) -> AccessoryState {
         return accessoryState(accessory, for: state)
     }
 
-    func right(
+    public func right(
         accessory: MaterialUITextField.Accessory,
         for state: MaterialFieldState
     ) -> AccessoryState {
@@ -118,5 +123,4 @@ class DefaultMaterialTextFieldStyle: MaterialTextFieldStyle {
         }
     }
 }
-
 #endif

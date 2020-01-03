@@ -8,74 +8,99 @@ import UIKit
 public extension MaterialUITextField {
 
     /// Container for default styles
-    struct Style {
+    public struct Style {
         /// MaterialuitextField style for border type == `.none`
-        static let none: MaterialTextFieldStyle = NoneFieldStyle()
+        public static var none: NoneFieldStyle { NoneFieldStyle() }
+        /// MaterialuitextField style for border type == `.none`, overriden with custom configuration
+        public static func none(_ config: (NoneFieldStyle) -> Void) -> NoneFieldStyle { none.configure(with: config) }
         /// MaterialuitextField style for border type == `.line`
-        static let line: MaterialTextFieldStyle = LineFieldStyle()
+        public static var line: LineFieldStyle { LineFieldStyle() }
+        /// MaterialuitextField style for border type == `.line`, overriden with custom configuration
+        public static func line(_ config: (LineFieldStyle) -> Void) -> LineFieldStyle { line.configure(with: config) }
         /// MaterialuitextField style for border type == `.bezel`
-        static let bezel: MaterialTextFieldStyle = BezelFieldStyle()
+        public static var bezel: BezelFieldStyle { BezelFieldStyle() }
+        /// MaterialuitextField style for border type == `.bezel`, overriden with custom configuration
+        public static func bezel(_ config: (BezelFieldStyle) -> Void) -> BezelFieldStyle { bezel.configure(with: config) }
         /// MaterialuitextField style for border type == `.roundedRect`
-        static let rounded: MaterialTextFieldStyle = RoundedFieldStyle()
+        public static var rounded: RoundedFieldStyle { RoundedFieldStyle() }
+        /// MaterialuitextField style for border type == `.roundedRect`, overriden with custom configuration
+        public static func rounded(_ config: (RoundedFieldStyle) -> Void) -> RoundedFieldStyle { rounded.configure(with: config) }
     }
 }
 
 // MARK: - None
 
 @available(iOS 10, *)
-private class NoneFieldStyle: DefaultMaterialTextFieldStyle {
+/// Simple field style. No background, line shown only for `focused` and `filled` states.
+public class NoneFieldStyle: DefaultMaterialTextFieldStyle {
 
     override init() {
         super.init()
         lineWidths[.empty] = 0
-        defaultWidth = 1
+        defaultLineWidth = 1
         backgroundColor = .clear
         insets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    }
+
+    override public func backgroundColor(for state: MaterialFieldState) -> UIColor {
+        .clear
     }
 }
 
 // MARK: - Line
 
 @available(iOS 10, *)
-private class LineFieldStyle: DefaultMaterialTextFieldStyle {
+/// Old material design field style. No background, with light underline, becoming thicker when `filled` / `focused`.
+public class LineFieldStyle: DefaultMaterialTextFieldStyle {
 
     override init() {
         super.init()
-        defaultWidth = 1
+        defaultLineWidth = 1
         backgroundColor = .clear
         insets = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+    }
+
+    override public func backgroundColor(for state: MaterialFieldState) -> UIColor {
+        .clear
     }
 }
 
 // MARK: - Bezel
 
 @available(iOS 10, *)
-private class BezelFieldStyle: DefaultMaterialTextFieldStyle {
+/// Bezel style, with no underline and no background, but with rounded border.
+public class BezelFieldStyle: DefaultMaterialTextFieldStyle {
 
-    var borderWidth: CGFloat = 1
+    /// Bezel border width.
+    public var borderWidth: CGFloat = 1
 
     override init() {
         super.init()
-        defaultWidth = 0
+        defaultLineWidth = 0
         backgroundColor = .clear
     }
 
-    override func lineWidth(for state: MaterialFieldState) -> CGFloat {
+    override public func lineWidth(for state: MaterialFieldState) -> CGFloat {
         return 0
     }
 
-    override func borderColor(for state: MaterialFieldState) -> UIColor {
+    override public func borderColor(for state: MaterialFieldState) -> UIColor {
         return lineColor(for: state)
     }
 
-    override func borderWidth(for state: MaterialFieldState) -> CGFloat {
+    override public func borderWidth(for state: MaterialFieldState) -> CGFloat {
         return borderWidth
+    }
+
+    override public func backgroundColor(for state: MaterialFieldState) -> UIColor {
+        .clear
     }
 }
 
 // MARK: - Rounded
 
 @available(iOS 10, *)
-private class RoundedFieldStyle: DefaultMaterialTextFieldStyle { }
+/// Default Material Design text field style. Have background with top corners rounded, and underline showing for `filled` / `focused` states.
+public class RoundedFieldStyle: DefaultMaterialTextFieldStyle { }
 
 #endif

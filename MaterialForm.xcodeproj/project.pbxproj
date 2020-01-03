@@ -26,15 +26,26 @@
 		C886890123424D3D00C8ED7D /* FieldTriggerEvent.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890023424D3D00C8ED7D /* FieldTriggerEvent.swift */; };
 		C886890323424DB700C8ED7D /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890223424DB700C8ED7D /* Extensions.swift */; };
 		C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */; };
+		C89455D823BF852100E001EC /* ConfigurableTextFieldStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = C89455D723BF852100E001EC /* ConfigurableTextFieldStyle.swift */; };
+		C89455D923BF8FE600E001EC /* MaterialForm.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; };
+		C89455DA23BF8FE600E001EC /* MaterialForm.framework in Embed Frameworks */ = {isa = PBXBuildFile; fileRef = C88688CD234200A000C8ED7D /* MaterialForm.framework */; settings = {ATTRIBUTES = (CodeSignOnCopy, RemoveHeadersOnCopy, ); }; };
 		C8CC487923479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487823479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift */; };
 		C8CC487B23479C4F005BE5E8 /* MaterialFieldState.swift in Sources */ = {isa = PBXBuildFile; fileRef = C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */; };
-		C8E10E0123BB778900D4F425 /* MaterialForm in Frameworks */ = {isa = PBXBuildFile; productRef = C8E10E0023BB778900D4F425 /* MaterialForm */; };
-		C8E10E0223BB778900D4F425 /* MaterialForm in Embed Frameworks */ = {isa = PBXBuildFile; productRef = C8E10E0023BB778900D4F425 /* MaterialForm */; settings = {ATTRIBUTES = (CodeSignOnCopy, ); }; };
 		CCD19F0C237EF3110082A5B8 /* MaterialUITextField+TextArea.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */; };
 		CCD19F0E237EF3A40082A5B8 /* MaterialUITextField+Update.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0D237EF3A40082A5B8 /* MaterialUITextField+Update.swift */; };
 		CCD19F10237EF3F30082A5B8 /* MaterialUITextField+Build.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCD19F0F237EF3F30082A5B8 /* MaterialUITextField+Build.swift */; };
 		CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCFB37602347DD50000E4ED6 /* MaterialUITextField+Accessory.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		C89455DB23BF8FE600E001EC /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = C88688C4234200A000C8ED7D /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = C88688CC234200A000C8ED7D;
+			remoteInfo = MaterialForm;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXCopyFilesBuildPhase section */
 		C8E10E0323BB778900D4F425 /* Embed Frameworks */ = {
@@ -43,7 +54,7 @@
 			dstPath = "";
 			dstSubfolderSpec = 10;
 			files = (
-				C8E10E0223BB778900D4F425 /* MaterialForm in Embed Frameworks */,
+				C89455DA23BF8FE600E001EC /* MaterialForm.framework in Embed Frameworks */,
 			);
 			name = "Embed Frameworks";
 			runOnlyForDeploymentPostprocessing = 0;
@@ -74,6 +85,7 @@
 		C886890023424D3D00C8ED7D /* FieldTriggerEvent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FieldTriggerEvent.swift; sourceTree = "<group>"; };
 		C886890223424DB700C8ED7D /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
 		C886890423424E6D00C8ED7D /* UnderlyingLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnderlyingLineView.swift; sourceTree = "<group>"; };
+		C89455D723BF852100E001EC /* ConfigurableTextFieldStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigurableTextFieldStyle.swift; sourceTree = "<group>"; };
 		C8CC487823479929005BE5E8 /* MaterialUITextField+DefaultStyles.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+DefaultStyles.swift"; sourceTree = "<group>"; };
 		C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MaterialFieldState.swift; sourceTree = "<group>"; };
 		CCD19F0B237EF3110082A5B8 /* MaterialUITextField+TextArea.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "MaterialUITextField+TextArea.swift"; sourceTree = "<group>"; };
@@ -94,7 +106,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C8E10E0123BB778900D4F425 /* MaterialForm in Frameworks */,
+				C89455D923BF8FE600E001EC /* MaterialForm.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -115,6 +127,7 @@
 				C8CC487A23479C4F005BE5E8 /* MaterialFieldState.swift */,
 				C88688FA23424CEE00C8ED7D /* MaterialTextFieldStyle.swift */,
 				C823E9C72347406700AD214B /* DefaultMaterialTextFieldStyle.swift */,
+				C89455D723BF852100E001EC /* ConfigurableTextFieldStyle.swift */,
 			);
 			path = "State & Style";
 			sourceTree = "<group>";
@@ -268,10 +281,10 @@
 			buildRules = (
 			);
 			dependencies = (
+				C89455DC23BF8FE600E001EC /* PBXTargetDependency */,
 			);
 			name = SampleApp;
 			packageProductDependencies = (
-				C8E10E0023BB778900D4F425 /* MaterialForm */,
 			);
 			productName = SampleApp;
 			productReference = C88688DC234200DA00C8ED7D /* SampleApp.app */;
@@ -345,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CCD19F0E237EF3A40082A5B8 /* MaterialUITextField+Update.swift in Sources */,
+				C89455D823BF852100E001EC /* ConfigurableTextFieldStyle.swift in Sources */,
 				C886890323424DB700C8ED7D /* Extensions.swift in Sources */,
 				CCFB37612347DD50000E4ED6 /* MaterialUITextField+Accessory.swift in Sources */,
 				C886890523424E6D00C8ED7D /* UnderlyingLineView.swift in Sources */,
@@ -375,6 +389,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		C89455DC23BF8FE600E001EC /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = C88688CC234200A000C8ED7D /* MaterialForm */;
+			targetProxy = C89455DB23BF8FE600E001EC /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		C88688E9234200DB00C8ED7D /* LaunchScreen.storyboard */ = {
@@ -657,14 +679,6 @@
 			};
 		};
 /* End XCRemoteSwiftPackageReference section */
-
-/* Begin XCSwiftPackageProductDependency section */
-		C8E10E0023BB778900D4F425 /* MaterialForm */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = C804AD14238FD72C00AFD26B /* XCRemoteSwiftPackageReference "MaterialForm" */;
-			productName = MaterialForm;
-		};
-/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C88688C4234200A000C8ED7D /* Project object */;
 }

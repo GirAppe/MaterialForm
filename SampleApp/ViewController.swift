@@ -130,6 +130,14 @@ class ViewController: UIViewController {
         field.text = "This is text"
     }
 
+    @IBAction func setCustomStyle() {
+        field.style = MaterialUITextField.Style.rounded { it in
+            it.backgroundColor = .green
+            it.cornerRadius = 20
+            it.defaultPlaceholderColor = .blue
+        }
+    }
+
     @IBAction func endEditing() {
         view.endEditing(true)
     }

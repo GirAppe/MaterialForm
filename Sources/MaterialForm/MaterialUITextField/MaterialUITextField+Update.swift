@@ -101,8 +101,6 @@ extension MaterialUITextField {
             return floatingLabel.isHidden = up
         }
 
-        floatingLabel.textColor = style.textColor(for: self)
-
         let finalTranform: CGAffineTransform = {
             guard up else { return CGAffineTransform.identity }
 

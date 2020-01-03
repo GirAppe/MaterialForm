@@ -73,6 +73,9 @@ extension MaterialUITextField {
 
         rightAccessoryView.isHidden = false
         updateAccessory()
+        DispatchQueue.main.async {
+            self.updateText()
+        }
     }
 
     func buildLeftAccessory() {
@@ -100,6 +103,9 @@ extension MaterialUITextField {
 
         leftAccessoryView.isHidden = false
         updateAccessory()
+        DispatchQueue.main.async {
+            self.updateText()
+        }
     }
 
     private func buildAccessoryButton(with icon: UIImage) -> UIButton {

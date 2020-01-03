@@ -91,7 +91,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     public var style: MaterialTextFieldStyle = DefaultMaterialTextFieldStyle() {
         didSet { insets = defaultStyle?.insets ?? insets; update(animated: false) }
     }
-    var defaultStyle: DefaultMaterialTextFieldStyle? { return style as? DefaultMaterialTextFieldStyle }
+    var defaultStyle: DefaultMaterialTextFieldStyle? { style as? DefaultMaterialTextFieldStyle }
 
     // MARK: - Observable properties
 
@@ -126,7 +126,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     /// The view’s background color.
     open override var backgroundColor: UIColor? {
         get { backgroundView.backgroundColor }
-        set { backgroundView.backgroundColor = newValue }
+        set { backgroundView.backgroundColor = newValue; superBackgroundColor = newValue }
     }
     internal var superBackgroundColor: UIColor?
     @available(*, unavailable, message: "Not supported yet")
@@ -303,7 +303,6 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     // MARK: - Lifecycle
 
     private lazy var buildOnce: () -> Void = {
-        setup()
         build()
         setupPostBuild()
         setupObservers()
@@ -314,6 +313,15 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     }()
     private func setupBuilding() { isInViewHierarchy ? buildOnce() : () }
 
+    public override init(frame: CGRect) {
+        super.init(frame: frame)
+        setup()
+    }
+
+    public required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
 
     open override func layoutSubviews() {
         setupBuilding()
@@ -345,18 +353,12 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
         rightAccessoryView.backgroundColor = .clear
         leftAccessoryView.backgroundColor = .clear
 
-        // Setup default style
-        updateStyleType()
 
-        superBackgroundColor = super.backgroundColor
+        superBackgroundColor = backgroundColor ?? super.backgroundColor
         super.backgroundColor = .clear
 
-        if let defaultStyle = self.defaultStyle {
-            setIfPossible(&defaultStyle.defaultColor, to: textColor)
-            setIfPossible(&defaultStyle.defaultPlaceholderColor, to: textColor)
-            setIfPossible(&defaultStyle.backgroundColor, to: superBackgroundColor)
-            setIfPossible(&defaultStyle.focusedColor, to: tintColor)
-        }
+        // Setup default style
+        updateStyleType()
 
         placeholderLabel.font = font ?? placeholderLabel.font
 
