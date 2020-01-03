@@ -5,7 +5,7 @@ import UIKit
 // MARK: - Styles Container
 
 @available(iOS 10, *)
-public extension MaterialUITextField {
+extension MaterialUITextField {
 
     /// Container for default styles
     public struct Style {
