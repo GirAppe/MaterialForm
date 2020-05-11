@@ -2,6 +2,7 @@
 
 import UIKit
 
+/// Adopt this protocol for wrapping state change animations.
 protocol Animatable {}
 
 // MARK: - Animatable UIView

@@ -1,10 +1,15 @@
+## [ Build ] ###################################################################
+
+desc "Open the project in Xcode"
+task :build do
+    sh "swift build"
+end
+
 ## [ Xcode ] ###################################################################
 
 desc "Open the project in Xcode"
 task :xcode do
-    ARGV.each { |a| task a.to_sym do ; end }
-    app = ARGV[1].to_s
-    project = "./MaterialForm.xcodeproj"
+    project = "./.swiftpm/MaterialForm.xcodeproj"
     sh "open #{project}"
 end
 

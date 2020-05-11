@@ -12,7 +12,7 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     // MARK: - Configuration
 
     /// Specify next responder text field, that would be activated when return button pressed
-    @IBOutlet weak var nextField: UITextField?
+    @IBOutlet open weak var nextField: UITextField?
 
     /// Makes intrinsic content size being at least X in height.
     /// Defaults to 64 (recommended 44 + some buffer for the placeholder).
