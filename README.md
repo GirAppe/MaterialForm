@@ -21,7 +21,7 @@ Default look and feel for light and dark theme style:
 Add to your `Package.swift`, or setup within XCode 11+:
 
 ```swift
-.package(url: "https://github.com/GirAppe/MaterialForm.git", from: "0.9.4"),
+.package(url: "https://github.com/GirAppe/MaterialForm.git", from: "0.9.5"),
 ```
 
 ### 2. Cocoapods
@@ -55,7 +55,7 @@ github "GirAppe/MaterialForm"
 
 Place a UITextField in your IB file, and change it's class to 'MaterialUITextField'. Voila ;)
 
-> There are plenty of additional properties that are accessible through IB. For a different styles, 
+> There are plenty of additional properties that are accessible through IB. For a different styles,
 > set `borderStyle` property from IB.
 
 ### 2. From the code:
@@ -64,8 +64,8 @@ MaterialUITextField is a UITextField subclass. There is no additional setup requ
 
 <!-- Images -->
 
-[example-light]: https://raw.githubusercontent.com/GirAppe/MaterialForm/0.9.4/material-form-light.gif  "Default light theme styling"
-[example-dark]: https://raw.githubusercontent.com/GirAppe/MaterialForm/0.9.4/material-form-dark.gif  "Default dark theme styling"
+[example-light]: https://raw.githubusercontent.com/GirAppe/MaterialForm/0.9.5/material-form-light.gif  "Default light theme styling"
+[example-dark]: https://raw.githubusercontent.com/GirAppe/MaterialForm/0.9.5/material-form-dark.gif  "Default dark theme styling"
 
 <!-- Links -->
 
