@@ -75,6 +75,10 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     var duration: TimeInterval { TimeInterval(animationDuration) }
     var damping: CGFloat { CGFloat(animationDamping) }
 
+    // MARK: - Context Actions
+
+    open var allowedContextActions: [MaterialFieldContextAction] = MaterialFieldContextAction.allCases
+
     // MARK: - Error handling
 
     /// Returns `true` when field is showing `errorMessage` (it is not `nil`). Readonly.
