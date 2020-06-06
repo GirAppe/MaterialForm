@@ -4,6 +4,8 @@ import UIKit
 
 extension MaterialUITextField {
 
+    // MARK: - Context actions accessors
+
     @IBInspectable var isPasteEnabled: Bool {
         get { self.isEnabled(.paste) }
         set { self.setEnabled(.paste, newValue) }
@@ -34,6 +36,8 @@ extension MaterialUITextField {
         set { self.setEnabled(.delete, newValue) }
     }
 
+    // MARK: - Context action\
+
     override open func canPerformAction(_ action: Selector, withSender sender: Any?) -> Bool {
         switch action {
         case #selector(UIResponderStandardEditActions.paste(_:)) where !isPasteEnabled,
@@ -48,6 +52,8 @@ extension MaterialUITextField {
         }
     }
 
+    // MARK: - Private
+
     private func isEnabled(_ action: MaterialFieldContextAction) -> Bool {
         allowedContextActions.contains(action)
     }
@@ -55,7 +61,6 @@ extension MaterialUITextField {
     private func isDisabled(_ action: MaterialFieldContextAction) -> Bool {
         !self.isEnabled(action)
     }
-
 
     private func setEnabled(_ action: MaterialFieldContextAction, _ enabled: Bool) {
         if enabled, !self.allowedContextActions.contains(action) {
