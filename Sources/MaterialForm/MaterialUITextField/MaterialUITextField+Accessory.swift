@@ -75,6 +75,7 @@ extension MaterialUITextField {
         updateAccessory()
         DispatchQueue.main.async {
             self.updateText()
+            self.updateAccessory()
         }
     }
 
