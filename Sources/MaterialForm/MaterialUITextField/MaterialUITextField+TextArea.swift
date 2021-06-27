@@ -18,10 +18,10 @@ extension MaterialUITextField {
     }
 
     var textInsets: UIEdgeInsets { UIEdgeInsets(
-        top: topPadding + insets.top,
-        left: rectLeftPadding + insets.left,
-        bottom: bottomPadding + insets.bottom,
-        right: rectRightPadding + insets.right
+        top: topPadding + insets.top + textInsetsCorrection.top,
+        left: rectLeftPadding + insets.left + textInsetsCorrection.left,
+        bottom: bottomPadding + insets.bottom + textInsetsCorrection.bottom,
+        right: rectRightPadding + insets.right + textInsetsCorrection.right
     )}
 }
 

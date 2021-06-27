@@ -9,7 +9,7 @@ end
 
 desc "Open the project in Xcode"
 task :xcode do
-    project = "./.swiftpm/MaterialForm.xcodeproj"
+    project = "./MaterialForm.xcodeproj"
     sh "open #{project}"
 end
 

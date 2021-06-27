@@ -5,7 +5,7 @@ import UIKit
 // MARK: - Field State
 
 @available(iOS 10, *)
-public protocol MaterialFieldState: class {
+public protocol MaterialFieldState: AnyObject {
     var fieldState: FieldControlState { get }
     var isShowingError: Bool { get }
     var isEnabled: Bool { get }

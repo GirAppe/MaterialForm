@@ -143,6 +143,7 @@ extension MaterialUITextField {
         infoContainer.addArrangedSubview(infoLabel)
         infoContainer.addArrangedSubview(infoAccessory)
         infoAccessory.setContentHuggingPriority(.defaultHigh + 1, for: .horizontal)
+        infoAccessory.setContentHuggingPriority(.defaultHigh + 1, for: .vertical)
         infoAccessory.setContentCompressionResistancePriority(.required, for: .horizontal)
         infoLabel.set(state: self, style: style)
         infoLabel.build()

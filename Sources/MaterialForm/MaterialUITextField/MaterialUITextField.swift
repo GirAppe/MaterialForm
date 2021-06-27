@@ -34,6 +34,16 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     open var insets: UIEdgeInsets = UIEdgeInsets(top: 10, left: 12, bottom: 0, right: 12) {
         didSet { update(animated: false) }
     }
+
+    /// Additional correction for main text area
+    open var textInsetsCorrection: UIEdgeInsets = {
+        #if os(tvOS)
+        return UIEdgeInsets(top: 0, left: -6, bottom: 0, right: -6)
+        #else
+        return .zero
+        #endif
+    }()
+
     /// Horizontal spacing between content text fields and accessories
     open var innerHorizontalSpacing: CGFloat {
         get { fieldContainer.spacing }
@@ -101,8 +111,14 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
 
     /// [Observable it with KVO] Event trigerred (like accessory tap).
     @objc dynamic internal(set) public var event: FieldTriggerEvent = .none
+
     /// [Observable it with KVO] Field state (empty/focused/filled).
-    @objc dynamic internal(set) public var fieldState: FieldControlState = .empty
+    @objc dynamic private(set) public var fieldState: FieldControlState = .empty
+
+    internal func setFieldState(_ newState: FieldControlState, animated: Bool) {
+        self.fieldState = newState
+        self.update(animated: animated)
+    }
 
     // MARK: - Overrides
 
@@ -296,7 +312,6 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
 
     var observations: [Any] = []
     var isBuilt: Bool = false
-    var overrideAnimated: Bool?
 
     /// Additional correction to placeholder adjustment when field is filled/active. Default is 0.9. Intended to be used with non standard text size or font
     public var placeholderAdjustment: CGFloat = 0.9
@@ -389,7 +404,6 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
 
     func setupObservers() {
         observations = [
-            observe(\.fieldState) { it, _ in it.update(animated: true) },
             observe(\.text) { it, _ in it.updateCharactersCount() },
             observe(\.text) { it, _ in it.updateFieldState() },
         ]

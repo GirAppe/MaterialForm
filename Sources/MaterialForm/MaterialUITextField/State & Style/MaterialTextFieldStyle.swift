@@ -5,7 +5,7 @@ import UIKit
 // MARK: - Text Field State
 
 @available(iOS 10, *)
-public protocol MaterialTextFieldStyle: class {
+public protocol MaterialTextFieldStyle: AnyObject {
 
     var maxLineWidth: CGFloat { get }
     var cornerRadius: CGFloat { get set }

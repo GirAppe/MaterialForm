@@ -9,15 +9,15 @@ extension MaterialUITextField: UITextFieldDelegate {
 
     public func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
         defer {
-            event = .tap
+            self.event = .tap
         }
         return proxyDelegate?.textFieldShouldBeginEditing?(self) ?? isEditingEnabled
     }
 
     public func textFieldDidBeginEditing(_ textField: UITextField) {
         defer {
-            event = .beginEditing
-            fieldState = .focused
+            self.event = .beginEditing
+            self.setFieldState(.focused, animated: true)
         }
         proxyDelegate?.textFieldDidBeginEditing?(self)
     }
@@ -28,8 +28,8 @@ extension MaterialUITextField: UITextFieldDelegate {
 
     public func textFieldDidEndEditing(_ textField: UITextField) {
         defer {
-            event = .endEditing
-            fieldState = text.isEmptyOrNil ? .empty : .filled
+            self.event = .endEditing
+            self.setFieldState(text.isEmptyOrNil ? .empty : .filled, animated: true)
         }
         proxyDelegate?.textFieldDidEndEditing?(self)
     }
@@ -40,7 +40,7 @@ extension MaterialUITextField: UITextFieldDelegate {
     ) {
         defer {
             event = .endEditing
-            fieldState = text.isEmptyOrNil ? .empty : .filled
+            self.setFieldState(text.isEmptyOrNil ? .empty : .filled, animated: true)
         }
         proxyDelegate?.textFieldDidEndEditing?(textField, reason: reason)
     }

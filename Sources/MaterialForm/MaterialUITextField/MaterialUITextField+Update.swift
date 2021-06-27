@@ -10,9 +10,6 @@ extension MaterialUITextField {
     public func update(animated: Bool = true) {
         guard isBuilt else { return }
 
-        let animated = overrideAnimated ?? animated
-        defer { overrideAnimated = nil }
-
         super.placeholder = nil
         super.borderStyle = .none
 
@@ -153,8 +150,12 @@ extension MaterialUITextField {
     public func updateFieldState() {
         guard !isEditing else { return }
         guard fieldState == .empty || fieldState == .filled else { return }
-        overrideAnimated = false
-        fieldState = !(text ?? "").isEmpty ? .filled : .empty
+
+        let newFieldState: FieldControlState = self.text.isEmptyOrNil ? .empty : .filled
+
+        guard newFieldState != self.fieldState else { return }
+
+        self.setFieldState(newFieldState, animated: false)
     }
 
     @objc func updateText() {
@@ -172,5 +173,4 @@ extension MaterialUITextField {
         }
     }
 }
-
 #endif

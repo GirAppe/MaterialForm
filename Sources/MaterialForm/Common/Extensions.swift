@@ -46,6 +46,7 @@ internal extension UIView {
     @available(iOS 10, *)
     @discardableResult func clear() -> UIView {
         translatesAutoresizingMaskIntoConstraints = false
+        guard self.superview != nil else { return self }
         removeFromSuperview()
         subviews.forEach { $0.removeFromSuperview() }
         (self as? UIStackView)?.arrangedSubviews.forEach { $0.removeFromSuperview() }
@@ -55,9 +56,7 @@ internal extension UIView {
 
 internal extension Optional where Wrapped: Collection {
 
-    var isEmptyOrNil: Bool {
-        return self?.isEmpty ?? true
-    }
+    var isEmptyOrNil: Bool { self?.isEmpty ?? true }
 }
 
 internal extension UIView.AnimationCurve {
