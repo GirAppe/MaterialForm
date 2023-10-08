@@ -71,7 +71,6 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
     /// - easeIn
     /// - easeOut
     /// - linear
-    @available(*, unavailable, message: "Only for IB. Use `curve` instead")
     @IBInspectable open var animationCurve: String? {
         willSet { curve = AnimationCurve(name: newValue) ?? curve }
     }
@@ -244,7 +243,6 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
         get { rightInputAccessory }
         set { rightAccessory = newValue != nil ? .view(newValue!) : .none }
     }
-    @available(*, unavailable, message: "Only for IB. Use `rightAccessory` instead")
     @IBInspectable public var rightIcon: UIImage? { willSet { rightIconFromIB = newValue } }
     var rightIconFromIB: UIImage?
 
@@ -260,7 +258,6 @@ open class MaterialUITextField: UITextField, MaterialFieldState {
         get { return leftInputAccessory }
         set { leftAccessory = newValue != nil ? .view(newValue!) : .none }
     }
-    @available(*, unavailable, message: "Only for IB. Use `leftAccessory` instead")
     @IBInspectable public var leftIcon: UIImage? { willSet { leftIconFromIB = newValue } }
     var leftIconFromIB: UIImage?
 
